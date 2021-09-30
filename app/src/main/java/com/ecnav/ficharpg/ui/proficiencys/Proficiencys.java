@@ -76,7 +76,7 @@ public class Proficiencys extends Fragment
                 }
                 if (sheet.isCharismaSaveProficiency())
                 {
-                    conValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+                    chaValue += Integer.parseInt(binding.proficiencyText.getText().toString());
                 }
                 if (sheet.isAcrobaticsProficiency())
                 {
