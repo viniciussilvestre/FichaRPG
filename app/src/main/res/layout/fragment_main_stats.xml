@@ -62,20 +62,13 @@
                     app:cardElevation="@dimen/sheetElementsElevation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nameCard">
+                    app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/classLabelText"
-                            style="@style/atributeStyleLabel"
-                            android:text="@string/classPresentation"
-                            android:textAlignment="center"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <EditText
                             android:id="@+id/classText"
@@ -85,6 +78,7 @@
                             android:background="@android:color/transparent"
                             android:elevation="@dimen/sheetElementsElevation"
                             android:fontFamily="@font/roboto_medium"
+                            android:hint="@string/characterClassHint"
                             android:importantForAutofill="no"
                             android:inputType="textPersonName"
                             android:minWidth="@dimen/minWidthText"
@@ -92,58 +86,7 @@
                             android:textAlignment="center"
                             android:textSize="24sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/classLabelText"
                             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/levelCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    app:cardCornerRadius="@dimen/cornerValue"
-                    app:cardElevation="@dimen/sheetElementsElevation"
-                    app:layout_constraintEnd_toStartOf="@+id/proficiencyCard"
-                    app:layout_constraintHorizontal_chainStyle="spread"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/classCard">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/levelTextLabel"
-                            android:layout_width="109dp"
-                            android:layout_height="wrap_content"
-                            android:elevation="@dimen/sheetElementsElevation"
-                            android:fontFamily="@font/roboto_medium"
-                            android:padding="@dimen/padding"
-                            android:text="@string/levelPresentation"
-                            android:textAlignment="center"
-                            android:textSize="24sp" />
-
-                        <EditText
-                            android:id="@+id/levelText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:elevation="@dimen/sheetElementsElevation"
-                            android:fontFamily="@font/roboto_medium"
-                            android:importantForAutofill="no"
-                            android:inputType="number"
-                            android:minWidth="@dimen/minWidthText"
-                            android:padding="@dimen/padding"
-                            android:textAlignment="center"
-                            android:textSize="24sp"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -159,7 +102,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/alingmentCard"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/proficiencyCard">
+                    app:layout_constraintTop_toBottomOf="@+id/levelCard">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -691,47 +634,49 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/proficiencyCard"
+                    android:id="@+id/levelCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     app:cardCornerRadius="@dimen/cornerValue"
                     app:cardElevation="@dimen/sheetElementsElevation"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/speedCard"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/classCard">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/proficiencyLabel"
-                            style="@style/atributeStyleLabel"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/levelTextLabel"
+                            android:layout_width="109dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
                             android:padding="@dimen/padding"
-                            android:text="@string/proficiencyLabel"
-                            android:textAlignment="center" />
+                            android:text="@string/levelPresentation"
+                            android:textAlignment="center"
+                            android:textSize="24sp" />
 
                         <EditText
-                            android:id="@+id/proficiencyText"
-                            style="@style/classAndLevelStyle"
+                            android:id="@+id/levelText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
                             android:importantForAutofill="no"
                             android:inputType="number"
                             android:minWidth="@dimen/minWidthText"
                             android:padding="@dimen/padding"
                             android:textAlignment="center"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,SpeakableTextPresentCheck" />
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -740,11 +685,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="16dp"
                     app:cardCornerRadius="@dimen/cornerValue"
                     app:cardElevation="@dimen/sheetElementsElevation"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/proficiencyCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/levelCard"
                     app:layout_constraintTop_toBottomOf="@+id/classCard">
 
                     <LinearLayout
@@ -779,6 +725,17 @@
                             tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck,SpeakableTextPresentCheck" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_baseline_android_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameCard" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,8 +28,8 @@
     <string name="armorClassLabel">Armor class</string>
     <string name="initiativeLabel">Initiative</string>
     <string name="deleteCharacter">Delete</string>
-    <string name="levelPresentation">\Level </string>
-    <string name="classPresentation">\Class </string>
+    <string name="levelPresentation">\Level</string>
+    <string name="classPresentation">\Class</string>
     <string name="titleSheet">Sheet</string>
     <string name="strenghLabel">Strength</string>
     <string name="strenghtHint">Str</string>
@@ -55,4 +55,6 @@
     <string name="subclassMenuText">Subclass</string>
     <string name="habilityPlaceHolder">ipslum lore</string>
     <string name="proficiencyMenuText">Proficiencys</string>
+    <string name="savingThrowLabel">Saving Throws</string>
+    <string name="profileDescription">Profile Photo</string>
 </resources>

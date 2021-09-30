@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/vinic/OneDrive/Trabalhos legais/Apps Android/FichaRPG/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.34487179487179487" />
+        <entry key="..\:/Users/vinic/OneDrive/Trabalhos legais/Apps Android/FichaRPG/app/src/main/res/drawable/ic_baseline_android_24.xml" value="0.34487179487179487" />
         <entry key="..\:/Users/vinic/OneDrive/Trabalhos legais/Apps Android/FichaRPG/app/src/main/res/layout/activity_character_sheet.xml" value="0.264" />
         <entry key="..\:/Users/vinic/OneDrive/Trabalhos legais/Apps Android/FichaRPG/app/src/main/res/layout/activity_create_character.xml" value="0.264" />
         <entry key="..\:/Users/vinic/OneDrive/Trabalhos legais/Apps Android/FichaRPG/app/src/main/res/layout/activity_create_spell.xml" value="0.264" />

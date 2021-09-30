@@ -53,7 +53,6 @@ public class MainStats extends Fragment
                 sheetDAndD = sheet;
                 binding.characterNameText.setText(sheet.getName());
                 binding.classText.setText(sheet.getCharacterClass());
-                binding.proficiencyText.setText(String.valueOf(sheet.getProficiencyBonus()));
                 binding.speedText.setText(String.valueOf(sheet.getSpeed()));
                 binding.levelText.setText(String.valueOf(sheet.getLevel()));
                 binding.alignmentText.setText(sheet.getAlignment());
@@ -237,28 +236,15 @@ public class MainStats extends Fragment
                 }
             }
         });
-
-        binding.levelText.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable)
-            {
-                setProficiencyBonusAuto(Integer.parseInt(binding.levelText.getText().toString()));
-            }
-        });
         return root;
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        SheetDAndD sheetDAndD = getNewSheetData();
+        SheetViewModel.updateDnd(sheetDAndD);
     }
 
     @Override
@@ -268,27 +254,27 @@ public class MainStats extends Fragment
         binding = null;
     }
 
-    public void setProficiencyBonusAuto(int level)
+    public SheetDAndD getNewSheetData()
     {
-        if (level == 1 || level == 2 || level == 3 || level == 4)
-        {
-            binding.proficiencyText.setText(String.valueOf(2));
-        }
-        if (level == 5 || level == 6 || level == 7 || level == 8)
-        {
-            binding.proficiencyText.setText(String.valueOf(3));
-        }
-        if (level == 9 || level == 10 || level == 11 || level == 12)
-        {
-            binding.proficiencyText.setText(String.valueOf(4));
-        }
-        if (level == 13 || level == 14 || level == 15 || level == 16)
-        {
-            binding.proficiencyText.setText(String.valueOf(5));
-        }
-        if (level == 17 || level == 18 || level == 19 || level == 20)
-        {
-            binding.proficiencyText.setText(String.valueOf(6));
-        }
+        SheetDAndD sheetDAndD = new SheetDAndD();
+        sheetDAndD.setId(id);
+        sheetDAndD.setName(binding.characterNameText.getText().toString());
+        sheetDAndD.setCharacterClass(binding.classText.getText().toString());
+        sheetDAndD.setSpeed(Integer.parseInt(binding.speedText.getText().toString()));
+        sheetDAndD.setArmorClass(Integer.parseInt(binding.armorClassText.getText().toString()));
+        sheetDAndD.setLevel(Integer.parseInt(binding.levelText.getText().toString()));
+        sheetDAndD.setRace(binding.raceText.getText().toString());
+        sheetDAndD.setBackground(binding.backgroundText.getText().toString());
+        sheetDAndD.setAlignment(binding.alignmentText.getText().toString());
+        sheetDAndD.setInitiative(Integer.parseInt(binding.initiativeText.getText().toString()));
+        sheetDAndD.setArmorClass(Integer.parseInt(binding.armorClassText.getText().toString()));
+        sheetDAndD.setHitPoints(Integer.parseInt(binding.healthText.getText().toString()));
+        sheetDAndD.setStrength(Integer.parseInt(binding.strenghtText.getText().toString()));
+        sheetDAndD.setDexterity(Integer.parseInt(binding.dexterityText.getText().toString()));
+        sheetDAndD.setConstitution(Integer.parseInt(binding.constitutionText.getText().toString()));
+        sheetDAndD.setIntelligence(Integer.parseInt(binding.intelligenceText.getText().toString()));
+        sheetDAndD.setWisdom(Integer.parseInt(binding.wisdomText.getText().toString()));
+        sheetDAndD.setCharisma(Integer.parseInt(binding.charismaText.getText().toString()));
+        return sheetDAndD;
     }
 }
