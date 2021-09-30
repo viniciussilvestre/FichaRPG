@@ -48,7 +48,6 @@
     <string name="equipmentTabText">Equipment</string>
     <string name="spellsTabText">Spells</string>
     <string name="backstoryTabText">Backstory</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="statsMenuText">Stats</string>
     <string name="classMenuText">Class</string>
@@ -57,4 +56,27 @@
     <string name="proficiencyMenuText">Proficiencys</string>
     <string name="savingThrowLabel">Saving Throws</string>
     <string name="profileDescription">Profile Photo</string>
+    <string name="skillsLabel">Skills</string>
+    <string name="dexSkillsLabel">Dexterity skills</string>
+    <string name="acrobaticsText">Acrobatics</string>
+    <string name="stealthText">Stealth</string>
+    <string name="strengthLabel">Strength skills</string>
+    <string name="athleticsText">Athletics</string>
+    <string name="arcanaSkillText">Arcana</string>
+    <string name="historySkillText">History</string>
+    <string name="investigatonSkillText">Investigation</string>
+    <string name="natureSkillText">Nature</string>
+    <string name="religionSkillText">Religion</string>
+    <string name="intSkillsLabel">Intelligence skills</string>
+    <string name="wisSkillsText">Wisdom skills</string>
+    <string name="animHandSkillText">Animal handling</string>
+    <string name="insightSkillText">Insight</string>
+    <string name="medicineSkillText">Medicine</string>
+    <string name="perceptionSkillText">Perception</string>
+    <string name="survivalSkillText">Survival</string>
+    <string name="chaSkillsLabelText">Charisma skills</string>
+    <string name="deceptionSkillText">Deception</string>
+    <string name="intimidationSkillText">Intimidation</string>
+    <string name="performanceSkillText">Performance</string>
+    <string name="persuasionSkillText">Persuasion</string>
 </resources>

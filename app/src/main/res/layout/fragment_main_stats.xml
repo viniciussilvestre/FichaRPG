@@ -118,7 +118,8 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/raceText"
-                            android:text="@string/raceText" />
+                            android:text="@string/raceText"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/raceText"
@@ -164,7 +165,8 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/alignmentText"
-                            android:text="@string/alingmentText" />
+                            android:text="@string/alingmentText"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/alignmentText"
@@ -210,7 +212,8 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/backgroundText"
-                            android:text="@string/backgroundText" />
+                            android:text="@string/backgroundText"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/backgroundText"
@@ -253,7 +256,8 @@
                             android:layout_width="109dp"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/armorClassText"
-                            android:text="@string/armorClassLabel" />
+                            android:text="@string/armorClassLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/armorClassText"
@@ -295,7 +299,8 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/healthText"
-                            android:text="@string/hitPointLabel" />
+                            android:text="@string/hitPointLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/healthText"
@@ -338,7 +343,8 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/initiativeText"
-                            android:text="@string/initiativeLabel" />
+                            android:text="@string/initiativeLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/initiativeText"
@@ -380,7 +386,8 @@
                             android:layout_width="109dp"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/strenghtText"
-                            android:text="@string/strenghLabel" />
+                            android:text="@string/strenghLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/strenghtText"
@@ -423,7 +430,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/dexterityText"
-                            android:text="@string/dexterityLabel" />
+                            android:text="@string/dexterityLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/dexterityText"
@@ -469,7 +477,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/constitutionText"
-                            android:text="@string/constitutionLabel" />
+                            android:text="@string/constitutionLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/constitutionText"
@@ -517,7 +526,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/intelligenceText"
-                            android:text="@string/intelligenceLabel" />
+                            android:text="@string/intelligenceLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/intelligenceText"
@@ -564,7 +574,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/wisdomText"
-                            android:text="@string/wisdomLabel" />
+                            android:text="@string/wisdomLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/wisdomText"
@@ -612,7 +623,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/charismaText"
-                            android:text="@string/charismaLabel" />
+                            android:text="@string/charismaLabel"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/charismaText"
@@ -661,7 +673,8 @@
                             android:padding="@dimen/padding"
                             android:text="@string/levelPresentation"
                             android:textAlignment="center"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/levelText"
@@ -707,7 +720,8 @@
                             android:layout_weight="1"
                             android:padding="@dimen/padding"
                             android:text="@string/speedLabel"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/speedText"

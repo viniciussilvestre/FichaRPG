@@ -10,7 +10,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,78 +26,226 @@
                     android:id="@+id/savingThrowsCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
                     app:cardCornerRadius="@dimen/cornerValue"
                     app:cardElevation="@dimen/sheetElementsElevation"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/proficiencyCard">
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/savingThrowTitle"
                             style="@style/labelStyle"
-                            android:layout_width="match_parent"
+                            android:layout_width="175dp"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding"
                             android:text="@string/savingThrowLabel"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <CheckBox
                             android:id="@+id/strSavingThrow"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/strSavingValue"
                             android:padding="@dimen/padding"
-                            android:text="@string/strenghLabel" />
+                            android:text="@string/strenghLabel"
+                            app:layout_constraintEnd_toStartOf="@+id/strSavingValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/savingThrowTitle"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/strSavingValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/strSavingThrow"
+                            app:layout_constraintTop_toBottomOf="@+id/savingThrowTitle"
+                            tools:ignore="SpeakableTextPresentCheck" />
 
                         <CheckBox
                             android:id="@+id/dexSavingThrow"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/dexSavingValue"
                             android:padding="@dimen/padding"
-                            android:text="@string/dexterityLabel" />
+                            android:text="@string/dexterityLabel"
+                            app:layout_constraintEnd_toStartOf="@+id/dexSavingValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/strSavingThrow"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/dexSavingValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/dexSavingThrow"
+                            app:layout_constraintTop_toBottomOf="@+id/strSavingValue"
+                            tools:ignore="SpeakableTextPresentCheck" />
 
                         <CheckBox
                             android:id="@+id/conSavingThrow"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/conSavingValue"
                             android:padding="@dimen/padding"
-                            android:text="@string/constitutionLabel" />
+                            android:text="@string/constitutionLabel"
+                            app:layout_constraintEnd_toStartOf="@+id/conSavingValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/dexSavingThrow"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/conSavingValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/conSavingThrow"
+                            app:layout_constraintTop_toBottomOf="@+id/dexSavingValue"
+                            tools:ignore="SpeakableTextPresentCheck" />
 
                         <CheckBox
                             android:id="@+id/intSavingThrow"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/intSavingValue"
                             android:padding="@dimen/padding"
-                            android:text="@string/intelligenceLabel" />
+                            android:text="@string/intelligenceLabel"
+                            app:layout_constraintEnd_toStartOf="@+id/intSavingValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/conSavingThrow"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/intSavingValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/intSavingThrow"
+                            app:layout_constraintTop_toBottomOf="@+id/conSavingValue"
+                            tools:ignore="SpeakableTextPresentCheck" />
 
                         <CheckBox
                             android:id="@+id/wisSavingThrow"
-                            android:layout_width="match_parent"
+                            style="@style/checkBoxStyle"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/wisSavingValue"
+                            android:text="@string/wisdomLabel"
+                            app:layout_constraintEnd_toStartOf="@+id/wisSavingValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/intSavingThrow"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/wisSavingValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
                             android:padding="@dimen/padding"
-                            android:text="@string/wisdomLabel" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/wisSavingThrow"
+                            app:layout_constraintTop_toBottomOf="@+id/intSavingValue"
+                            tools:ignore="SpeakableTextPresentCheck" />
 
                         <CheckBox
                             android:id="@+id/chaSavingThrow"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/chaSavingValue"
                             android:padding="@dimen/padding"
-                            android:text="@string/charismaLabel" />
-                    </LinearLayout>
+                            android:text="@string/charismaLabel"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/chaSavingValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/wisSavingThrow"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/chaSavingValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/chaSavingThrow"
+                            app:layout_constraintTop_toBottomOf="@+id/wisSavingValue"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -122,9 +271,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:labelFor="@id/proficiencyText"
                             android:padding="@dimen/padding"
                             android:text="@string/proficiencyLabel"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/proficiencyText"
@@ -140,8 +291,673 @@
                             android:textAlignment="center"
                             android:textSize="24sp"
                             android:textStyle="bold"
-                            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,SpeakableTextPresentCheck" />
+                            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dexSkillsCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/proficiencyCard">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constrainLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/stealthValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/stealthSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/acrobaticsValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/acrobaticsValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/acrobaticsSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/dexSkillsLabel"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/dexSkillsLabel"
+                            style="@style/skillLabelStyle"
+                            android:layout_width="175dp"
+                            android:padding="@dimen/padding"
+                            android:text="@string/dexSkillsLabel"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/acrobaticsSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/acrobaticsValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/acrobaticsText"
+                            app:layout_constraintEnd_toStartOf="@+id/acrobaticsValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/dexSkillsLabel" />
+
+                        <CheckBox
+                            android:id="@+id/stealthSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/stealthValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/stealthText"
+                            app:layout_constraintEnd_toStartOf="@+id/stealthValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/acrobaticsSkill" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/strengthSkillsCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/wisSkillsCard">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/athleticsValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/athleticsSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/strSkillsLabel"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/strSkillsLabel"
+                            style="@style/skillLabelStyle"
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding"
+                            android:text="@string/strengthLabel"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/athleticsSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/athleticsValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/athleticsText"
+                            app:layout_constraintEnd_toStartOf="@+id/athleticsValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/strSkillsLabel" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/inteligenceSkillsCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dexSkillsCard">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/historyValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/historySkill"
+                            app:layout_constraintTop_toBottomOf="@+id/arcanaValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/investigationValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/investigationSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/historyValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/natureValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/natureSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/investigationValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/religionValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/religionSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/natureValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/arcanaValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/arcanaSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/intSkillsLabel"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/intSkillsLabel"
+                            style="@style/skillLabelStyle"
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding"
+                            android:text="@string/intSkillsLabel"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/arcanaSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/arcanaValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/arcanaSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/arcanaValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/intSkillsLabel" />
+
+                        <CheckBox
+                            android:id="@+id/historySkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/historyValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/historySkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/historyValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/arcanaSkill" />
+
+                        <CheckBox
+                            android:id="@+id/investigationSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/investigationValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/investigatonSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/investigationValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/historySkill" />
+
+                        <CheckBox
+                            android:id="@+id/natureSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/natureValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/natureSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/natureValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/investigationSkill" />
+
+                        <CheckBox
+                            android:id="@+id/religionSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:labelFor="@id/religionValue"
+                            android:padding="@dimen/padding"
+                            android:text="@string/religionSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/religionValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/natureSkill" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wisSkillsCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/savingThrowsCard">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/insightValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/insightSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/animHandValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/animHandValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/animHandSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/wisSkillsLabel"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/medicineValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/medicineSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/insightValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/perceptionValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/perceptionSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/medicineValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/survivalValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/survivalSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/perceptionValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/wisSkillsLabel"
+                            style="@style/skillLabelStyle"
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding"
+                            android:text="@string/wisSkillsText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/animHandSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/animHandSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/animHandValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/wisSkillsLabel" />
+
+                        <CheckBox
+                            android:id="@+id/insightSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/insightSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/insightValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/animHandSkill" />
+
+                        <CheckBox
+                            android:id="@+id/medicineSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/medicineSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/medicineValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/insightSkill" />
+
+                        <CheckBox
+                            android:id="@+id/perceptionSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/perceptionSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/perceptionValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/medicineSkill" />
+
+                        <CheckBox
+                            android:id="@+id/survivalSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/survivalSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/survivalValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/perceptionSkill" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/chaSkillsCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inteligenceSkillsCard">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/deceptionValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/deceptionSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/chaSkillsLabel"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/persuasionValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/persuasionSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/performanceValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+
+                        <EditText
+                            android:id="@+id/performanceValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/performanceSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/intimidationValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <EditText
+                            android:id="@+id/intimidationValue"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="48dp"
+                            android:minHeight="48dp"
+                            android:padding="@dimen/padding"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/intimidationSkill"
+                            app:layout_constraintTop_toBottomOf="@+id/deceptionValue"
+                            tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/chaSkillsLabel"
+                            style="@style/skillLabelStyle"
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/chaSkillsLabelText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/deceptionSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/deceptionSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/deceptionValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/chaSkillsLabel" />
+
+                        <CheckBox
+                            android:id="@+id/intimidationSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/intimidationSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/intimidationValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/deceptionSkill" />
+
+                        <CheckBox
+                            android:id="@+id/performanceSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/performanceSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/performanceValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/intimidationSkill" />
+
+                        <CheckBox
+                            android:id="@+id/persuasionSkill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/persuasionSkillText"
+                            app:layout_constraintEnd_toStartOf="@+id/persuasionValue"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/performanceSkill"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
