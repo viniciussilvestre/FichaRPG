@@ -68,11 +68,11 @@ public class Proficiencys extends Fragment
                 }
                 if (sheet.isIntelligenceSaveProficiency())
                 {
-                    conValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+                    intValue += Integer.parseInt(binding.proficiencyText.getText().toString());
                 }
                 if (sheet.isWisdomSaveProficiency())
                 {
-                    conValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+                    wisValue += Integer.parseInt(binding.proficiencyText.getText().toString());
                 }
                 if (sheet.isCharismaSaveProficiency())
                 {
