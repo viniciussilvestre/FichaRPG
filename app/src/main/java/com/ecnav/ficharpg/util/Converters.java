@@ -1,6 +1,8 @@
 package com.ecnav.ficharpg.util;
 
 import androidx.room.TypeConverter;
+
+import com.ecnav.ficharpg.model.ClassFeatures;
 import com.ecnav.ficharpg.model.Spell;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,5 +25,20 @@ public class Converters
         Gson gson = new Gson();
         String json = gson.toJson(list);
         return json;
+    }
+
+    @TypeConverter
+    public static String fromClass(ClassFeatures classFeatures)
+    {
+        Gson gson = new Gson();
+        String json2 = gson.toJson(classFeatures);
+        return json2;
+    }
+
+    @TypeConverter
+    public static ClassFeatures fromStringClass(String value)
+    {
+        Type type = new TypeToken<ClassFeatures>() {}.getType();
+        return new Gson().fromJson(value, type);
     }
 }
