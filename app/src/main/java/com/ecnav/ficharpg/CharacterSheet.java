@@ -23,6 +23,7 @@ import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.ui.classinfo.ClassInfo;
 import com.ecnav.ficharpg.ui.mainstat.MainStats;
+import com.ecnav.ficharpg.ui.proficiencys.Proficiencys;
 import com.ecnav.ficharpg.ui.subclassinfo.SubclassInfo;
 import com.ecnav.ficharpg.util.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -56,13 +57,18 @@ public class CharacterSheet extends AppCompatActivity
         dataForFragment.putInt(Util.PARAMETER_FOR_FRAGMENT, parameterForFragment);
         fragmentManager.beginTransaction().add(R.id.fragmentContainerView, MainStats.class, dataForFragment).setReorderingAllowed(true).commit();
         MenuItem stat = binding.bottomNavigationView.getMenu().getItem(0);
-        MenuItem classInfo = binding.bottomNavigationView.getMenu().getItem(1);
-        MenuItem subclassInfo = binding.bottomNavigationView.getMenu().getItem(2);
+        MenuItem proficiency = binding.bottomNavigationView.getMenu().getItem(1);
+        MenuItem classInfo = binding.bottomNavigationView.getMenu().getItem(2);
+        MenuItem subclassInfo = binding.bottomNavigationView.getMenu().getItem(3);
         binding.bottomNavigationView.setOnItemSelectedListener(item ->
         {
             if (item == stat)
             {
                 fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, MainStats.class, dataForFragment).setReorderingAllowed(true).commit();
+            }
+            else if (item == proficiency)
+            {
+                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, Proficiencys.class, dataForFragment).setReorderingAllowed(true).commit();
             }
             else if (item == classInfo)
             {
@@ -70,7 +76,7 @@ public class CharacterSheet extends AppCompatActivity
             }
             else if (item == subclassInfo)
             {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, SubclassInfo.class, null).setReorderingAllowed(true).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, SubclassInfo.class, dataForFragment).setReorderingAllowed(true).commit();
             }
             return false;
         });

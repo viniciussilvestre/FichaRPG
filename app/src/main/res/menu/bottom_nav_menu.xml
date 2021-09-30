@@ -7,6 +7,10 @@
         android:title="@string/statsMenuText" />
 
     <item
+        android:id="@+id/proficiency_info"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/proficiencyMenuText" />
+    <item
         android:id="@+id/class_info"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/classMenuText" />
