@@ -50,6 +50,9 @@ public class Proficiencys extends Fragment
                 int intValue = (sheet.getIntelligence() - 10)/2;
                 int wisValue = (sheet.getWisdom() - 10)/2;
                 int chaValue = (sheet.getCharisma() - 10)/2;
+                int acrobaticsValue = dexValue;
+                int stealthValue = dexValue;
+                int sleightHandValue = dexValue;
                 setProficiencyBonusAuto(sheet.getLevel());
                 if (sheet.isStrengthSaveProficiency())
                 {
@@ -61,19 +64,31 @@ public class Proficiencys extends Fragment
                 }
                 if (sheet.isConstitutionSaveProficiency())
                 {
-                    conValue =+ Integer.parseInt(binding.proficiencyText.getText().toString());
+                    conValue += Integer.parseInt(binding.proficiencyText.getText().toString());
                 }
                 if (sheet.isIntelligenceSaveProficiency())
                 {
-                    conValue =+ Integer.parseInt(binding.proficiencyText.getText().toString());
+                    conValue += Integer.parseInt(binding.proficiencyText.getText().toString());
                 }
                 if (sheet.isWisdomSaveProficiency())
                 {
-                    conValue =+ Integer.parseInt(binding.proficiencyText.getText().toString());
+                    conValue += Integer.parseInt(binding.proficiencyText.getText().toString());
                 }
                 if (sheet.isCharismaSaveProficiency())
                 {
-                    conValue =+ Integer.parseInt(binding.proficiencyText.getText().toString());
+                    conValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+                }
+                if (sheet.isAcrobaticsProficiency())
+                {
+                    acrobaticsValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+                }
+                if (sheet.isStealthProficiency())
+                {
+                    stealthValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+                }
+                if (sheet.isSleightOfHandProficiency())
+                {
+                    sleightHandValue += Integer.parseInt(binding.proficiencyText.getText().toString());
                 }
                 binding.strSavingValue.setText(String.valueOf(strValue));
                 binding.dexSavingValue.setText(String.valueOf(dexValue));
@@ -81,12 +96,18 @@ public class Proficiencys extends Fragment
                 binding.intSavingValue.setText(String.valueOf(intValue));
                 binding.wisSavingValue.setText(String.valueOf(wisValue));
                 binding.chaSavingValue.setText(String.valueOf(chaValue));
+                binding.acrobaticsValue.setText(String.valueOf(acrobaticsValue));
+                binding.stealthValue.setText(String.valueOf(stealthValue));
+                binding.sleightHandValue.setText(String.valueOf(sleightHandValue));
                 binding.strSavingThrow.setChecked(sheet.isStrengthSaveProficiency());
                 binding.dexSavingThrow.setChecked(sheet.isDexteritySaveProficiency());
                 binding.conSavingThrow.setChecked(sheet.isConstitutionSaveProficiency());
                 binding.intSavingThrow.setChecked(sheet.isIntelligenceSaveProficiency());
                 binding.wisSavingThrow.setChecked(sheet.isWisdomSaveProficiency());
                 binding.chaSavingThrow.setChecked(sheet.isCharismaSaveProficiency());
+                binding.acrobaticsSkill.setChecked(sheet.isAcrobaticsProficiency());
+                binding.stealthSkill.setChecked(sheet.isStealthProficiency());
+                binding.sleighHandSkill.setChecked(sheet.isSleightOfHandProficiency());
             }
         });
 
@@ -150,6 +171,35 @@ public class Proficiencys extends Fragment
             binding.chaSavingValue.setText(String.valueOf(chaValue));
         });
 
+        binding.acrobaticsSkill.setOnClickListener(view ->
+        {
+            int acrobaticsValue = (this.sheetDAndD.getDexterity() - 10)/2;
+            if (binding.acrobaticsSkill.isChecked())
+            {
+                acrobaticsValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+            }
+            binding.acrobaticsValue.setText(String.valueOf(acrobaticsValue));
+        });
+
+        binding.stealthSkill.setOnClickListener(view ->
+        {
+            int stealthValue = (this.sheetDAndD.getDexterity() - 10)/2;
+            if (binding.stealthSkill.isChecked())
+            {
+                stealthValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+            }
+            binding.stealthValue.setText(String.valueOf(stealthValue));
+        });
+
+        binding.sleighHandSkill.setOnClickListener(view ->
+        {
+            int sleightHandValue = (this.sheetDAndD.getDexterity() - 10)/2;
+            if (binding.sleighHandSkill.isChecked())
+            {
+                sleightHandValue += Integer.parseInt(binding.proficiencyText.getText().toString());
+            }
+            binding.stealthValue.setText(String.valueOf(sleightHandValue));
+        });
         return root;
     }
 
@@ -195,6 +245,9 @@ public class Proficiencys extends Fragment
         sheetDAndD.setIntelligenceSaveProficiency(binding.intSavingThrow.isChecked());
         sheetDAndD.setWisdomSaveProficiency(binding.wisSavingThrow.isChecked());
         sheetDAndD.setCharismaSaveProficiency(binding.chaSavingThrow.isChecked());
+        sheetDAndD.setAcrobaticsProficiency(binding.acrobaticsSkill.isChecked());
+        sheetDAndD.setStealthProficiency(binding.stealthSkill.isChecked());
+        sheetDAndD.setSleightOfHandProficiency(binding.sleighHandSkill.isChecked());
         sheetDAndD.setName(this.sheetDAndD.getName());
         sheetDAndD.setCharacterClass(this.sheetDAndD.getCharacterClass());
         sheetDAndD.setSpeed(this.sheetDAndD.getSpeed());

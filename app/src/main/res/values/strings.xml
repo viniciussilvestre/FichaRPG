@@ -79,4 +79,5 @@
     <string name="intimidationSkillText">Intimidation</string>
     <string name="performanceSkillText">Performance</string>
     <string name="persuasionSkillText">Persuasion</string>
+    <string name="sleighHandSkillText">"Sleight of Hand "</string>
 </resources>
