@@ -3,6 +3,7 @@ package com.ecnav.ficharpg.util;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -15,7 +16,14 @@ import com.ecnav.ficharpg.model.SheetDAndD;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {SheetDAndD.class}, version = 1, exportSchema = false)
+@Database(
+        entities = {SheetDAndD.class},
+        version = 2,
+        autoMigrations = {
+                @AutoMigration(from = 1, to = 2)
+        },
+        exportSchema = true
+)
 @TypeConverters({Converters.class})
 public abstract class SheetRoomDatabase extends RoomDatabase
 {

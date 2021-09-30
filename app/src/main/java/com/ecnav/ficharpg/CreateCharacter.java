@@ -35,8 +35,6 @@ public class CreateCharacter extends AppCompatActivity
                 int intCa = Integer.parseInt(ca);
                 String hp = binding.hitPointsField.getText().toString();
                 int intHp = Integer.parseInt(hp);
-                String init = binding.initiativeTextField.getText().toString();
-                int intInit = Integer.parseInt(init);
                 replyIntent.putExtra(Util.NAME_REPLY, name);
                 replyIntent.putExtra(Util.CLASS_REPLY, characterClass);
                 replyIntent.putExtra(Util.BACKGROUND_REPLY, background);
@@ -45,7 +43,6 @@ public class CreateCharacter extends AppCompatActivity
                 replyIntent.putExtra(Util.ALIGNMENT_REPLY, alignment);
                 replyIntent.putExtra(Util.ARMORCLASS_REPLY, intCa);
                 replyIntent.putExtra(Util.HITPOINTS_REPLY, intHp);
-                replyIntent.putExtra(Util.INITIATIVE_REPLY, intInit);
                 setResult(RESULT_OK, replyIntent);
             }
             else
