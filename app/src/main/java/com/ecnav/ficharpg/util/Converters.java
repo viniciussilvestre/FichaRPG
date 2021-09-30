@@ -25,18 +25,4 @@ public class Converters
         Gson gson = new Gson();
         return gson.toJson(list);
     }
-
-    @TypeConverter
-    public static String fromClass(ClassFeatures classFeatures)
-    {
-        Gson gson = new Gson();
-        return gson.toJson(classFeatures);
-    }
-
-    @TypeConverter
-    public static ClassFeatures fromStringClass(String value)
-    {
-        Type type = new TypeToken<ClassFeatures>() {}.getType();
-        return new Gson().fromJson(value, type);
-    }
 }

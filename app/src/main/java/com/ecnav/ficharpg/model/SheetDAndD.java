@@ -34,8 +34,8 @@ public class SheetDAndD implements SheetInterface
     private int hitPoints;
     private int hitPointsMaximum;
     private int temporaryHitPoints;
-    private int totalHitDice;
-    private int hitDice;
+    private String totalHitDice;
+    private String hitDice;
     private int strength;
     private int dexterity;
     private int constitution;
@@ -127,14 +127,32 @@ public class SheetDAndD implements SheetInterface
     private ArrayList<Spell> level7 = new ArrayList<>();
     private ArrayList<Spell> level8 = new ArrayList<>();
     private ArrayList<Spell> level9 = new ArrayList<>();
-    private ClassFeatures classFeatures;
+    //Class name
+    private String className;
+    //Hit points
+    private int hitPointsAtFirstLevel;
+    private String hitPointsAtHigherLevel;
+    //Proficiencies
+    //Equipment
+    private String firstClassFeature;
+    private String secondClassFeature;
+    private String thirdClassFeature;
+    private String forthClassFeature;
+    private String abilityScoreImprovement;
+    private String fifthClassFeature;
+    private String sixthClassFeature;
+    private String seventhClassFeature;
+    private String eighthClassFeature;
+    private String ninthClassFeature;
+    private String tenthClassFeature;
+    private String eleventhClassFeature;
 
     public SheetDAndD()
     {
 
     }
 
-    public SheetDAndD(int id, String name, String characterClass, int level, String background, String race, String alignment, String experiencePoints, int age, String eyeColor, double height, double weight, String hairColor, String skinColor, String characterBackstory, int armorClass, int initiative, int speed, int hitPoints, int hitPointsMaximum, int temporaryHitPoints, int totalHitDice, int hitDice, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, boolean inspiration, int proficiencyBonus, int passivePerception, String personalityTraits, String ideals, String bonds, String flaws, String featuresAndTraits, int strengthSave, int dexteritySave, int constitutionSave, int intelligenceSave, int wisdomSave, int charismaSave, boolean strengthSaveProficiency, boolean dexteritySaveProficiency, boolean constitutionSaveProficiency, boolean intelligenceSaveProficiency, boolean wisdomSaveProficiency, boolean charismaSaveProficiency, int acrobatics, int animalHandling, int arcana, int athletics, int deception, int history, int insight, int intimidation, int investigation, int medicine, int nature, int perception, int performance, int persuasion, int religion, int sleightOfHand, int stealth, int survival, boolean acrobaticsProficiency, boolean animalHandlingProficiency, boolean arcanaProficiency, boolean athleticsProficiency, boolean deceptionProficiency, boolean historyProficiency, boolean insightProficiency, boolean intimidationProficiency, boolean investigationProficiency, boolean medicineProficiency, boolean natureProficiency, boolean perceptionProficiency, boolean performanceProficiency, boolean persuasionProficiency, boolean religionProficiency, boolean sleightOfHandProficiency, boolean stealthProficiency, boolean survivalProficiency, int cooperPiece, int silverPiece, int electrumPiece, int goldPiece, int platinumPiece, String equipments, String spellcastingClass, int spellSaveDc, int spellAttackBonus)
+    public SheetDAndD(int id, String name, String characterClass, int level, String background, String race, String alignment, String experiencePoints, int age, String eyeColor, double height, double weight, String hairColor, String skinColor, String characterBackstory, int armorClass, int initiative, int speed, int hitPoints, int hitPointsMaximum, int temporaryHitPoints, String totalHitDice, String hitDice, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, boolean inspiration, int proficiencyBonus, int passivePerception, String personalityTraits, String ideals, String bonds, String flaws, String featuresAndTraits, int strengthSave, int dexteritySave, int constitutionSave, int intelligenceSave, int wisdomSave, int charismaSave, boolean strengthSaveProficiency, boolean dexteritySaveProficiency, boolean constitutionSaveProficiency, boolean intelligenceSaveProficiency, boolean wisdomSaveProficiency, boolean charismaSaveProficiency, int acrobatics, int animalHandling, int arcana, int athletics, int deception, int history, int insight, int intimidation, int investigation, int medicine, int nature, int perception, int performance, int persuasion, int religion, int sleightOfHand, int stealth, int survival, boolean acrobaticsProficiency, boolean animalHandlingProficiency, boolean arcanaProficiency, boolean athleticsProficiency, boolean deceptionProficiency, boolean historyProficiency, boolean insightProficiency, boolean intimidationProficiency, boolean investigationProficiency, boolean medicineProficiency, boolean natureProficiency, boolean perceptionProficiency, boolean performanceProficiency, boolean persuasionProficiency, boolean religionProficiency, boolean sleightOfHandProficiency, boolean stealthProficiency, boolean survivalProficiency, int cooperPiece, int silverPiece, int electrumPiece, int goldPiece, int platinumPiece, String equipments, String spellcastingClass, int spellSaveDc, int spellAttackBonus)
     {
         this.id = id;
         this.name = name;
@@ -462,22 +480,22 @@ public class SheetDAndD implements SheetInterface
         this.temporaryHitPoints = temporaryHitPoints;
     }
 
-    public int getTotalHitDice()
+    public String getTotalHitDice()
     {
         return totalHitDice;
     }
 
-    public void setTotalHitDice(int totalHitDice)
+    public void setTotalHitDice(String totalHitDice)
     {
         this.totalHitDice = totalHitDice;
     }
 
-    public int getHitDice()
+    public String getHitDice()
     {
         return hitDice;
     }
 
-    public void setHitDice(int hitDice)
+    public void setHitDice(String hitDice)
     {
         this.hitDice = hitDice;
     }
@@ -1449,13 +1467,153 @@ public class SheetDAndD implements SheetInterface
         }
     }
 
-    public ClassFeatures getClassFeatures()
+    public String getClassName()
     {
-        return classFeatures;
+        return className;
     }
 
-    public void setClassFeatures(ClassFeatures classFeatures)
+    public void setClassName(String className)
     {
-        this.classFeatures = classFeatures;
+        this.className = className;
+    }
+
+    public int getHitPointsAtFirstLevel()
+    {
+        return hitPointsAtFirstLevel;
+    }
+
+    public void setHitPointsAtFirstLevel(int hitPointsAtFirstLevel)
+    {
+        this.hitPointsAtFirstLevel = hitPointsAtFirstLevel;
+    }
+
+    public String getHitPointsAtHigherLevel()
+    {
+        return hitPointsAtHigherLevel;
+    }
+
+    public void setHitPointsAtHigherLevel(String hitPointsAtHigherLevel)
+    {
+        this.hitPointsAtHigherLevel = hitPointsAtHigherLevel;
+    }
+
+    public String getFirstClassFeature()
+    {
+        return firstClassFeature;
+    }
+
+    public void setFirstClassFeature(String firstClassFeature)
+    {
+        this.firstClassFeature = firstClassFeature;
+    }
+
+    public String getSecondClassFeature()
+    {
+        return secondClassFeature;
+    }
+
+    public void setSecondClassFeature(String secondClassFeature)
+    {
+        this.secondClassFeature = secondClassFeature;
+    }
+
+    public String getThirdClassFeature()
+    {
+        return thirdClassFeature;
+    }
+
+    public void setThirdClassFeature(String thirdClassFeature)
+    {
+        this.thirdClassFeature = thirdClassFeature;
+    }
+
+    public String getForthClassFeature()
+    {
+        return forthClassFeature;
+    }
+
+    public void setForthClassFeature(String forthClassFeature)
+    {
+        this.forthClassFeature = forthClassFeature;
+    }
+
+    public String getAbilityScoreImprovement()
+    {
+        return abilityScoreImprovement;
+    }
+
+    public void setAbilityScoreImprovement(String abilityScoreImprovement)
+    {
+        this.abilityScoreImprovement = abilityScoreImprovement;
+    }
+
+    public String getFifthClassFeature()
+    {
+        return fifthClassFeature;
+    }
+
+    public void setFifthClassFeature(String fifthClassFeature)
+    {
+        this.fifthClassFeature = fifthClassFeature;
+    }
+
+    public String getSixthClassFeature()
+    {
+        return sixthClassFeature;
+    }
+
+    public void setSixthClassFeature(String sixthClassFeature)
+    {
+        this.sixthClassFeature = sixthClassFeature;
+    }
+
+    public String getSeventhClassFeature()
+    {
+        return seventhClassFeature;
+    }
+
+    public void setSeventhClassFeature(String seventhClassFeature)
+    {
+        this.seventhClassFeature = seventhClassFeature;
+    }
+
+    public String getEighthClassFeature()
+    {
+        return eighthClassFeature;
+    }
+
+    public void setEighthClassFeature(String eighthClassFeature)
+    {
+        this.eighthClassFeature = eighthClassFeature;
+    }
+
+    public String getNinthClassFeature()
+    {
+        return ninthClassFeature;
+    }
+
+    public void setNinthClassFeature(String ninthClassFeature)
+    {
+        this.ninthClassFeature = ninthClassFeature;
+    }
+
+    public String getTenthClassFeature()
+    {
+        return tenthClassFeature;
+    }
+
+    public void setTenthClassFeature(String tenthClassFeature)
+    {
+        this.tenthClassFeature = tenthClassFeature;
+    }
+
+    public String getEleventhClassFeature()
+    {
+        return eleventhClassFeature;
+    }
+
+    public void setEleventhClassFeature(String eleventhClassFeature)
+    {
+        this.eleventhClassFeature = eleventhClassFeature;
     }
 }
