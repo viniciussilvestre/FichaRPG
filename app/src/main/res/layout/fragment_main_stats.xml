@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mainstat.MainStats">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:context=".CharacterSheet">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/nameCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="64dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/characterNameText"
+                        style="@style/nameStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:elevation="@dimen/sheetElementsElevation"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="@string/sheetViewNameText"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:minHeight="48dp"
+                        android:padding="@dimen/padding"
+                        android:textAlignment="center"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/classCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameCard">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/classLabelText"
+                            style="@style/atributeStyleLabel"
+                            android:text="@string/classPresentation"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/classText"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:minWidth="@dimen/minWidthText"
+                            android:padding="@dimen/padding"
+                            android:textAlignment="center"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/classLabelText"
+                            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/levelCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toStartOf="@+id/proficiencyCard"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/classCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/levelTextLabel"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/padding"
+                            android:text="@string/levelPresentation"
+                            android:textAlignment="center"
+                            android:textSize="24sp" />
+
+                        <EditText
+                            android:id="@+id/levelText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="@dimen/minWidthText"
+                            android:padding="@dimen/padding"
+                            android:textAlignment="center"
+                            android:textSize="24sp"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/raceCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toStartOf="@+id/alingmentCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/proficiencyCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/raceLabel"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:labelFor="@id/raceText"
+                            android:text="@string/raceText" />
+
+                        <EditText
+                            android:id="@+id/raceText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:minWidth="@dimen/minWidthAtribute"
+                            android:padding="@dimen/padding"
+                            android:textAlignment="center"
+                            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,TouchTargetSizeCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/alingmentCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toStartOf="@+id/backgroundCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/raceCard"
+                    app:layout_constraintTop_toBottomOf="@+id/levelCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/alingnmentLabel"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:labelFor="@id/alignmentText"
+                            android:text="@string/alingmentText" />
+
+                        <EditText
+                            android:id="@+id/alignmentText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:minWidth="@dimen/minWidthAtribute"
+                            android:padding="@dimen/padding"
+                            android:textAlignment="center"
+                            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/backgroundCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/alingmentCard"
+                    app:layout_constraintTop_toBottomOf="@+id/speedCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/backgroundLabel"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:labelFor="@id/backgroundText"
+                            android:text="@string/backgroundText" />
+
+                        <EditText
+                            android:id="@+id/backgroundText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:minWidth="@dimen/minWidthAtribute"
+                            android:padding="@dimen/padding"
+                            android:textAlignment="center"
+                            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/armorClassCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toStartOf="@+id/hitPointsCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/raceCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/armorClassLabel"
+                            style="@style/labelStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/armorClassText"
+                            android:text="@string/armorClassLabel" />
+
+                        <EditText
+                            android:id="@+id/armorClassText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/hitPointsCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toStartOf="@+id/initiativeCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/armorClassCard"
+                    app:layout_constraintTop_toBottomOf="@+id/alingmentCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hitPointsLabel"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:labelFor="@id/healthText"
+                            android:text="@string/hitPointLabel" />
+
+                        <EditText
+                            android:id="@+id/healthText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/initiativeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/hitPointsCard"
+                    app:layout_constraintTop_toBottomOf="@+id/backgroundCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/initiativeLabel"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:labelFor="@id/initiativeText"
+                            android:text="@string/initiativeLabel" />
+
+                        <EditText
+                            android:id="@+id/initiativeText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:elevation="@dimen/sheetElementsElevation"
+                            android:fontFamily="@font/roboto_medium"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/strengthCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toStartOf="@+id/dexterityCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/armorClassCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/strengthLabel"
+                            style="@style/labelStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/strenghtText"
+                            android:text="@string/strenghLabel" />
+
+                        <EditText
+                            android:id="@+id/strenghtText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/modStrText"
+                            style="@style/modfierStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dexterityCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toStartOf="@+id/constitutionCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/strengthCard"
+                    app:layout_constraintTop_toBottomOf="@+id/hitPointsCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/dexterityLabel"
+                            style="@style/labelStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/dexterityText"
+                            android:text="@string/dexterityLabel" />
+
+                        <EditText
+                            android:id="@+id/dexterityText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="@dimen/minWidthAtribute"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/modDexText"
+                            style="@style/modfierStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/constitutionCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/dexterityCard"
+                    app:layout_constraintTop_toBottomOf="@+id/initiativeCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/constitutionLabel"
+                            style="@style/labelStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/constitutionText"
+                            android:text="@string/constitutionLabel" />
+
+                        <EditText
+                            android:id="@+id/constitutionText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="@dimen/minWidthAtribute"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/modConText"
+                            style="@style/modfierStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/intelligenceCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/wisdomCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/strengthCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/intelligenceLabel"
+                            style="@style/labelStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/intelligenceText"
+                            android:text="@string/intelligenceLabel" />
+
+                        <EditText
+                            android:id="@+id/intelligenceText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/modIntText"
+                            style="@style/modfierStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wisdomCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/charismaCard"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/intelligenceCard"
+                    app:layout_constraintTop_toBottomOf="@+id/dexterityCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/wisdomLabel"
+                            style="@style/labelStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/wisdomText"
+                            android:text="@string/wisdomLabel" />
+
+                        <EditText
+                            android:id="@+id/wisdomText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="@dimen/minWidthAtribute"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/modWisText"
+                            style="@style/modfierStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/charismaCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/wisdomCard"
+                    app:layout_constraintTop_toBottomOf="@+id/constitutionCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/charismaLabel"
+                            style="@style/labelStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/charismaText"
+                            android:text="@string/charismaLabel" />
+
+                        <EditText
+                            android:id="@+id/charismaText"
+                            style="@style/mainValueStyle"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="@dimen/minWidthAtribute"
+                            tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        <TextView
+                            android:id="@+id/modChaText"
+                            style="@style/modfierStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/proficiencyCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/classCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/proficiencyLabel"
+                            style="@style/atributeStyleLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding"
+                            android:text="@string/proficiencyLabel"
+                            android:textAlignment="center" />
+
+                        <EditText
+                            android:id="@+id/proficiencyText"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="@dimen/minWidthText"
+                            android:padding="@dimen/padding"
+                            android:textAlignment="center"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,SpeakableTextPresentCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/speedCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="@dimen/cornerValue"
+                    app:cardElevation="@dimen/sheetElementsElevation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/proficiencyCard"
+                    app:layout_constraintTop_toBottomOf="@+id/classCard">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/speedLabel"
+                            style="@style/atributeStyleLabel"
+                            android:layout_width="109dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding"
+                            android:text="@string/speedLabel"
+                            android:textAlignment="center" />
+
+                        <EditText
+                            android:id="@+id/speedText"
+                            style="@style/classAndLevelStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:minWidth="@dimen/minWidthText"
+                            android:padding="@dimen/padding"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck,SpeakableTextPresentCheck" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

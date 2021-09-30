@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/main_stat">
+
+    <fragment
+        android:id="@+id/main_stat"
+        android:name="com.ecnav.ficharpg.ui.mainstat.MainStats"
+        android:label="Stats"
+        tools:layout="@layout/fragment_main_stats" />
+
+    <fragment
+        android:id="@+id/class_info"
+        android:name="com.ecnav.ficharpg.ui.classinfo.ClassInfo"
+        android:label="Class"
+        tools:layout="@layout/fragment_class_info" />
+
+    <fragment
+        android:id="@+id/subclass_info"
+        android:name="com.ecnav.ficharpg.ui.subclassinfo.SubclassInfo"
+        android:label="Subclass"
+        tools:layout="@layout/fragment_subclass_info"/>
+
+</navigation>
