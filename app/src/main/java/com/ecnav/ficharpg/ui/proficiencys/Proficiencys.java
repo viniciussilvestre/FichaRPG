@@ -198,7 +198,7 @@ public class Proficiencys extends Fragment
             {
                 sleightHandValue += Integer.parseInt(binding.proficiencyText.getText().toString());
             }
-            binding.stealthValue.setText(String.valueOf(sleightHandValue));
+            binding.sleightHandValue.setText(String.valueOf(sleightHandValue));
         });
         return root;
     }
