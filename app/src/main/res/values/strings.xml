@@ -54,4 +54,5 @@
     <string name="classMenuText">Class</string>
     <string name="subclassMenuText">Subclass</string>
     <string name="habilityPlaceHolder">ipslum lore</string>
+    <string name="proficiencyMenuText">Proficiencys</string>
 </resources>

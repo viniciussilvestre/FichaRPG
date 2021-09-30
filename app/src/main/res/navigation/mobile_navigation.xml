@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_main_stats" />
 
     <fragment
+        android:id="@+id/proficiency_info"
+        android:name="com.ecnav.ficharpg.ui.proficiencys.Proficiencys"
+        android:label="Proficiency"
+        tools:layout="@layout/fragment_proficiencys" />
+
+    <fragment
         android:id="@+id/class_info"
         android:name="com.ecnav.ficharpg.ui.classinfo.ClassInfo"
         android:label="Class"
