@@ -275,6 +275,12 @@ public class MainStats extends Fragment
         sheetDAndD.setIntelligence(Integer.parseInt(binding.intelligenceText.getText().toString()));
         sheetDAndD.setWisdom(Integer.parseInt(binding.wisdomText.getText().toString()));
         sheetDAndD.setCharisma(Integer.parseInt(binding.charismaText.getText().toString()));
+        sheetDAndD.setStrengthSaveProficiency(this.sheetDAndD.isStrengthSaveProficiency());
+        sheetDAndD.setDexteritySaveProficiency(this.sheetDAndD.isDexteritySaveProficiency());
+        sheetDAndD.setConstitutionSaveProficiency(this.sheetDAndD.isConstitutionSaveProficiency());
+        sheetDAndD.setIntelligenceSaveProficiency(this.sheetDAndD.isIntelligenceSaveProficiency());
+        sheetDAndD.setWisdomSaveProficiency(this.sheetDAndD.isWisdomSaveProficiency());
+        sheetDAndD.setCharismaSaveProficiency(this.sheetDAndD.isCharismaSaveProficiency());
         return sheetDAndD;
     }
 }

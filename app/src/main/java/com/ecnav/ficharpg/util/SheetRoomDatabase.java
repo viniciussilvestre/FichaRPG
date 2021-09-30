@@ -18,10 +18,7 @@ import java.util.concurrent.Executors;
 
 @Database(
         entities = {SheetDAndD.class},
-        version = 2,
-        autoMigrations = {
-                @AutoMigration(from = 1, to = 2)
-        },
+        version = 1,
         exportSchema = true
 )
 @TypeConverters({Converters.class})

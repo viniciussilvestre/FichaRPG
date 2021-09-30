@@ -50,12 +50,6 @@ public class SheetDAndD implements SheetInterface
     private String bonds;
     private String flaws;
     private String featuresAndTraits;
-    private int strengthSave;
-    private int dexteritySave;
-    private int constitutionSave;
-    private int intelligenceSave;
-    private int wisdomSave;
-    private int charismaSave;
     private boolean strengthSaveProficiency;
     private boolean dexteritySaveProficiency;
     private boolean constitutionSaveProficiency;
@@ -191,12 +185,6 @@ public class SheetDAndD implements SheetInterface
         this.bonds = bonds;
         this.flaws = flaws;
         this.featuresAndTraits = featuresAndTraits;
-        this.strengthSave = strengthSave;
-        this.dexteritySave = dexteritySave;
-        this.constitutionSave = constitutionSave;
-        this.intelligenceSave = intelligenceSave;
-        this.wisdomSave = wisdomSave;
-        this.charismaSave = charismaSave;
         this.strengthSaveProficiency = strengthSaveProficiency;
         this.dexteritySaveProficiency = dexteritySaveProficiency;
         this.constitutionSaveProficiency = constitutionSaveProficiency;
@@ -638,66 +626,6 @@ public class SheetDAndD implements SheetInterface
     public void setFeaturesAndTraits(String featuresAndTraits)
     {
         this.featuresAndTraits = featuresAndTraits;
-    }
-
-    public int getStrengthSave()
-    {
-        return strengthSave;
-    }
-
-    public void setStrengthSave(int strengthSave)
-    {
-        this.strengthSave = strengthSave;
-    }
-
-    public int getDexteritySave()
-    {
-        return dexteritySave;
-    }
-
-    public void setDexteritySave(int dexteritySave)
-    {
-        this.dexteritySave = dexteritySave;
-    }
-
-    public int getConstitutionSave()
-    {
-        return constitutionSave;
-    }
-
-    public void setConstitutionSave(int constitutionSave)
-    {
-        this.constitutionSave = constitutionSave;
-    }
-
-    public int getIntelligenceSave()
-    {
-        return intelligenceSave;
-    }
-
-    public void setIntelligenceSave(int intelligenceSave)
-    {
-        this.intelligenceSave = intelligenceSave;
-    }
-
-    public int getWisdomSave()
-    {
-        return wisdomSave;
-    }
-
-    public void setWisdomSave(int wisdomSave)
-    {
-        this.wisdomSave = wisdomSave;
-    }
-
-    public int getCharismaSave()
-    {
-        return charismaSave;
-    }
-
-    public void setCharismaSave(int charismaSave)
-    {
-        this.charismaSave = charismaSave;
     }
 
     public boolean isStrengthSaveProficiency()
