@@ -23,16 +23,14 @@ public class Converters
     public static String fromArrayList(ArrayList<Spell> list)
     {
         Gson gson = new Gson();
-        String json = gson.toJson(list);
-        return json;
+        return gson.toJson(list);
     }
 
     @TypeConverter
     public static String fromClass(ClassFeatures classFeatures)
     {
         Gson gson = new Gson();
-        String json2 = gson.toJson(classFeatures);
-        return json2;
+        return gson.toJson(classFeatures);
     }
 
     @TypeConverter
