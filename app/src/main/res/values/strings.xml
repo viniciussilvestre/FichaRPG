@@ -38,7 +38,7 @@
     <string name="intelligenceLabel">Intelligence</string>
     <string name="wisdomLabel">Wisdom</string>
     <string name="charismaLabel">Charisma</string>
-    <string name="proficiencyLabel">Proficiency</string>
+    <string name="proficiencyLabel">Proficiency bonus</string>
     <string name="proficiencyHint">Profici.</string>
     <string name="speedLabel">Speed</string>
     <string name="speedHint">Speed</string>
