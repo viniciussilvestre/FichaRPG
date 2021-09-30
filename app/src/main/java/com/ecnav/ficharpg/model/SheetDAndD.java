@@ -127,7 +127,7 @@ public class SheetDAndD implements SheetInterface
     private ArrayList<Spell> level7 = new ArrayList<>();
     private ArrayList<Spell> level8 = new ArrayList<>();
     private ArrayList<Spell> level9 = new ArrayList<>();
-    private ClassFeatures classFeatures;
+    //private ClassFeatures classFeatures;
 
     public SheetDAndD()
     {
@@ -1449,13 +1449,13 @@ public class SheetDAndD implements SheetInterface
         }
     }
 
-    public ClassFeatures getClassFeatures()
-    {
-        return classFeatures;
-    }
-
-    public void setClassFeatures(ClassFeatures classFeatures)
-    {
-        this.classFeatures = classFeatures;
-    }
+//    public ClassFeatures getClassFeatures()
+//    {
+//        return classFeatures;
+//    }
+//
+//    public void setClassFeatures(ClassFeatures classFeatures)
+//    {
+//        this.classFeatures = classFeatures;
+//    }
 }
