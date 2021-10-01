@@ -5,9 +5,11 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.room.AutoMigration;
 import androidx.room.Database;
+import androidx.room.DeleteColumn;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
+import androidx.room.migration.AutoMigrationSpec;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.ecnav.ficharpg.data.SheetDao;
@@ -18,9 +20,9 @@ import java.util.concurrent.Executors;
 
 @Database(
         entities = {SheetDAndD.class},
-        version = 4,
+        version = 6,
         autoMigrations = {
-                @AutoMigration(from = 1, to = 4)
+                @AutoMigration(from = 5, to = 6)
         },
         exportSchema = true
 )

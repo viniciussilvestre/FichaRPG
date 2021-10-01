@@ -56,24 +56,6 @@ public class SheetDAndD implements SheetInterface
     private boolean intelligenceSaveProficiency;
     private boolean wisdomSaveProficiency;
     private boolean charismaSaveProficiency;
-    private int acrobatics;
-    private int animalHandling;
-    private int arcana;
-    private int athletics;
-    private int deception;
-    private int history;
-    private int insight;
-    private int intimidation;
-    private int investigation;
-    private int medicine;
-    private int nature;
-    private int perception;
-    private int performance;
-    private int persuasion;
-    private int religion;
-    private int sleightOfHand;
-    private int stealth;
-    private int survival;
     private boolean acrobaticsProficiency;
     private boolean animalHandlingProficiency;
     private boolean arcanaProficiency;
@@ -92,6 +74,24 @@ public class SheetDAndD implements SheetInterface
     private boolean sleightOfHandProficiency;
     private boolean stealthProficiency;
     private boolean survivalProficiency;
+    private boolean expertiseAcrobaticsProficiency;
+    private boolean expertiseAnimalHandlingProficiency;
+    private boolean expertiseArcanaProficiency;
+    private boolean expertiseAthleticsProficiency;
+    private boolean expertiseDeceptionProficiency;
+    private boolean expertiseHistoryProficiency;
+    private boolean expertiseInsightProficiency;
+    private boolean expertiseIntimidationProficiency;
+    private boolean expertiseInvestigationProficiency;
+    private boolean expertiseMedicineProficiency;
+    private boolean expertiseNatureProficiency;
+    private boolean expertisePerceptionProficiency;
+    private boolean expertisePerformanceProficiency;
+    private boolean expertisePersuasionProficiency;
+    private boolean expertiseReligionProficiency;
+    private boolean expertiseSleightOfHandProficiency;
+    private boolean expertiseStealthProficiency;
+    private boolean expertiseSurvivalProficiency;
     private int cooperPiece;
     private int silverPiece;
     private int electrumPiece;
@@ -191,24 +191,6 @@ public class SheetDAndD implements SheetInterface
         this.intelligenceSaveProficiency = intelligenceSaveProficiency;
         this.wisdomSaveProficiency = wisdomSaveProficiency;
         this.charismaSaveProficiency = charismaSaveProficiency;
-        this.acrobatics = acrobatics;
-        this.animalHandling = animalHandling;
-        this.arcana = arcana;
-        this.athletics = athletics;
-        this.deception = deception;
-        this.history = history;
-        this.insight = insight;
-        this.intimidation = intimidation;
-        this.investigation = investigation;
-        this.medicine = medicine;
-        this.nature = nature;
-        this.perception = perception;
-        this.performance = performance;
-        this.persuasion = persuasion;
-        this.religion = religion;
-        this.sleightOfHand = sleightOfHand;
-        this.stealth = stealth;
-        this.survival = survival;
         this.acrobaticsProficiency = acrobaticsProficiency;
         this.animalHandlingProficiency = animalHandlingProficiency;
         this.arcanaProficiency = arcanaProficiency;
@@ -688,186 +670,6 @@ public class SheetDAndD implements SheetInterface
         this.charismaSaveProficiency = charismaSaveProficiency;
     }
 
-    public int getAcrobatics()
-    {
-        return acrobatics;
-    }
-
-    public void setAcrobatics(int acrobatics)
-    {
-        this.acrobatics = acrobatics;
-    }
-
-    public int getAnimalHandling()
-    {
-        return animalHandling;
-    }
-
-    public void setAnimalHandling(int animalHandling)
-    {
-        this.animalHandling = animalHandling;
-    }
-
-    public int getArcana()
-    {
-        return arcana;
-    }
-
-    public void setArcana(int arcana)
-    {
-        this.arcana = arcana;
-    }
-
-    public int getAthletics()
-    {
-        return athletics;
-    }
-
-    public void setAthletics(int athletics)
-    {
-        this.athletics = athletics;
-    }
-
-    public int getDeception()
-    {
-        return deception;
-    }
-
-    public void setDeception(int deception)
-    {
-        this.deception = deception;
-    }
-
-    public int getHistory()
-    {
-        return history;
-    }
-
-    public void setHistory(int history)
-    {
-        this.history = history;
-    }
-
-    public int getInsight()
-    {
-        return insight;
-    }
-
-    public void setInsight(int insight)
-    {
-        this.insight = insight;
-    }
-
-    public int getIntimidation()
-    {
-        return intimidation;
-    }
-
-    public void setIntimidation(int intimidation)
-    {
-        this.intimidation = intimidation;
-    }
-
-    public int getInvestigation()
-    {
-        return investigation;
-    }
-
-    public void setInvestigation(int investigation)
-    {
-        this.investigation = investigation;
-    }
-
-    public int getMedicine()
-    {
-        return medicine;
-    }
-
-    public void setMedicine(int medicine)
-    {
-        this.medicine = medicine;
-    }
-
-    public int getNature()
-    {
-        return nature;
-    }
-
-    public void setNature(int nature)
-    {
-        this.nature = nature;
-    }
-
-    public int getPerception()
-    {
-        return perception;
-    }
-
-    public void setPerception(int perception)
-    {
-        this.perception = perception;
-    }
-
-    public int getPerformance()
-    {
-        return performance;
-    }
-
-    public void setPerformance(int performance)
-    {
-        this.performance = performance;
-    }
-
-    public int getPersuasion()
-    {
-        return persuasion;
-    }
-
-    public void setPersuasion(int persuasion)
-    {
-        this.persuasion = persuasion;
-    }
-
-    public int getReligion()
-    {
-        return religion;
-    }
-
-    public void setReligion(int religion)
-    {
-        this.religion = religion;
-    }
-
-    public int getSleightOfHand()
-    {
-        return sleightOfHand;
-    }
-
-    public void setSleightOfHand(int sleightOfHand)
-    {
-        this.sleightOfHand = sleightOfHand;
-    }
-
-    public int getStealth()
-    {
-        return stealth;
-    }
-
-    public void setStealth(int stealth)
-    {
-        this.stealth = stealth;
-    }
-
-    public int getSurvival()
-    {
-        return survival;
-    }
-
-    public void setSurvival(int survival)
-    {
-        this.survival = survival;
-    }
-
     public boolean isAcrobaticsProficiency()
     {
         return acrobaticsProficiency;
@@ -1046,6 +848,186 @@ public class SheetDAndD implements SheetInterface
     public void setSurvivalProficiency(boolean survivalProficiency)
     {
         this.survivalProficiency = survivalProficiency;
+    }
+
+    public boolean isExpertiseAcrobaticsProficiency()
+    {
+        return expertiseAcrobaticsProficiency;
+    }
+
+    public void setExpertiseAcrobaticsProficiency(boolean expertiseAcrobaticsProficiency)
+    {
+        this.expertiseAcrobaticsProficiency = expertiseAcrobaticsProficiency;
+    }
+
+    public boolean isExpertiseAnimalHandlingProficiency()
+    {
+        return expertiseAnimalHandlingProficiency;
+    }
+
+    public void setExpertiseAnimalHandlingProficiency(boolean expertiseAnimalHandlingProficiency)
+    {
+        this.expertiseAnimalHandlingProficiency = expertiseAnimalHandlingProficiency;
+    }
+
+    public boolean isExpertiseArcanaProficiency()
+    {
+        return expertiseArcanaProficiency;
+    }
+
+    public void setExpertiseArcanaProficiency(boolean expertiseArcanaProficiency)
+    {
+        this.expertiseArcanaProficiency = expertiseArcanaProficiency;
+    }
+
+    public boolean isExpertiseAthleticsProficiency()
+    {
+        return expertiseAthleticsProficiency;
+    }
+
+    public void setExpertiseAthleticsProficiency(boolean expertiseAthleticsProficiency)
+    {
+        this.expertiseAthleticsProficiency = expertiseAthleticsProficiency;
+    }
+
+    public boolean isExpertiseDeceptionProficiency()
+    {
+        return expertiseDeceptionProficiency;
+    }
+
+    public void setExpertiseDeceptionProficiency(boolean expertiseDeceptionProficiency)
+    {
+        this.expertiseDeceptionProficiency = expertiseDeceptionProficiency;
+    }
+
+    public boolean isExpertiseHistoryProficiency()
+    {
+        return expertiseHistoryProficiency;
+    }
+
+    public void setExpertiseHistoryProficiency(boolean expertiseHistoryProficiency)
+    {
+        this.expertiseHistoryProficiency = expertiseHistoryProficiency;
+    }
+
+    public boolean isExpertiseInsightProficiency()
+    {
+        return expertiseInsightProficiency;
+    }
+
+    public void setExpertiseInsightProficiency(boolean expertiseInsightProficiency)
+    {
+        this.expertiseInsightProficiency = expertiseInsightProficiency;
+    }
+
+    public boolean isExpertiseIntimidationProficiency()
+    {
+        return expertiseIntimidationProficiency;
+    }
+
+    public void setExpertiseIntimidationProficiency(boolean expertiseIntimidationProficiency)
+    {
+        this.expertiseIntimidationProficiency = expertiseIntimidationProficiency;
+    }
+
+    public boolean isExpertiseInvestigationProficiency()
+    {
+        return expertiseInvestigationProficiency;
+    }
+
+    public void setExpertiseInvestigationProficiency(boolean expertiseInvestigationProficiency)
+    {
+        this.expertiseInvestigationProficiency = expertiseInvestigationProficiency;
+    }
+
+    public boolean isExpertiseMedicineProficiency()
+    {
+        return expertiseMedicineProficiency;
+    }
+
+    public void setExpertiseMedicineProficiency(boolean expertiseMedicineProficiency)
+    {
+        this.expertiseMedicineProficiency = expertiseMedicineProficiency;
+    }
+
+    public boolean isExpertiseNatureProficiency()
+    {
+        return expertiseNatureProficiency;
+    }
+
+    public void setExpertiseNatureProficiency(boolean expertiseNatureProficiency)
+    {
+        this.expertiseNatureProficiency = expertiseNatureProficiency;
+    }
+
+    public boolean isExpertisePerceptionProficiency()
+    {
+        return expertisePerceptionProficiency;
+    }
+
+    public void setExpertisePerceptionProficiency(boolean expertisePerceptionProficiency)
+    {
+        this.expertisePerceptionProficiency = expertisePerceptionProficiency;
+    }
+
+    public boolean isExpertisePerformanceProficiency()
+    {
+        return expertisePerformanceProficiency;
+    }
+
+    public void setExpertisePerformanceProficiency(boolean expertisePerformanceProficiency)
+    {
+        this.expertisePerformanceProficiency = expertisePerformanceProficiency;
+    }
+
+    public boolean isExpertisePersuasionProficiency()
+    {
+        return expertisePersuasionProficiency;
+    }
+
+    public void setExpertisePersuasionProficiency(boolean expertisePersuasionProficiency)
+    {
+        this.expertisePersuasionProficiency = expertisePersuasionProficiency;
+    }
+
+    public boolean isExpertiseReligionProficiency()
+    {
+        return expertiseReligionProficiency;
+    }
+
+    public void setExpertiseReligionProficiency(boolean expertiseReligionProficiency)
+    {
+        this.expertiseReligionProficiency = expertiseReligionProficiency;
+    }
+
+    public boolean isExpertiseSleightOfHandProficiency()
+    {
+        return expertiseSleightOfHandProficiency;
+    }
+
+    public void setExpertiseSleightOfHandProficiency(boolean expertiseSleightOfHandProficiency)
+    {
+        this.expertiseSleightOfHandProficiency = expertiseSleightOfHandProficiency;
+    }
+
+    public boolean isExpertiseStealthProficiency()
+    {
+        return expertiseStealthProficiency;
+    }
+
+    public void setExpertiseStealthProficiency(boolean expertiseStealthProficiency)
+    {
+        this.expertiseStealthProficiency = expertiseStealthProficiency;
+    }
+
+    public boolean isExpertiseSurvivalProficiency()
+    {
+        return expertiseSurvivalProficiency;
+    }
+
+    public void setExpertiseSurvivalProficiency(boolean expertiseSurvivalProficiency)
+    {
+        this.expertiseSurvivalProficiency = expertiseSurvivalProficiency;
     }
 
     public int getCooperPiece()
