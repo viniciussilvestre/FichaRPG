@@ -297,6 +297,21 @@ public class MainStats extends Fragment
         sheetDAndD.setAcrobaticsProficiency(this.sheetDAndD.isAcrobaticsProficiency());
         sheetDAndD.setStealthProficiency(this.sheetDAndD.isStealthProficiency());
         sheetDAndD.setSleightOfHandProficiency(this.sheetDAndD.isSleightOfHandProficiency());
+        sheetDAndD.setArcanaProficiency(this.sheetDAndD.isArcanaProficiency());
+        sheetDAndD.setHistoryProficiency(this.sheetDAndD.isHistoryProficiency());
+        sheetDAndD.setInvestigationProficiency(this.sheetDAndD.isInvestigationProficiency());
+        sheetDAndD.setNatureProficiency(this.sheetDAndD.isNatureProficiency());
+        sheetDAndD.setReligionProficiency(this.sheetDAndD.isReligionProficiency());
+        sheetDAndD.setAnimalHandlingProficiency(this.sheetDAndD.isAnimalHandlingProficiency());
+        sheetDAndD.setInsightProficiency(this.sheetDAndD.isInsightProficiency());
+        sheetDAndD.setMedicineProficiency(this.sheetDAndD.isMedicineProficiency());
+        sheetDAndD.setPerceptionProficiency(this.sheetDAndD.isPerceptionProficiency());
+        sheetDAndD.setSurvivalProficiency(this.sheetDAndD.isSurvivalProficiency());
+        sheetDAndD.setAthleticsProficiency(this.sheetDAndD.isAthleticsProficiency());
+        sheetDAndD.setDeceptionProficiency(this.sheetDAndD.isDeceptionProficiency());
+        sheetDAndD.setIntimidationProficiency(this.sheetDAndD.isIntimidationProficiency());
+        sheetDAndD.setPerformanceProficiency(this.sheetDAndD.isPerformanceProficiency());
+        sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
         return sheetDAndD;
     }
 }
