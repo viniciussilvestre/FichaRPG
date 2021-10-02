@@ -5,10 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -20,28 +20,30 @@ import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
-import com.ecnav.ficharpg.util.Util;
+
+import java.util.Objects;
 
 public class MainStats extends Fragment
 {
     private FragmentMainStatsBinding binding;
     private SheetViewModel sheetViewModel;
-    private IdViewModel idViewModel;
+    //private IdViewModel idViewModel;
     //private int parameterReceived;
     private int id;
     private SheetDAndD sheetDAndD;
+    final Handler handler= new Handler(Looper.getMainLooper());
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
-        {
-            //parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
-        }
+//        if (getArguments() != null)
+//        {
+//            parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
+//        }
         //id = parameterReceived;
 
-        idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
+        IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
 //        idViewModel.getSelectedItem().observe(MainStats.this.requireActivity(), item ->
 //        {
 //            Log.d("TAG", "onCreate: item " + item);
@@ -50,7 +52,6 @@ public class MainStats extends Fragment
 //        });
 
         id = idViewModel.getSelectedItem();
-
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(MainStats.this.requireActivity().getApplication()).create(SheetViewModel.class);
     }
 
@@ -71,7 +72,6 @@ public class MainStats extends Fragment
                 binding.alignmentText.setText(sheet.getAlignment());
                 binding.raceText.setText(sheet.getRace());
                 binding.backgroundText.setText(sheet.getBackground());
-                binding.initiativeText.setText(String.valueOf(sheet.getInitiative()));
                 binding.armorClassText.setText(String.valueOf(sheet.getArmorClass()));
                 binding.healthText.setText(String.valueOf(sheet.getHitPoints()));
                 binding.strenghtText.setText(String.valueOf(sheet.getStrength()));
@@ -313,5 +313,17 @@ public class MainStats extends Fragment
         sheetDAndD.setPerformanceProficiency(this.sheetDAndD.isPerformanceProficiency());
         sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
         return sheetDAndD;
+    }
+
+    public void fixRaceAndBackgroundWidth(int raceTextWidth, int backgroundTextWidth)
+    {
+        if (raceTextWidth > backgroundTextWidth)
+        {
+            binding.backgroundText.setWidth(raceTextWidth);
+        }
+        if (backgroundTextWidth > raceTextWidth)
+        {
+            binding.raceText.setWidth(backgroundTextWidth);
+        }
     }
 }
