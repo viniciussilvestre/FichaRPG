@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecnav.ficharpg.databinding.FragmentProficiencysBinding;
+import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
@@ -18,7 +19,8 @@ public class Proficiencys extends Fragment
 {
     private FragmentProficiencysBinding binding;
     private SheetViewModel sheetViewModel;
-    private int parameterReceived;
+    private IdViewModel idViewModel;
+    //private int parameterReceived;
     private int id;
     private SheetDAndD sheetDAndD;
 
@@ -28,10 +30,16 @@ public class Proficiencys extends Fragment
         super.onCreate(savedInstanceState);
         if (getArguments() != null)
         {
-            parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
+            //parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
         }
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(Proficiencys.this.requireActivity().getApplication()).create(SheetViewModel.class);
-        id = parameterReceived;
+        //id = parameterReceived;
+        idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
+//        idViewModel.getSelectedItem().observe(this, item ->
+//        {
+//            id = item;
+//        });
+        id = idViewModel.getSelectedItem();
     }
 
     @Override

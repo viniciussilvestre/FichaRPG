@@ -20,6 +20,7 @@ import com.ecnav.ficharpg.data.AnswerListAsyncResponse;
 import com.ecnav.ficharpg.data.Repository;
 import com.ecnav.ficharpg.databinding.ActivityMainBinding;
 import com.ecnav.ficharpg.model.ClassFeatures;
+import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
@@ -137,7 +138,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         SheetDAndD sheetDAndD = Objects.requireNonNull(sheetViewModel.getAllSheetsDnd().getValue()).get(position);
         Intent intent = new Intent(MainActivity.this, CharacterSheet.class);
         intent.putExtra(Util.CHARACTER_ID, sheetDAndD.getId());
-        //jumpAnimation();
         openCharacterSheet(intent);
     }
 

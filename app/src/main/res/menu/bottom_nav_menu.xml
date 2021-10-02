@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/main_stat"
         android:icon="@drawable/ic_home_black_24dp"
@@ -20,5 +21,4 @@
         android:id="@+id/subclass_info"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/subclassMenuText" />
-
 </menu>

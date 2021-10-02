@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/main_stat">
+    app:startDestination="@id/main_stat">
 
     <fragment
         android:id="@+id/main_stat"
         android:name="com.ecnav.ficharpg.ui.mainstat.MainStats"
         android:label="Stats"
-        tools:layout="@layout/fragment_main_stats" />
+        tools:layout="@layout/fragment_main_stats"/>
 
     <fragment
         android:id="@+id/proficiency_info"
         android:name="com.ecnav.ficharpg.ui.proficiencys.Proficiencys"
         android:label="Proficiency"
-        tools:layout="@layout/fragment_proficiencys" />
+        tools:layout="@layout/fragment_proficiencys"/>
 
     <fragment
         android:id="@+id/class_info"
         android:name="com.ecnav.ficharpg.ui.classinfo.ClassInfo"
         android:label="Class"
-        tools:layout="@layout/fragment_class_info" />
+        tools:layout="@layout/fragment_class_info"/>
 
     <fragment
         android:id="@+id/subclass_info"

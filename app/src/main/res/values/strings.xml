@@ -53,7 +53,7 @@
     <string name="classMenuText">Class</string>
     <string name="subclassMenuText">Subclass</string>
     <string name="habilityPlaceHolder">ipslum lore</string>
-    <string name="proficiencyMenuText">Proficiencys</string>
+    <string name="proficiencyMenuText">Proficiency</string>
     <string name="savingThrowLabel">Saving Throws</string>
     <string name="profileDescription">Profile Photo</string>
     <string name="skillsLabel">Skills</string>

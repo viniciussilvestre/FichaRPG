@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
@@ -14,19 +16,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ecnav.ficharpg.CharacterSheet;
 import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
+import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
-
-import java.util.Objects;
 
 public class MainStats extends Fragment
 {
     private FragmentMainStatsBinding binding;
     private SheetViewModel sheetViewModel;
-    private int parameterReceived;
+    private IdViewModel idViewModel;
+    //private int parameterReceived;
     private int id;
     private SheetDAndD sheetDAndD;
 
@@ -36,16 +37,28 @@ public class MainStats extends Fragment
         super.onCreate(savedInstanceState);
         if (getArguments() != null)
         {
-            parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
+            //parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
         }
+        //id = parameterReceived;
+
+        idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
+//        idViewModel.getSelectedItem().observe(MainStats.this.requireActivity(), item ->
+//        {
+//            Log.d("TAG", "onCreate: item " + item);
+//            id = item;
+//            Log.d("TAG", "onCreate: id " + id);
+//        });
+
+        id = idViewModel.getSelectedItem();
+
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(MainStats.this.requireActivity().getApplication()).create(SheetViewModel.class);
-        id = parameterReceived;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         binding = FragmentMainStatsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        Log.d("TAG", "onCreateView: " + id);
         sheetViewModel.getCharacterDnd(id).observe(getViewLifecycleOwner(), sheet ->
         {
             if (sheet != null)

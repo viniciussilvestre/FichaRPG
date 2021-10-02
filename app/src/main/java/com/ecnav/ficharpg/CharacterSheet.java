@@ -2,40 +2,30 @@ package com.ecnav.ficharpg;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.ecnav.ficharpg.databinding.ActivityCharacterSheetBinding;
+import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
-import com.ecnav.ficharpg.ui.classinfo.ClassInfo;
-import com.ecnav.ficharpg.ui.mainstat.MainStats;
-import com.ecnav.ficharpg.ui.proficiencys.Proficiencys;
-import com.ecnav.ficharpg.ui.subclassinfo.SubclassInfo;
 import com.ecnav.ficharpg.util.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.List;
-import java.util.Objects;
 
 public class CharacterSheet extends AppCompatActivity
 {
     private ActivityCharacterSheetBinding binding;
     private SheetViewModel sheetViewModel;
+    private IdViewModel idViewModel;
     private int id;
     private int sheetType;
     private SheetDAndD sheetDAndD;
@@ -45,47 +35,74 @@ public class CharacterSheet extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_character_sheet);
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_character_sheet);
         Bundle data = getIntent().getExtras();
         if (data != null)
         {
             id = data.getInt(Util.CHARACTER_ID);
         }
-        int parameterForFragment = id;
-        Bundle dataForFragment = new Bundle();
-        dataForFragment.putInt(Util.PARAMETER_FOR_FRAGMENT, parameterForFragment);
-        fragmentManager.beginTransaction().add(R.id.fragmentContainerView, MainStats.class, dataForFragment).setReorderingAllowed(true).commit();
-        MenuItem stat = binding.bottomNavigationView.getMenu().getItem(0);
-        MenuItem proficiency = binding.bottomNavigationView.getMenu().getItem(1);
-        MenuItem classInfo = binding.bottomNavigationView.getMenu().getItem(2);
-        MenuItem subclassInfo = binding.bottomNavigationView.getMenu().getItem(3);
-        binding.bottomNavigationView.setOnItemSelectedListener(item ->
-        {
-            if (item == stat)
-            {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, MainStats.class, dataForFragment).setReorderingAllowed(true).commit();
-            }
-            else if (item == proficiency)
-            {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, Proficiencys.class, dataForFragment).setReorderingAllowed(true).commit();
-            }
-            else if (item == classInfo)
-            {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, ClassInfo.class, dataForFragment).setReorderingAllowed(true).commit();
-            }
-            else if (item == subclassInfo)
-            {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, SubclassInfo.class, dataForFragment).setReorderingAllowed(true).commit();
-            }
-            return false;
-        });
+        idViewModel = new ViewModelProvider(this).get(IdViewModel.class);
+        idViewModel.setId(id);
 
-//        binding = ActivityCharacterSheetBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+//        int parameterForFragment = id;
+//        Bundle dataForFragment = new Bundle();
+//        dataForFragment.putInt(Util.PARAMETER_FOR_FRAGMENT, parameterForFragment);
+
+        binding = ActivityCharacterSheetBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        BottomNavigationView navView = findViewById(R.id.bottomNavigationView);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.main_stat, R.id.proficiency_info, R.id.class_info, R.id.subclass_info).build();
+        NavController navController = getNavController();
+        //Navigation.findNavController(this, R.id.fragmentContainerView);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+
+//        fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, MainStats.class, dataForFragment).setReorderingAllowed(true).commit();
+//        MenuItem stat = binding.bottomNavigationView.getMenu().getItem(0);
+//        MenuItem proficiency = binding.bottomNavigationView.getMenu().getItem(1);
+//        MenuItem classInfo = binding.bottomNavigationView.getMenu().getItem(2);
+//        MenuItem subclassInfo = binding.bottomNavigationView.getMenu().getItem(3);
+//        binding.bottomNavigationView.setOnItemSelectedListener(item ->
+//        {
+//            if (item == stat)
+//            {
+//                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, MainStats.class, dataForFragment).setReorderingAllowed(true).commit();
+//                stat.setChecked(true);
+//                proficiency.setChecked(false);
+//                classInfo.setChecked(false);
+//                subclassInfo.setChecked(false);
+//                return true;
+//            }
+//            else if (item == proficiency)
+//            {
+//                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, Proficiencys.class, dataForFragment).setReorderingAllowed(true).commit();
+//                stat.setChecked(false);
+//                proficiency.setChecked(true);
+//                classInfo.setChecked(false);
+//                subclassInfo.setChecked(false);
+//                return true;
+//            }
+//            else if (item == classInfo)
+//            {
+//                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, ClassInfo.class, dataForFragment).setReorderingAllowed(true).commit();
+//                stat.setChecked(false);
+//                proficiency.setChecked(false);
+//                classInfo.setChecked(true);
+//                subclassInfo.setChecked(false);
+//                return true;
+//            }
+//            else if (item == subclassInfo)
+//            {
+//                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, SubclassInfo.class, dataForFragment).setReorderingAllowed(true).commit();
+//                stat.setChecked(false);
+//                proficiency.setChecked(false);
+//                classInfo.setChecked(false);
+//                subclassInfo.setChecked(true);
+//                return true;
+//            }
+//            return false;
+//        });
 
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(CharacterSheet.this.getApplication()).create(SheetViewModel.class);
         sheetViewModel.getCharacterDnd(id).observe(this, sheet ->
@@ -95,6 +112,17 @@ public class CharacterSheet extends AppCompatActivity
                 finish();
             }
         });
+    }
+
+    @NonNull
+    private NavController getNavController()
+    {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
+        if (!(fragment instanceof NavHostFragment))
+        {
+            throw new IllegalStateException("Activity " + this + " does not have a NavHostFragment");
+        }
+        return ((NavHostFragment) fragment).getNavController();
     }
 
 //    @Override
