@@ -35,8 +35,6 @@ public class CharacterSheet extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_character_sheet);
         Bundle data = getIntent().getExtras();
         if (data != null)
         {
@@ -44,10 +42,6 @@ public class CharacterSheet extends AppCompatActivity
         }
         idViewModel = new ViewModelProvider(this).get(IdViewModel.class);
         idViewModel.setId(id);
-
-//        int parameterForFragment = id;
-//        Bundle dataForFragment = new Bundle();
-//        dataForFragment.putInt(Util.PARAMETER_FOR_FRAGMENT, parameterForFragment);
 
         binding = ActivityCharacterSheetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -58,6 +52,32 @@ public class CharacterSheet extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
 
+        sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(CharacterSheet.this.getApplication()).create(SheetViewModel.class);
+        sheetViewModel.getCharacterDnd(id).observe(this, sheet ->
+        {
+            if (sheet == null)
+            {
+                finish();
+            }
+        });
+    }
+
+    @NonNull
+    private NavController getNavController()
+    {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
+        if (!(fragment instanceof NavHostFragment))
+        {
+            throw new IllegalStateException("Activity " + this + " does not have a NavHostFragment");
+        }
+        return ((NavHostFragment) fragment).getNavController();
+    }
+
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_character_sheet);
+//        int parameterForFragment = id;
+//        Bundle dataForFragment = new Bundle();
+//        dataForFragment.putInt(Util.PARAMETER_FOR_FRAGMENT, parameterForFragment);
 //        fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, MainStats.class, dataForFragment).setReorderingAllowed(true).commit();
 //        MenuItem stat = binding.bottomNavigationView.getMenu().getItem(0);
 //        MenuItem proficiency = binding.bottomNavigationView.getMenu().getItem(1);
@@ -103,27 +123,6 @@ public class CharacterSheet extends AppCompatActivity
 //            }
 //            return false;
 //        });
-
-        sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(CharacterSheet.this.getApplication()).create(SheetViewModel.class);
-        sheetViewModel.getCharacterDnd(id).observe(this, sheet ->
-        {
-            if (sheet == null)
-            {
-                finish();
-            }
-        });
-    }
-
-    @NonNull
-    private NavController getNavController()
-    {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
-        if (!(fragment instanceof NavHostFragment))
-        {
-            throw new IllegalStateException("Activity " + this + " does not have a NavHostFragment");
-        }
-        return ((NavHostFragment) fragment).getNavController();
-    }
 
 //    @Override
 //    protected void onPause()
