@@ -10,24 +10,28 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.SearchView;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapter;
-import com.ecnav.ficharpg.data.AnswerListAsyncResponse;
-import com.ecnav.ficharpg.data.Repository;
+import com.ecnav.ficharpg.data.DatabaseTable;
 import com.ecnav.ficharpg.databinding.ActivityMainBinding;
 import com.ecnav.ficharpg.model.ClassFeatures;
-import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
-import com.ecnav.ficharpg.controller.AppController;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapter recyclerViewAdapter;
     private List<ClassFeatures> classFeaturesList;
+    DatabaseTable db = new DatabaseTable(this);
 
     ActivityResultLauncher<Intent> launchCharacterSheet = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -100,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        handleIntent(getIntent());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -108,6 +114,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         {
             recyclerViewAdapter = new RecyclerViewAdapter(sheets, MainActivity.this, this);
             binding.recyclerView.setAdapter(recyclerViewAdapter);
+            for (int i = 0; i < sheets.size(); i++)
+            {
+                writeToFile(sheets.get(i).getName(), MainActivity.this);
+            }
         });
 
         binding.addButton.setOnClickListener(view ->
@@ -116,6 +126,36 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             intent.putExtra(Util.SHEETTYPE, Util.DUNGEONS_AND_DRAGONS);
             openCreateCharacter(intent);
         });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent)
+    {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction()))
+        {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Cursor c = db.getWordMatches(query, null);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.search_menu, menu);
+        return true;
     }
 
     public void openCreateSpell(Intent intent)
@@ -140,6 +180,20 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         Intent intent = new Intent(MainActivity.this, CharacterSheet.class);
         intent.putExtra(Util.CHARACTER_ID, sheetDAndD.getId());
         openCharacterSheet(intent);
+    }
+
+    private void writeToFile(String data, Context context)
+    {
+        try
+        {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(String.valueOf(R.raw.characters_names), Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e)
+        {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
 
     private void jumpAnimation()

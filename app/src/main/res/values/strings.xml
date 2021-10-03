@@ -81,4 +81,6 @@
     <string name="persuasionSkillText">Persuasion</string>
     <string name="sleighHandSkillText">"Sleight of Hand "</string>
     <string name="addButtonText">Add Character</string>
+    <string name="searchMenuText">Search</string>
+    <string name="search_hint">Search sheets</string>
 </resources>
