@@ -13,6 +13,8 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.ecnav.ficharpg.databinding.ActivityCharacterSheetBinding;
 import com.ecnav.ficharpg.model.IdViewModel;
@@ -55,7 +57,11 @@ public class CharacterSheet extends AppCompatActivity
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(CharacterSheet.this.getApplication()).create(SheetViewModel.class);
         sheetViewModel.getCharacterDnd(id).observe(this, sheet ->
         {
-            if (sheet == null)
+            if (sheet != null)
+            {
+                sheetDAndD = sheet;
+            }
+            else
             {
                 finish();
             }
@@ -71,6 +77,32 @@ public class CharacterSheet extends AppCompatActivity
             throw new IllegalStateException("Activity " + this + " does not have a NavHostFragment");
         }
         return ((NavHostFragment) fragment).getNavController();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_sheet_view, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_delete)
+        {
+            SheetViewModel.deleteDnd(sheetDAndD);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 //        FragmentManager fragmentManager = getSupportFragmentManager();

@@ -8,4 +8,36 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#3949AB</color>
+<!--    <color name="primaryColor">#1875d1</color>-->
+<!--    <color name="primaryLightColor">#63a3ff</color>-->
+<!--    <color name="primaryDarkColor">#004a9f</color>-->
+<!--    <color name="secondaryColor">#42a5f5</color>-->
+<!--    <color name="secondaryLightColor">#80d6ff</color>-->
+<!--    <color name="secondaryDarkColor">#0077c2</color>-->
+<!--    <color name="primaryTextColor">#ffffff</color>-->
+<!--    <color name="secondaryTextColor">#000000</color>-->
+
+    <color name="primaryColor">#4264ff</color>
+    <color name="primaryLightColor">#8491ff</color>
+    <color name="primaryDarkColor">#003acb</color>
+    <color name="secondaryColor">#5c87ff</color>
+    <color name="secondaryLightColor">#95b6ff</color>
+    <color name="secondaryDarkColor">#005bcb</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
+
+<!--    <color name="primaryColor">#e8663f</color>-->
+<!--    <color name="primaryLightColor">#ff976b</color>-->
+<!--    <color name="primaryDarkColor">#b03614</color>-->
+<!--    <color name="primaryTextColor">#000000</color>-->
+
+<!--    <color name="primaryColor">#741dff</color>-->
+<!--    <color name="primaryLightColor">#ae56ff</color>-->
+<!--    <color name="primaryDarkColor">#2e00ca</color>-->
+<!--    <color name="primaryTextColor">#ffffff</color>-->
+
+<!--    <color name="primaryColor">#7dffe3</color>-->
+<!--    <color name="primaryLightColor">#b3ffff</color>-->
+<!--    <color name="primaryDarkColor">#43cbb1</color>-->
+<!--    <color name="primaryTextColor">#000000</color>-->
 </resources>

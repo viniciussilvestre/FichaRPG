@@ -49,7 +49,6 @@
                         android:padding="@dimen/padding"
                         android:textAlignment="center"
                         android:textSize="34sp"
-                        android:textStyle="bold"
                         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
                 </androidx.cardview.widget.CardView>
 
@@ -85,7 +84,6 @@
                             android:padding="@dimen/padding"
                             android:textAlignment="center"
                             android:textSize="24sp"
-                            android:textStyle="bold"
                             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -117,8 +115,7 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/raceText"
-                            android:text="@string/raceText"
-                            android:textStyle="bold" />
+                            android:text="@string/raceText" />
 
                         <EditText
                             android:id="@+id/raceText"
@@ -161,8 +158,7 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/alignmentText"
-                            android:text="@string/alingmentText"
-                            android:textStyle="bold" />
+                            android:text="@string/alingmentText" />
 
                         <EditText
                             android:id="@+id/alignmentText"
@@ -207,8 +203,7 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/backgroundText"
-                            android:text="@string/backgroundText"
-                            android:textStyle="bold" />
+                            android:text="@string/backgroundText" />
 
                         <EditText
                             android:id="@+id/backgroundText"
@@ -251,8 +246,7 @@
                             android:layout_width="109dp"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/armorClassText"
-                            android:text="@string/armorClassLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/armorClassLabel" />
 
                         <EditText
                             android:id="@+id/armorClassText"
@@ -294,8 +288,7 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/healthText"
-                            android:text="@string/hitPointLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/hitPointLabel" />
 
                         <EditText
                             android:id="@+id/healthText"
@@ -338,8 +331,7 @@
                             android:fontFamily="@font/roboto_medium"
                             android:gravity="center"
                             android:labelFor="@id/initiativeText"
-                            android:text="@string/initiativeLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/initiativeLabel" />
 
                         <EditText
                             android:id="@+id/initiativeText"
@@ -381,8 +373,7 @@
                             android:layout_width="109dp"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/strenghtText"
-                            android:text="@string/strenghLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/strenghLabel" />
 
                         <EditText
                             android:id="@+id/strenghtText"
@@ -425,8 +416,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/dexterityText"
-                            android:text="@string/dexterityLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/dexterityLabel" />
 
                         <EditText
                             android:id="@+id/dexterityText"
@@ -472,8 +462,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/constitutionText"
-                            android:text="@string/constitutionLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/constitutionLabel" />
 
                         <EditText
                             android:id="@+id/constitutionText"
@@ -521,8 +510,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/intelligenceText"
-                            android:text="@string/intelligenceLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/intelligenceLabel" />
 
                         <EditText
                             android:id="@+id/intelligenceText"
@@ -569,8 +557,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/wisdomText"
-                            android:text="@string/wisdomLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/wisdomLabel" />
 
                         <EditText
                             android:id="@+id/wisdomText"
@@ -618,8 +605,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/charismaText"
-                            android:text="@string/charismaLabel"
-                            android:textStyle="bold" />
+                            android:text="@string/charismaLabel" />
 
                         <EditText
                             android:id="@+id/charismaText"
@@ -668,8 +654,7 @@
                             android:padding="@dimen/padding"
                             android:text="@string/levelPresentation"
                             android:textAlignment="center"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
+                            android:textSize="24sp" />
 
                         <EditText
                             android:id="@+id/levelText"
@@ -715,8 +700,7 @@
                             android:layout_weight="1"
                             android:padding="@dimen/padding"
                             android:text="@string/speedLabel"
-                            android:textAlignment="center"
-                            android:textStyle="bold" />
+                            android:textAlignment="center" />
 
                         <EditText
                             android:id="@+id/speedText"
@@ -730,7 +714,6 @@
                             android:minWidth="@dimen/minWidthText"
                             android:padding="@dimen/padding"
                             android:textAlignment="center"
-                            android:textStyle="bold"
                             tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck,SpeakableTextPresentCheck" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
