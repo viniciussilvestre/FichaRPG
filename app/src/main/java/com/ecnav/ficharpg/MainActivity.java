@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -23,12 +24,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.SearchView;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapter;
-import com.ecnav.ficharpg.data.DatabaseTable;
 import com.ecnav.ficharpg.databinding.ActivityMainBinding;
 import com.ecnav.ficharpg.model.ClassFeatures;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapter recyclerViewAdapter;
     private List<ClassFeatures> classFeaturesList;
-    DatabaseTable db = new DatabaseTable(this);
 
     ActivityResultLauncher<Intent> launchCharacterSheet = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -114,10 +114,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         {
             recyclerViewAdapter = new RecyclerViewAdapter(sheets, MainActivity.this, this);
             binding.recyclerView.setAdapter(recyclerViewAdapter);
-            for (int i = 0; i < sheets.size(); i++)
-            {
-                writeToFile(sheets.get(i).getName(), MainActivity.this);
-            }
         });
 
         binding.addButton.setOnClickListener(view ->
@@ -140,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         if (Intent.ACTION_SEARCH.equals(intent.getAction()))
         {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Cursor c = db.getWordMatches(query, null);
+            searchDatabase(query);
         }
     }
 
@@ -182,23 +178,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         openCharacterSheet(intent);
     }
 
-    private void writeToFile(String data, Context context)
+    private void searchDatabase(String query)
     {
-        try
+        String searchQuery = "\"" + query + "\"";
+        SheetViewModel.searchDatabase(searchQuery).observe(this, sheets ->
         {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(String.valueOf(R.raw.characters_names), Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
-            outputStreamWriter.close();
-        }
-        catch (IOException e)
-        {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
 
-    private void jumpAnimation()
-    {
-        Animation jump = AnimationUtils.loadAnimation(MainActivity.this, R.anim.jump_animation);
-        binding.recyclerView.setAnimation(jump);
+        });
     }
 }

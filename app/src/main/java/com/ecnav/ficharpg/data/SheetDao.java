@@ -34,4 +34,6 @@ public interface SheetDao
     @Query("DELETE FROM character_sheet_table")
     void deleteAll();
     //---------------------------------------------------//
+    @Query("SELECT * FROM character_sheet_table WHERE name LIKE :searchQuery")
+    LiveData<List<SheetDAndD>> searchDatabase(String searchQuery);
 }

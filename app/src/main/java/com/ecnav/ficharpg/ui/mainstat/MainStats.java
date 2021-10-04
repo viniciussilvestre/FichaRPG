@@ -62,7 +62,6 @@ public class MainStats extends Fragment
     {
         binding = FragmentMainStatsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        Log.d("TAG", "onCreateView: " + id);
         sheetViewModel.getCharacterDnd(id).observe(getViewLifecycleOwner(), sheet ->
         {
             if (sheet != null)

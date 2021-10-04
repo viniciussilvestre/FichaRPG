@@ -2,6 +2,7 @@ package com.ecnav.ficharpg.model;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -47,5 +48,10 @@ public class SheetViewModel extends AndroidViewModel
     public static void deleteDnd(SheetDAndD sheetDAndD)
     {
         repository.deleteDnd(sheetDAndD);
+    }
+
+    public static LiveData<List<SheetDAndD>> searchDatabase(String searchQuery)
+    {
+        return repository.searchDatabase(searchQuery);
     }
 }

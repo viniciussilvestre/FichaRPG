@@ -104,4 +104,9 @@ public class Repository
             sheetDao.deleteDnd(sheetDAndD);
         });
     }
+
+    public LiveData<List<SheetDAndD>> searchDatabase(String searchQuery)
+    {
+        return sheetDao.searchDatabase(searchQuery);
+    }
 }

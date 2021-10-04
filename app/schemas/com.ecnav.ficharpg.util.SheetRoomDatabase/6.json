@@ -1,0 +1,778 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 6,
+    "identityHash": "1150fbb030e8de868cb30a44bca80a8a",
+    "entities": [
+      {
+        "tableName": "character_sheet_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `gameOfTheSheet` INTEGER NOT NULL, `name` TEXT, `characterClass` TEXT, `subClass` TEXT, `level` INTEGER NOT NULL, `background` TEXT, `race` TEXT, `alignment` TEXT, `experiencePoints` TEXT, `age` INTEGER NOT NULL, `eyeColor` TEXT, `height` REAL NOT NULL, `weight` REAL NOT NULL, `hairColor` TEXT, `skinColor` TEXT, `characterBackstory` TEXT, `armorClass` INTEGER NOT NULL, `initiative` INTEGER NOT NULL, `speed` INTEGER NOT NULL, `hitPoints` INTEGER NOT NULL, `hitPointsMaximum` INTEGER NOT NULL, `temporaryHitPoints` INTEGER NOT NULL, `totalHitDice` TEXT, `hitDice` TEXT, `strength` INTEGER NOT NULL, `dexterity` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `intelligence` INTEGER NOT NULL, `wisdom` INTEGER NOT NULL, `charisma` INTEGER NOT NULL, `inspiration` INTEGER NOT NULL, `proficiencyBonus` INTEGER NOT NULL, `passivePerception` INTEGER NOT NULL, `personalityTraits` TEXT, `ideals` TEXT, `bonds` TEXT, `flaws` TEXT, `featuresAndTraits` TEXT, `strengthSaveProficiency` INTEGER NOT NULL, `dexteritySaveProficiency` INTEGER NOT NULL, `constitutionSaveProficiency` INTEGER NOT NULL, `intelligenceSaveProficiency` INTEGER NOT NULL, `wisdomSaveProficiency` INTEGER NOT NULL, `charismaSaveProficiency` INTEGER NOT NULL, `acrobaticsProficiency` INTEGER NOT NULL, `animalHandlingProficiency` INTEGER NOT NULL, `arcanaProficiency` INTEGER NOT NULL, `athleticsProficiency` INTEGER NOT NULL, `deceptionProficiency` INTEGER NOT NULL, `historyProficiency` INTEGER NOT NULL, `insightProficiency` INTEGER NOT NULL, `intimidationProficiency` INTEGER NOT NULL, `investigationProficiency` INTEGER NOT NULL, `medicineProficiency` INTEGER NOT NULL, `natureProficiency` INTEGER NOT NULL, `perceptionProficiency` INTEGER NOT NULL, `performanceProficiency` INTEGER NOT NULL, `persuasionProficiency` INTEGER NOT NULL, `religionProficiency` INTEGER NOT NULL, `sleightOfHandProficiency` INTEGER NOT NULL, `stealthProficiency` INTEGER NOT NULL, `survivalProficiency` INTEGER NOT NULL, `expertiseAcrobaticsProficiency` INTEGER NOT NULL, `expertiseAnimalHandlingProficiency` INTEGER NOT NULL, `expertiseArcanaProficiency` INTEGER NOT NULL, `expertiseAthleticsProficiency` INTEGER NOT NULL, `expertiseDeceptionProficiency` INTEGER NOT NULL, `expertiseHistoryProficiency` INTEGER NOT NULL, `expertiseInsightProficiency` INTEGER NOT NULL, `expertiseIntimidationProficiency` INTEGER NOT NULL, `expertiseInvestigationProficiency` INTEGER NOT NULL, `expertiseMedicineProficiency` INTEGER NOT NULL, `expertiseNatureProficiency` INTEGER NOT NULL, `expertisePerceptionProficiency` INTEGER NOT NULL, `expertisePerformanceProficiency` INTEGER NOT NULL, `expertisePersuasionProficiency` INTEGER NOT NULL, `expertiseReligionProficiency` INTEGER NOT NULL, `expertiseSleightOfHandProficiency` INTEGER NOT NULL, `expertiseStealthProficiency` INTEGER NOT NULL, `expertiseSurvivalProficiency` INTEGER NOT NULL, `cooperPiece` INTEGER NOT NULL, `silverPiece` INTEGER NOT NULL, `electrumPiece` INTEGER NOT NULL, `goldPiece` INTEGER NOT NULL, `platinumPiece` INTEGER NOT NULL, `equipments` TEXT, `spellcastingClass` TEXT, `spellSaveDc` INTEGER NOT NULL, `spellAttackBonus` INTEGER NOT NULL, `spellSlotsLevel0` INTEGER NOT NULL, `spellSlotsLevel1` INTEGER NOT NULL, `spellSlotsLevel2` INTEGER NOT NULL, `spellSlotsLevel3` INTEGER NOT NULL, `spellSlotsLevel4` INTEGER NOT NULL, `spellSlotsLevel5` INTEGER NOT NULL, `spellSlotsLevel6` INTEGER NOT NULL, `spellSlotsLevel7` INTEGER NOT NULL, `spellSlotsLevel8` INTEGER NOT NULL, `spellSlotsLevel9` INTEGER NOT NULL, `level0` TEXT, `level1` TEXT, `level2` TEXT, `level3` TEXT, `level4` TEXT, `level5` TEXT, `level6` TEXT, `level7` TEXT, `level8` TEXT, `level9` TEXT, `className` TEXT, `hitPointsAtFirstLevel` INTEGER NOT NULL, `hitPointsAtHigherLevel` TEXT, `firstClassFeature` TEXT, `secondClassFeature` TEXT, `thirdClassFeature` TEXT, `forthClassFeature` TEXT, `abilityScoreImprovement` TEXT, `fifthClassFeature` TEXT, `sixthClassFeature` TEXT, `seventhClassFeature` TEXT, `eighthClassFeature` TEXT, `ninthClassFeature` TEXT, `tenthClassFeature` TEXT, `eleventhClassFeature` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gameOfTheSheet",
+            "columnName": "gameOfTheSheet",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "characterClass",
+            "columnName": "characterClass",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subClass",
+            "columnName": "subClass",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "background",
+            "columnName": "background",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "race",
+            "columnName": "race",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alignment",
+            "columnName": "alignment",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "experiencePoints",
+            "columnName": "experiencePoints",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eyeColor",
+            "columnName": "eyeColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "height",
+            "columnName": "height",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weight",
+            "columnName": "weight",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hairColor",
+            "columnName": "hairColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "skinColor",
+            "columnName": "skinColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "characterBackstory",
+            "columnName": "characterBackstory",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "armorClass",
+            "columnName": "armorClass",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "initiative",
+            "columnName": "initiative",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speed",
+            "columnName": "speed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hitPoints",
+            "columnName": "hitPoints",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hitPointsMaximum",
+            "columnName": "hitPointsMaximum",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "temporaryHitPoints",
+            "columnName": "temporaryHitPoints",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalHitDice",
+            "columnName": "totalHitDice",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hitDice",
+            "columnName": "hitDice",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "strength",
+            "columnName": "strength",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dexterity",
+            "columnName": "dexterity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "constitution",
+            "columnName": "constitution",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intelligence",
+            "columnName": "intelligence",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wisdom",
+            "columnName": "wisdom",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "charisma",
+            "columnName": "charisma",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inspiration",
+            "columnName": "inspiration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "proficiencyBonus",
+            "columnName": "proficiencyBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "passivePerception",
+            "columnName": "passivePerception",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "personalityTraits",
+            "columnName": "personalityTraits",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ideals",
+            "columnName": "ideals",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "bonds",
+            "columnName": "bonds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flaws",
+            "columnName": "flaws",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "featuresAndTraits",
+            "columnName": "featuresAndTraits",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "strengthSaveProficiency",
+            "columnName": "strengthSaveProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dexteritySaveProficiency",
+            "columnName": "dexteritySaveProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "constitutionSaveProficiency",
+            "columnName": "constitutionSaveProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intelligenceSaveProficiency",
+            "columnName": "intelligenceSaveProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wisdomSaveProficiency",
+            "columnName": "wisdomSaveProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "charismaSaveProficiency",
+            "columnName": "charismaSaveProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "acrobaticsProficiency",
+            "columnName": "acrobaticsProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "animalHandlingProficiency",
+            "columnName": "animalHandlingProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "arcanaProficiency",
+            "columnName": "arcanaProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "athleticsProficiency",
+            "columnName": "athleticsProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deceptionProficiency",
+            "columnName": "deceptionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "historyProficiency",
+            "columnName": "historyProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "insightProficiency",
+            "columnName": "insightProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intimidationProficiency",
+            "columnName": "intimidationProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "investigationProficiency",
+            "columnName": "investigationProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "medicineProficiency",
+            "columnName": "medicineProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "natureProficiency",
+            "columnName": "natureProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "perceptionProficiency",
+            "columnName": "perceptionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "performanceProficiency",
+            "columnName": "performanceProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "persuasionProficiency",
+            "columnName": "persuasionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "religionProficiency",
+            "columnName": "religionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sleightOfHandProficiency",
+            "columnName": "sleightOfHandProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stealthProficiency",
+            "columnName": "stealthProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "survivalProficiency",
+            "columnName": "survivalProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseAcrobaticsProficiency",
+            "columnName": "expertiseAcrobaticsProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseAnimalHandlingProficiency",
+            "columnName": "expertiseAnimalHandlingProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseArcanaProficiency",
+            "columnName": "expertiseArcanaProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseAthleticsProficiency",
+            "columnName": "expertiseAthleticsProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseDeceptionProficiency",
+            "columnName": "expertiseDeceptionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseHistoryProficiency",
+            "columnName": "expertiseHistoryProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseInsightProficiency",
+            "columnName": "expertiseInsightProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseIntimidationProficiency",
+            "columnName": "expertiseIntimidationProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseInvestigationProficiency",
+            "columnName": "expertiseInvestigationProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseMedicineProficiency",
+            "columnName": "expertiseMedicineProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseNatureProficiency",
+            "columnName": "expertiseNatureProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertisePerceptionProficiency",
+            "columnName": "expertisePerceptionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertisePerformanceProficiency",
+            "columnName": "expertisePerformanceProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertisePersuasionProficiency",
+            "columnName": "expertisePersuasionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseReligionProficiency",
+            "columnName": "expertiseReligionProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseSleightOfHandProficiency",
+            "columnName": "expertiseSleightOfHandProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseStealthProficiency",
+            "columnName": "expertiseStealthProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expertiseSurvivalProficiency",
+            "columnName": "expertiseSurvivalProficiency",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cooperPiece",
+            "columnName": "cooperPiece",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "silverPiece",
+            "columnName": "silverPiece",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "electrumPiece",
+            "columnName": "electrumPiece",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goldPiece",
+            "columnName": "goldPiece",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "platinumPiece",
+            "columnName": "platinumPiece",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "equipments",
+            "columnName": "equipments",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spellcastingClass",
+            "columnName": "spellcastingClass",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spellSaveDc",
+            "columnName": "spellSaveDc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellAttackBonus",
+            "columnName": "spellAttackBonus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel0",
+            "columnName": "spellSlotsLevel0",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel1",
+            "columnName": "spellSlotsLevel1",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel2",
+            "columnName": "spellSlotsLevel2",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel3",
+            "columnName": "spellSlotsLevel3",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel4",
+            "columnName": "spellSlotsLevel4",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel5",
+            "columnName": "spellSlotsLevel5",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel6",
+            "columnName": "spellSlotsLevel6",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel7",
+            "columnName": "spellSlotsLevel7",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel8",
+            "columnName": "spellSlotsLevel8",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spellSlotsLevel9",
+            "columnName": "spellSlotsLevel9",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level0",
+            "columnName": "level0",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level1",
+            "columnName": "level1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level2",
+            "columnName": "level2",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level3",
+            "columnName": "level3",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level4",
+            "columnName": "level4",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level5",
+            "columnName": "level5",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level6",
+            "columnName": "level6",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level7",
+            "columnName": "level7",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level8",
+            "columnName": "level8",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level9",
+            "columnName": "level9",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "className",
+            "columnName": "className",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hitPointsAtFirstLevel",
+            "columnName": "hitPointsAtFirstLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hitPointsAtHigherLevel",
+            "columnName": "hitPointsAtHigherLevel",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "firstClassFeature",
+            "columnName": "firstClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "secondClassFeature",
+            "columnName": "secondClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thirdClassFeature",
+            "columnName": "thirdClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "forthClassFeature",
+            "columnName": "forthClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "abilityScoreImprovement",
+            "columnName": "abilityScoreImprovement",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fifthClassFeature",
+            "columnName": "fifthClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sixthClassFeature",
+            "columnName": "sixthClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "seventhClassFeature",
+            "columnName": "seventhClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "eighthClassFeature",
+            "columnName": "eighthClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ninthClassFeature",
+            "columnName": "ninthClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tenthClassFeature",
+            "columnName": "tenthClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "eleventhClassFeature",
+            "columnName": "eleventhClassFeature",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1150fbb030e8de868cb30a44bca80a8a')"
+    ]
+  }
+}

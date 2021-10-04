@@ -87,4 +87,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         void onContactClick(int position);
     }
+
+    public void setData(List<SheetDAndD> sheetsList)
+    {
+        this.sheetsList = sheetsList;
+        notifyDataSetChanged();
+    }
 }
