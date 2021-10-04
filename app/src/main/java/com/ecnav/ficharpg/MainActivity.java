@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         if (Intent.ACTION_SEARCH.equals(intent.getAction()))
         {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            searchDatabase(query);
         }
     }
 
@@ -176,14 +175,5 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         Intent intent = new Intent(MainActivity.this, CharacterSheet.class);
         intent.putExtra(Util.CHARACTER_ID, sheetDAndD.getId());
         openCharacterSheet(intent);
-    }
-
-    private void searchDatabase(String query)
-    {
-        String searchQuery = "\"" + query + "\"";
-        SheetViewModel.searchDatabase(searchQuery).observe(this, sheets ->
-        {
-
-        });
     }
 }

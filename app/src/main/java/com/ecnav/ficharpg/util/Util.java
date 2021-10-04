@@ -21,6 +21,7 @@ public class Util
     public static final String CHA_REPLY = "cha_reply";
     public static final String PRO_REPLY = "pro_reply";
     public static final String SPEED_REPLY = "speed_reply";
+    public static final String QUERY_SEARCH = "query_search";
     public static final int DUNGEONS_AND_DRAGONS = 1;
     public static final int TORMENTA = 2;
     public static final String PARAMETER_FOR_FRAGMENT = "parameter";

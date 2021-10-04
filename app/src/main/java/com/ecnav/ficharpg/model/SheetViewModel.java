@@ -50,7 +50,7 @@ public class SheetViewModel extends AndroidViewModel
         repository.deleteDnd(sheetDAndD);
     }
 
-    public static LiveData<List<SheetDAndD>> searchDatabase(String searchQuery)
+    public LiveData<List<SheetDAndD>> searchDatabase(String searchQuery)
     {
         return repository.searchDatabase(searchQuery);
     }
