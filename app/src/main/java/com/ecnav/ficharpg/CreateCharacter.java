@@ -31,8 +31,6 @@ public class CreateCharacter extends AppCompatActivity
                 String stringLevel = binding.characterLevelField.getText().toString();
                 int intLevel = Integer.parseInt(stringLevel);
                 String alignment = binding.characterAlignmentField.getText().toString();
-                String ca = binding.armorClassField.getText().toString();
-                int intCa = Integer.parseInt(ca);
                 String hp = binding.hitPointsField.getText().toString();
                 int intHp = Integer.parseInt(hp);
                 replyIntent.putExtra(Util.NAME_REPLY, name);
@@ -41,7 +39,6 @@ public class CreateCharacter extends AppCompatActivity
                 replyIntent.putExtra(Util.RACE_REPLY, race);
                 replyIntent.putExtra(Util.LEVEL_REPLY, intLevel);
                 replyIntent.putExtra(Util.ALIGNMENT_REPLY, alignment);
-                replyIntent.putExtra(Util.ARMORCLASS_REPLY, intCa);
                 replyIntent.putExtra(Util.HITPOINTS_REPLY, intHp);
                 setResult(RESULT_OK, replyIntent);
             }

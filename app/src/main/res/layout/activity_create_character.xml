@@ -47,12 +47,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="#3949AB"
             android:text="@string/saveButtonText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/armorClassField" />
+            app:layout_constraintTop_toBottomOf="@+id/hitPointsField" />
 
         <EditText
             android:id="@+id/characterBackgroundField"
@@ -131,22 +130,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/characterAlignmentField"
             tools:ignore="SpeakableTextPresentCheck" />
-
-        <EditText
-            android:id="@+id/armorClassField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:hint="@string/armorClassHint"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hitPointsField" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

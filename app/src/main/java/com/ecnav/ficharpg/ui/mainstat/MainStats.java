@@ -148,6 +148,16 @@ public class MainStats extends Fragment
                     int dexMod = (Integer.parseInt(binding.dexterityText.getText().toString()) - 10)/2;
                     binding.modDexText.setText(String.valueOf(dexMod));
                     binding.initiativeText.setText(String.valueOf(dexMod));
+                    int armorClass;
+                    if (dexMod > 0)
+                    {
+                        armorClass = 10 + dexMod;
+                    }
+                    else
+                    {
+                        armorClass = 10;
+                    }
+                    binding.armorClassText.setText(String.valueOf(armorClass));
                 }
             }
         });

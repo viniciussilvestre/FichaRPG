@@ -1,5 +1,6 @@
 package com.ecnav.ficharpg.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -92,6 +93,9 @@ public class SheetDAndD implements SheetInterface
     private boolean expertiseSleightOfHandProficiency;
     private boolean expertiseStealthProficiency;
     private boolean expertiseSurvivalProficiency;
+    private boolean wearingArmor;
+    private boolean patientDefense;
+    private boolean unarmoredDefense;
     private int cooperPiece;
     private int silverPiece;
     private int electrumPiece;
@@ -1028,6 +1032,36 @@ public class SheetDAndD implements SheetInterface
     public void setExpertiseSurvivalProficiency(boolean expertiseSurvivalProficiency)
     {
         this.expertiseSurvivalProficiency = expertiseSurvivalProficiency;
+    }
+
+    public boolean isWearingArmor()
+    {
+        return wearingArmor;
+    }
+
+    public void setWearingArmor(boolean wearingArmor)
+    {
+        this.wearingArmor = wearingArmor;
+    }
+
+    public boolean isPatientDefense()
+    {
+        return patientDefense;
+    }
+
+    public void setPatientDefense(boolean patientDefense)
+    {
+        this.patientDefense = patientDefense;
+    }
+
+    public boolean isUnarmoredDefense()
+    {
+        return unarmoredDefense;
+    }
+
+    public void setUnarmoredDefense(boolean unarmoredDefense)
+    {
+        this.unarmoredDefense = unarmoredDefense;
     }
 
     public int getCooperPiece()
