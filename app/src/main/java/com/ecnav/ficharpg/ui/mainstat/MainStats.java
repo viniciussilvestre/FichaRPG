@@ -310,10 +310,15 @@ public class MainStats extends Fragment
         sheetDAndD.setPerceptionProficiency(this.sheetDAndD.isPerceptionProficiency());
         sheetDAndD.setSurvivalProficiency(this.sheetDAndD.isSurvivalProficiency());
         sheetDAndD.setAthleticsProficiency(this.sheetDAndD.isAthleticsProficiency());
+        sheetDAndD.setExpertiseAthleticsProficiency(this.sheetDAndD.isExpertiseAthleticsProficiency());
         sheetDAndD.setDeceptionProficiency(this.sheetDAndD.isDeceptionProficiency());
+        sheetDAndD.setExpertiseDeceptionProficiency(this.sheetDAndD.isExpertiseDeceptionProficiency());
         sheetDAndD.setIntimidationProficiency(this.sheetDAndD.isIntimidationProficiency());
+        sheetDAndD.setExpertiseIntimidationProficiency(this.sheetDAndD.isExpertiseIntimidationProficiency());
         sheetDAndD.setPerformanceProficiency(this.sheetDAndD.isPerformanceProficiency());
+        sheetDAndD.setExpertisePerformanceProficiency(this.sheetDAndD.isExpertisePerformanceProficiency());
         sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
+        sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
         return sheetDAndD;
     }
 

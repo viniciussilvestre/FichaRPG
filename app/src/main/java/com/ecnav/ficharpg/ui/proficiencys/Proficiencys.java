@@ -14,6 +14,7 @@ import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.snackbar.Snackbar;
 
 public class Proficiencys extends Fragment
 {
@@ -107,74 +108,147 @@ public class Proficiencys extends Fragment
                 if (sheet.isAcrobaticsProficiency())
                 {
                     acrobaticsValue += proficiencyBonus;
+                    if (sheet.isExpertiseAcrobaticsProficiency())
+                    {
+                        acrobaticsValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isStealthProficiency())
                 {
                     stealthValue += proficiencyBonus;
+                    if (sheet.isExpertiseStealthProficiency())
+                    {
+                        stealthValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isSleightOfHandProficiency())
                 {
                     sleightHandValue += proficiencyBonus;
+                    if (sheet.isExpertiseStealthProficiency())
+                    {
+                        sleightHandValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isArcanaProficiency())
                 {
                     arcanaValue += proficiencyBonus;
+                    if (sheet.isExpertiseArcanaProficiency())
+                    {
+                        arcanaValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isHistoryProficiency())
                 {
                     historyValue += proficiencyBonus;
+                    if (sheet.isExpertiseHistoryProficiency())
+                    {
+                        historyValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isInvestigationProficiency())
                 {
                     investigationValue += proficiencyBonus;
+                    if (sheet.isExpertiseIntimidationProficiency())
+                    {
+                        investigationValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isNatureProficiency())
                 {
                     natureValue += proficiencyBonus;
+                    if (sheet.isExpertiseNatureProficiency())
+                    {
+                        natureValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isReligionProficiency())
                 {
                     religionValue += proficiencyBonus;
+                    if (sheet.isExpertiseReligionProficiency())
+                    {
+                        religionValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isAnimalHandlingProficiency())
                 {
                     animalHandlingValue += proficiencyBonus;
+                    if (sheet.isExpertiseAnimalHandlingProficiency())
+                    {
+                        animalHandlingValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isInsightProficiency())
                 {
                     insightValue += proficiencyBonus;
+                    if (sheet.isExpertiseInsightProficiency())
+                    {
+                        insightValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isMedicineProficiency())
                 {
                     medicineValue += proficiencyBonus;
+                    if (sheet.isExpertiseMedicineProficiency())
+                    {
+                        medicineValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isPerceptionProficiency())
                 {
                     perceptionValue += proficiencyBonus;
+                    if (sheet.isExpertisePerceptionProficiency())
+                    {
+                        perceptionValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isSurvivalProficiency())
                 {
-                    medicineValue += proficiencyBonus;
+                    survivalValue += proficiencyBonus;
+                    if (sheet.isExpertiseSurvivalProficiency())
+                    {
+                        survivalValue += proficiencyBonus;
+                    }
                 }
+
                 if (sheet.isAthleticsProficiency())
                 {
                     athleticsValue += proficiencyBonus;
+                    if (sheet.isExpertiseAthleticsProficiency())
+                    {
+                        athleticsValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isDeceptionProficiency())
                 {
                     deceptionValue += proficiencyBonus;
+                    if (sheet.isExpertiseDeceptionProficiency())
+                    {
+                        deceptionValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isIntimidationProficiency())
                 {
                     intimidationValue += proficiencyBonus;
+                    if (sheet.isExpertiseIntimidationProficiency())
+                    {
+                        intimidationValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isPerformanceProficiency())
                 {
                     performanceValue += proficiencyBonus;
+                    if (sheet.isExpertisePerformanceProficiency())
+                    {
+                        performanceValue += proficiencyBonus;
+                    }
                 }
                 if (sheet.isPersuasionProficiency())
                 {
                     persuasionValue += proficiencyBonus;
+                    if (sheet.isExpertisePersuasionProficiency())
+                    {
+                        persuasionValue += proficiencyBonus;
+                    }
                 }
 
                 binding.strSavingValue.setText(String.valueOf(strValue));
@@ -430,6 +504,33 @@ public class Proficiencys extends Fragment
             binding.athleticsValue.setText(String.valueOf(athleticsValue));
         });
 
+        binding.athleticsSkill.setOnLongClickListener(view ->
+        {
+            int athleticsValue = (this.sheetDAndD.getStrength() - 10)/2;
+            if (binding.athleticsSkill.isChecked())
+            {
+                athleticsValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseAthleticsProficiency())
+                {
+                    this.sheetDAndD.setExpertiseAthleticsProficiency(false);
+                    binding.athleticsValue.setText(String.valueOf(athleticsValue));
+                    Snackbar.make(binding.deceptionSkill, "Expertise disabled for athletics skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseAthleticsProficiency(true);
+                    athleticsValue += proficiencyBonus;
+                    binding.athleticsValue.setText(String.valueOf(athleticsValue));
+                    Snackbar.make(binding.deceptionSkill, "Expertise enabled for athletics skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseAthleticsProficiency(false);
+            }
+            return true;
+        });
+
         binding.deceptionSkill.setOnClickListener(view ->
         {
             int deceptionValue = (this.sheetDAndD.getCharisma() - 10)/2;
@@ -438,6 +539,33 @@ public class Proficiencys extends Fragment
                 deceptionValue += proficiencyBonus;
             }
             binding.deceptionValue.setText(String.valueOf(deceptionValue));
+        });
+
+        binding.deceptionSkill.setOnLongClickListener(view ->
+        {
+            int deceptionValue = (this.sheetDAndD.getCharisma() - 10)/2;
+            if (binding.deceptionSkill.isChecked())
+            {
+                deceptionValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseDeceptionProficiency())
+                {
+                    this.sheetDAndD.setExpertiseDeceptionProficiency(false);
+                    binding.deceptionValue.setText(String.valueOf(deceptionValue));
+                    Snackbar.make(binding.deceptionSkill, "Expertise disabled for deception skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseDeceptionProficiency(true);
+                    deceptionValue += proficiencyBonus;
+                    binding.deceptionValue.setText(String.valueOf(deceptionValue));
+                    Snackbar.make(binding.deceptionSkill, "Expertise enabled for deception skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseDeceptionProficiency(false);
+            }
+            return true;
         });
 
         binding.intimidationSkill.setOnClickListener(view ->
@@ -450,6 +578,33 @@ public class Proficiencys extends Fragment
             binding.intimidationValue.setText(String.valueOf(intimidationValue));
         });
 
+        binding.intimidationSkill.setOnLongClickListener(view ->
+        {
+            int intimidationValue = (this.sheetDAndD.getCharisma() - 10)/2;
+            if (binding.intimidationSkill.isChecked())
+            {
+                intimidationValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseIntimidationProficiency())
+                {
+                    this.sheetDAndD.setExpertiseIntimidationProficiency(false);
+                    binding.intimidationValue.setText(String.valueOf(intimidationValue));
+                    Snackbar.make(binding.intimidationSkill, "Expertise disabled for intimidation skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseIntimidationProficiency(true);
+                    intimidationValue += proficiencyBonus;
+                    binding.intimidationValue.setText(String.valueOf(intimidationValue));
+                    Snackbar.make(binding.intimidationSkill, "Expertise enabled for intimidation skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseIntimidationProficiency(false);
+            }
+            return true;
+        });
+
         binding.performanceSkill.setOnClickListener(view ->
         {
             int performanceValue = (this.sheetDAndD.getCharisma() - 10)/2;
@@ -460,6 +615,33 @@ public class Proficiencys extends Fragment
             binding.performanceValue.setText(String.valueOf(performanceValue));
         });
 
+        binding.performanceSkill.setOnLongClickListener(view ->
+        {
+            int performanceValue = (this.sheetDAndD.getCharisma() - 10)/2;
+            if (binding.performanceSkill.isChecked())
+            {
+                performanceValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertisePerformanceProficiency())
+                {
+                    this.sheetDAndD.setExpertisePerformanceProficiency(false);
+                    binding.performanceValue.setText(String.valueOf(performanceValue));
+                    Snackbar.make(binding.performanceSkill, "Expertise disabled for performance skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertisePerformanceProficiency(true);
+                    performanceValue += proficiencyBonus;
+                    binding.performanceValue.setText(String.valueOf(performanceValue));
+                    Snackbar.make(binding.performanceSkill, "Expertise enabled for performance skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertisePerformanceProficiency(false);
+            }
+            return true;
+        });
+
         binding.persuasionSkill.setOnClickListener(view ->
         {
             int persuasionValue = (this.sheetDAndD.getCharisma() - 10)/2;
@@ -468,6 +650,33 @@ public class Proficiencys extends Fragment
                 persuasionValue += proficiencyBonus;
             }
             binding.persuasionValue.setText(String.valueOf(persuasionValue));
+        });
+
+        binding.persuasionSkill.setOnLongClickListener(view ->
+        {
+            int persuasionValue = (this.sheetDAndD.getCharisma() - 10)/2;
+            if (binding.persuasionSkill.isChecked())
+            {
+                persuasionValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertisePersuasionProficiency())
+                {
+                    this.sheetDAndD.setExpertisePersuasionProficiency(false);
+                    binding.persuasionValue.setText(String.valueOf(persuasionValue));
+                    Snackbar.make(binding.performanceSkill, "Expertise disabled for persuasion skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertisePersuasionProficiency(true);
+                    persuasionValue += proficiencyBonus;
+                    binding.persuasionValue .setText(String.valueOf(persuasionValue));
+                    Snackbar.make(binding.performanceSkill, "Expertise enabled for persuasion skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertisePersuasionProficiency(false);
+            }
+            return true;
         });
         return root;
     }
@@ -528,10 +737,15 @@ public class Proficiencys extends Fragment
         sheetDAndD.setPerceptionProficiency(binding.perceptionSkill.isChecked());
         sheetDAndD.setSurvivalProficiency(binding.survivalSkill.isChecked());
         sheetDAndD.setAthleticsProficiency(binding.athleticsSkill.isChecked());
+        sheetDAndD.setExpertiseAthleticsProficiency(this.sheetDAndD.isExpertiseAthleticsProficiency());
         sheetDAndD.setDeceptionProficiency(binding.deceptionSkill.isChecked());
+        sheetDAndD.setExpertiseDeceptionProficiency(this.sheetDAndD.isExpertiseDeceptionProficiency());
         sheetDAndD.setIntimidationProficiency(binding.intimidationSkill.isChecked());
+        sheetDAndD.setExpertiseIntimidationProficiency(this.sheetDAndD.isExpertiseIntimidationProficiency());
         sheetDAndD.setPerformanceProficiency(binding.performanceSkill.isChecked());
+        sheetDAndD.setExpertisePerformanceProficiency(this.sheetDAndD.isExpertisePerformanceProficiency());
         sheetDAndD.setPersuasionProficiency(binding.persuasionSkill.isChecked());
+        sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
         sheetDAndD.setName(this.sheetDAndD.getName());
         sheetDAndD.setCharacterClass(this.sheetDAndD.getCharacterClass());
         sheetDAndD.setSpeed(this.sheetDAndD.getSpeed());
