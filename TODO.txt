@@ -1,0 +1,8 @@
+Finish implementing logic and save state for expertise function in MainStats and Proficiencys Fragments
+Fix search functionality in the RecyclerView
+Implement the other fragments that complete the character sheet
+Implement json logic in repository for dnd 5e spells
+Implement json logic in repository for dnd 5e class features
+Implement creation of homebrew spells
+Implement creation of homebrew classes
+Finish(?)
