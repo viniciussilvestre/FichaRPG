@@ -54,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount()
     {
-        return Objects.requireNonNull(sheetsList.size());
+        return sheetsList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener

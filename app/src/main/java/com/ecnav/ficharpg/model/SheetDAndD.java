@@ -101,7 +101,7 @@ public class SheetDAndD implements SheetInterface
     private int electrumPiece;
     private int goldPiece;
     private int platinumPiece;
-    private String equipments;
+    private ArrayList<Equipment> equipments = new ArrayList<>();
     private String spellcastingClass;
     private int spellSaveDc;
     private int spellAttackBonus;
@@ -218,7 +218,6 @@ public class SheetDAndD implements SheetInterface
         this.electrumPiece = electrumPiece;
         this.goldPiece = goldPiece;
         this.platinumPiece = platinumPiece;
-        this.equipments = equipments;
         this.spellcastingClass = spellcastingClass;
         this.spellSaveDc = spellSaveDc;
         this.spellAttackBonus = spellAttackBonus;
@@ -1114,12 +1113,12 @@ public class SheetDAndD implements SheetInterface
         this.platinumPiece = platinumPiece;
     }
 
-    public String getEquipments()
+    public ArrayList<Equipment> getEquipments()
     {
         return equipments;
     }
 
-    public void setEquipments(String equipments)
+    public void setEquipments(ArrayList<Equipment> equipments)
     {
         this.equipments = equipments;
     }
@@ -1409,6 +1408,11 @@ public class SheetDAndD implements SheetInterface
                 break;
             }
         }
+    }
+
+    public void addEquipment(Equipment equipment)
+    {
+        equipments.add(equipment);
     }
 
     public String getClassName()

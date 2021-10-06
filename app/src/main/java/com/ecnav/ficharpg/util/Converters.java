@@ -3,6 +3,7 @@ package com.ecnav.ficharpg.util;
 import androidx.room.TypeConverter;
 
 import com.ecnav.ficharpg.model.ClassFeatures;
+import com.ecnav.ficharpg.model.Equipment;
 import com.ecnav.ficharpg.model.Spell;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -21,6 +22,20 @@ public class Converters
 
     @TypeConverter
     public static String fromArrayList(ArrayList<Spell> list)
+    {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    @TypeConverter
+    public static ArrayList<Equipment> fromEquipmentString(String value)
+    {
+        Type listType = new TypeToken<ArrayList<Equipment>>() {}.getType();
+        return new Gson().fromJson(value, listType);
+    }
+
+    @TypeConverter
+    public static String fromEquipmentArrayList(ArrayList<Equipment> list)
     {
         Gson gson = new Gson();
         return gson.toJson(list);
