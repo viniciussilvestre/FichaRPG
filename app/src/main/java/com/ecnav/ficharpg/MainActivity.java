@@ -4,11 +4,13 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.SearchManager;
@@ -19,6 +21,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MotionEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.SearchView;
@@ -113,6 +116,23 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         {
             recyclerViewAdapter = new RecyclerViewAdapter(sheets, MainActivity.this, this);
             binding.recyclerView.setAdapter(recyclerViewAdapter);
+        });
+
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
+        {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
+            {
+                if (dy != 0 && binding.addButton.isExtended())
+                {
+                    binding.addButton.shrink();
+                }
+                if (dy < 0 && !binding.addButton.isExtended())
+                {
+                    binding.addButton.extend();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
         });
 
         binding.addButton.setOnClickListener(view ->
