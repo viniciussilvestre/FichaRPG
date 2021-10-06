@@ -13,6 +13,7 @@ import androidx.room.migration.AutoMigrationSpec;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.ecnav.ficharpg.data.SheetDao;
+import com.ecnav.ficharpg.model.ClassFeatures;
 import com.ecnav.ficharpg.model.SheetDAndD;
 
 import java.util.concurrent.ExecutorService;
@@ -20,9 +21,9 @@ import java.util.concurrent.Executors;
 
 @Database(
         entities = {SheetDAndD.class},
-        version = 9,
+        version = 12,
         autoMigrations = {
-                @AutoMigration(from = 8, to = 9)
+                @AutoMigration(from = 11, to = 12)
         },
         exportSchema = true
 )

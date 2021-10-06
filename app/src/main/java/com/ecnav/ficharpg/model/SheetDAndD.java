@@ -15,6 +15,7 @@ public class SheetDAndD implements SheetInterface
     private int id;
     private int gameOfTheSheet = Util.DUNGEONS_AND_DRAGONS;
     private String name;
+    private ArrayList<ClassFeatures> classFeatures = new ArrayList<>();
     private String characterClass;
     private String subClass;
     private int level = 1;
@@ -144,6 +145,8 @@ public class SheetDAndD implements SheetInterface
     private String ninthClassFeature;
     private String tenthClassFeature;
     private String eleventhClassFeature;
+    private boolean hasSubClass = false;
+    private boolean hasMultiClass = false;
 
     public SheetDAndD()
     {
@@ -263,6 +266,16 @@ public class SheetDAndD implements SheetInterface
         this.characterClass = characterClass;
     }
 
+    public ArrayList<ClassFeatures> getClassFeatures()
+    {
+        return classFeatures;
+    }
+
+    public void setClassFeatures(ArrayList<ClassFeatures> classFeatures)
+    {
+        this.classFeatures = classFeatures;
+    }
+
     public String getSubClass()
     {
         return subClass;
@@ -271,6 +284,26 @@ public class SheetDAndD implements SheetInterface
     public void setSubClass(String subClass)
     {
         this.subClass = subClass;
+    }
+
+    public boolean isHasSubClass()
+    {
+        return hasSubClass;
+    }
+
+    public void setHasSubClass(boolean hasSubClass)
+    {
+        this.hasSubClass = hasSubClass;
+    }
+
+    public boolean isHasMultiClass()
+    {
+        return hasMultiClass;
+    }
+
+    public void setHasMultiClass(boolean hasMultiClass)
+    {
+        this.hasMultiClass = hasMultiClass;
     }
 
     public int getLevel()

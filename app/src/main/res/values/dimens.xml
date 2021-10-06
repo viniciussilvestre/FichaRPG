@@ -10,4 +10,5 @@
     <dimen name="padding">5dp</dimen>
     <dimen name="minWidthAtribute">109dp</dimen>
     <dimen name="minWidthText">50dp</dimen>
+    <dimen name="buttonCornerValue">14dp</dimen>
 </resources>

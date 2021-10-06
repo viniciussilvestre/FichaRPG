@@ -1,11 +1,19 @@
 package com.ecnav.ficharpg.model;
 
-public class ClassFeatures
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.ecnav.ficharpg.util.Dice;
+
+import java.io.Serializable;
+
+public class ClassFeatures implements Serializable
 {
+    private int classId;
     //Class name
     private String className;
     //Hit points
-    private String hitDice;
+    private Dice hitDice;
     private int hitPointsAtFirstLevel;
     private String hitPointsAtHigherLevel;
     //Proficiencies
@@ -28,7 +36,7 @@ public class ClassFeatures
 
     }
 
-    public ClassFeatures(String className, String hitDice, int hitPointsAtFirstLevel, String hitPointsAtHigherLevel, String firstClassFeature, String secondClassFeature, String thirdClassFeature, String forthClassFeature, String abilityScoreImprovement, String fifthClassFeature, String sixthClassFeature, String seventhClassFeature, String eighthClassFeature, String ninthClassFeature, String tenthClassFeature, String eleventhClassFeature)
+    public ClassFeatures(String className, Dice hitDice, int hitPointsAtFirstLevel, String hitPointsAtHigherLevel, String firstClassFeature, String secondClassFeature, String thirdClassFeature, String forthClassFeature, String abilityScoreImprovement, String fifthClassFeature, String sixthClassFeature, String seventhClassFeature, String eighthClassFeature, String ninthClassFeature, String tenthClassFeature, String eleventhClassFeature)
     {
         this.className = className;
         this.hitDice = hitDice;
@@ -48,6 +56,16 @@ public class ClassFeatures
         this.eleventhClassFeature = eleventhClassFeature;
     }
 
+    public int getClassId()
+    {
+        return classId;
+    }
+
+    public void setClassId(int classId)
+    {
+        this.classId = classId;
+    }
+
     public String getClassName()
     {
         return className;
@@ -58,12 +76,12 @@ public class ClassFeatures
         this.className = className;
     }
 
-    public String getHitDice()
+    public Dice getHitDice()
     {
         return hitDice;
     }
 
-    public void setHitDice(String hitDice)
+    public void setHitDice(Dice hitDice)
     {
         this.hitDice = hitDice;
     }

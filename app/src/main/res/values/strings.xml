@@ -84,4 +84,24 @@
     <string name="searchMenuText">Search</string>
     <string name="search_hint">Search sheets</string>
     <string name="addButtonCharacter">Character</string>
-</resources>
+    <string name="ClassText">Class</string>
+    <string name="buttonClassText">Class</string>
+    <string name="spinnerToolTip">Select Class</string>
+    <string-array name="classes">
+        <item>Select class</item>
+        <item>Artificer</item>
+        <item>Barbarian</item>
+        <item>Cleric</item>
+        <item>Druid</item>
+        <item>Fighter</item>
+        <item>Monk</item>
+        <item>Paladin</item>
+        <item>Ranger</item>
+        <item>Rogue</item>
+        <item>Sorcerer</item>
+        <item>Warlock</item>
+        <item>Wizard</item>
+        <item>Custom</item>
+    </string-array>
+
+    </resources>

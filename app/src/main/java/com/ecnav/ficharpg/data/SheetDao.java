@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.ecnav.ficharpg.model.ClassFeatures;
 import com.ecnav.ficharpg.model.SheetDAndD;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public interface SheetDao
 {
     //---------------------------------------------------//
-    //Dungeons and dragon sheet
+    //Dungeons and dragon
     //---------------------------------------------------//
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertDnd(SheetDAndD sheetDAndD);
@@ -28,6 +29,8 @@ public interface SheetDao
     LiveData<SheetDAndD> getCharacterDnd(int id);
     @Update
     void updateDnd(SheetDAndD sheetDAndD);
+
+
     //---------------------------------------------------//
     //All sheets
     //---------------------------------------------------//

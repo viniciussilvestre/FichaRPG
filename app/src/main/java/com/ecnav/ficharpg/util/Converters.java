@@ -40,4 +40,18 @@ public class Converters
         Gson gson = new Gson();
         return gson.toJson(list);
     }
+
+    @TypeConverter
+    public static ArrayList<ClassFeatures> fromClassFeaturesString(String value)
+    {
+        Type listType = new TypeToken<ArrayList<Equipment>>() {}.getType();
+        return new Gson().fromJson(value, listType);
+    }
+
+    @TypeConverter
+    public static String fromClassFeaturesArrayList(ArrayList<ClassFeatures> list)
+    {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
 }
