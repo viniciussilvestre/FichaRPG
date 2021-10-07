@@ -9,14 +9,13 @@ import com.ecnav.ficharpg.util.Util;
 import java.util.ArrayList;
 
 @Entity(tableName = "character_sheet_table")
-public class SheetDAndD implements SheetInterface
+public class SheetDAndD
 {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int gameOfTheSheet = Util.DUNGEONS_AND_DRAGONS;
     private String name;
     private ArrayList<Classes> classFeatures = new ArrayList<>();
-    private String characterClass;
     private String subClass;
     private int level = 1;
     private String background;
@@ -135,11 +134,10 @@ public class SheetDAndD implements SheetInterface
 
     }
 
-    public SheetDAndD(int id, String name, String characterClass, int level, String background, String race, String alignment, String experiencePoints, int age, String eyeColor, double height, double weight, String hairColor, String skinColor, String characterBackstory, int armorClass, int initiative, int speed, int hitPoints, int hitPointsMaximum, int temporaryHitPoints, String totalHitDice, String hitDice, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, boolean inspiration, int proficiencyBonus, int passivePerception, String personalityTraits, String ideals, String bonds, String flaws, String featuresAndTraits, int strengthSave, int dexteritySave, int constitutionSave, int intelligenceSave, int wisdomSave, int charismaSave, boolean strengthSaveProficiency, boolean dexteritySaveProficiency, boolean constitutionSaveProficiency, boolean intelligenceSaveProficiency, boolean wisdomSaveProficiency, boolean charismaSaveProficiency, int acrobatics, int animalHandling, int arcana, int athletics, int deception, int history, int insight, int intimidation, int investigation, int medicine, int nature, int perception, int performance, int persuasion, int religion, int sleightOfHand, int stealth, int survival, boolean acrobaticsProficiency, boolean animalHandlingProficiency, boolean arcanaProficiency, boolean athleticsProficiency, boolean deceptionProficiency, boolean historyProficiency, boolean insightProficiency, boolean intimidationProficiency, boolean investigationProficiency, boolean medicineProficiency, boolean natureProficiency, boolean perceptionProficiency, boolean performanceProficiency, boolean persuasionProficiency, boolean religionProficiency, boolean sleightOfHandProficiency, boolean stealthProficiency, boolean survivalProficiency, int cooperPiece, int silverPiece, int electrumPiece, int goldPiece, int platinumPiece, String equipments, String spellcastingClass, int spellSaveDc, int spellAttackBonus)
+    public SheetDAndD(int id, String name, int level, String background, String race, String alignment, String experiencePoints, int age, String eyeColor, double height, double weight, String hairColor, String skinColor, String characterBackstory, int armorClass, int initiative, int speed, int hitPoints, int hitPointsMaximum, int temporaryHitPoints, String totalHitDice, String hitDice, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, boolean inspiration, int proficiencyBonus, int passivePerception, String personalityTraits, String ideals, String bonds, String flaws, String featuresAndTraits, int strengthSave, int dexteritySave, int constitutionSave, int intelligenceSave, int wisdomSave, int charismaSave, boolean strengthSaveProficiency, boolean dexteritySaveProficiency, boolean constitutionSaveProficiency, boolean intelligenceSaveProficiency, boolean wisdomSaveProficiency, boolean charismaSaveProficiency, int acrobatics, int animalHandling, int arcana, int athletics, int deception, int history, int insight, int intimidation, int investigation, int medicine, int nature, int perception, int performance, int persuasion, int religion, int sleightOfHand, int stealth, int survival, boolean acrobaticsProficiency, boolean animalHandlingProficiency, boolean arcanaProficiency, boolean athleticsProficiency, boolean deceptionProficiency, boolean historyProficiency, boolean insightProficiency, boolean intimidationProficiency, boolean investigationProficiency, boolean medicineProficiency, boolean natureProficiency, boolean perceptionProficiency, boolean performanceProficiency, boolean persuasionProficiency, boolean religionProficiency, boolean sleightOfHandProficiency, boolean stealthProficiency, boolean survivalProficiency, int cooperPiece, int silverPiece, int electrumPiece, int goldPiece, int platinumPiece, String equipments, String spellcastingClass, int spellSaveDc, int spellAttackBonus)
     {
         this.id = id;
         this.name = name;
-        this.characterClass = characterClass;
         this.level = level;
         this.background = background;
         this.race = race;
@@ -236,16 +234,6 @@ public class SheetDAndD implements SheetInterface
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public String getCharacterClass()
-    {
-        return characterClass;
-    }
-
-    public void setCharacterClass(String characterClass)
-    {
-        this.characterClass = characterClass;
     }
 
     public ArrayList<Classes> getClassFeatures()

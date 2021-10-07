@@ -26,4 +26,6 @@ public class Util
     public static final int TORMENTA = 2;
     public static final String PARAMETER_FOR_FRAGMENT = "parameter";
     public static final String CLASS_ID = "class_id";
+    public static final String CHOSEN_CLASS_BOOLEAN = "chosen_class_boolean";
+    public static final String CHOSEN_CLASS_ID = "chosen_class_id";
 }

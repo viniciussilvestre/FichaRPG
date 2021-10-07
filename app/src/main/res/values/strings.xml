@@ -90,6 +90,7 @@
     <string name="classLogo">Class logo</string>
     <string name="addButtonClass">Class</string>
     <string name="addButtonCustom">Custom</string>
+    <string name="addClassToSheetButton">Add Class</string>
     <string-array name="classes">
         <item>Select class</item>
         <item>Artificer</item>

@@ -1,5 +1,9 @@
 package com.ecnav.ficharpg;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -23,6 +28,43 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
     private ActivityClassChooserBinding binding;
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapterClasses recyclerViewAdapter;
+
+    ActivityResultLauncher<Intent> launchAddClass = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>()
+            {
+                @Override
+                public void onActivityResult(ActivityResult result)
+                {
+                    if (result.getResultCode() == Activity.RESULT_OK)
+                    {
+                        Intent data = result.getData();
+                        assert data != null;
+                    }
+                }
+            }
+    );
+
+    ActivityResultLauncher<Intent> launchClassesInfo = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>()
+            {
+                @Override
+                public void onActivityResult(ActivityResult result)
+                {
+                    if (result.getResultCode() == Activity.RESULT_OK)
+                    {
+                        Intent data = result.getData();
+                        assert data != null;
+                        Intent replyIntent = new Intent();
+                        replyIntent.putExtra(Util.CHOSEN_CLASS_ID, data.getIntExtra(Util.CHOSEN_CLASS_ID, 0));
+                        replyIntent.putExtra(Util.CHOSEN_CLASS_BOOLEAN, data.getBooleanExtra(Util.CHOSEN_CLASS_BOOLEAN, false));
+                        setResult(RESULT_OK, replyIntent);
+                        finish();
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,9 +97,10 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
             }
         });
 
-        binding.addButton.setOnClickListener(v ->
+        binding.addButton.setOnClickListener(view ->
         {
-
+            Intent intent = new Intent(ClassChooser.this, AddClassActivity.class);
+            openAddClass(intent);
         });
     }
 
@@ -65,7 +108,18 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
     public void onContactClick(int position)
     {
         Classes classes = Objects.requireNonNull(sheetViewModel.getAllClassesDnd().getValue()).get(position);
-        Intent intent = new Intent();
+        Intent intent = new Intent(ClassChooser.this, ClassesInfo.class);
         intent.putExtra(Util.CLASS_ID, classes.getClassId());
+        openClassesInfo(intent);
+    }
+
+    public void openAddClass(Intent intent)
+    {
+        launchAddClass.launch(intent);
+    }
+
+    public void openClassesInfo(Intent intent)
+    {
+        launchClassesInfo.launch(intent);
     }
 }

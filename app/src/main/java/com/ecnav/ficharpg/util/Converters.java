@@ -4,6 +4,7 @@ import androidx.room.TypeConverter;
 
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Equipment;
+import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.Spell;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -44,7 +45,7 @@ public class Converters
     @TypeConverter
     public static ArrayList<Classes> fromClassFeaturesString(String value)
     {
-        Type listType = new TypeToken<ArrayList<Equipment>>() {}.getType();
+        Type listType = new TypeToken<ArrayList<Classes>>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
@@ -56,14 +57,14 @@ public class Converters
     }
 
     @TypeConverter
-    public static ArrayList<String> fromFeaturesString(String value)
+    public static ArrayList<Feature> fromFeaturesString(String value)
     {
-        Type listType = new TypeToken<ArrayList<String>>() {}.getType();
+        Type listType = new TypeToken<ArrayList<Feature>>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
     @TypeConverter
-    public static String fromFeaturesArrayList(ArrayList<String> list)
+    public static String fromFeaturesArrayList(ArrayList<Feature> list)
     {
         Gson gson = new Gson();
         return gson.toJson(list);

@@ -14,6 +14,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.ecnav.ficharpg.data.SheetDao;
 import com.ecnav.ficharpg.model.Classes;
+import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.SheetDAndD;
 
 import java.util.concurrent.ExecutorService;
@@ -21,7 +22,10 @@ import java.util.concurrent.Executors;
 
 @Database(
         entities = {SheetDAndD.class, Classes.class},
-        version = 21,
+        version = 23,
+        autoMigrations = {
+                @AutoMigration(from = 22, to = 23, spec = SheetRoomDatabase.myAutoMigration.class),
+        },
         exportSchema = true
 )
 @TypeConverters({Converters.class})
@@ -29,6 +33,29 @@ public abstract class SheetRoomDatabase extends RoomDatabase
 {
     public abstract SheetDao sheetDao();
     public static final int NUMBER_OF_THREADS = 4;
+
+    @DeleteColumn.Entries({
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "sixthClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "fifthClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "forthClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "className"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "hitPointsAtHigherLevel"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "tenthClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "abilityScoreImprovement"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "ninthClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "seventhClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "eleventhClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "secondClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "thirdClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "eighthClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "firstClassFeature"),
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "hitPointsAtFirstLevel"),
+            @DeleteColumn(tableName = "character_sheet_table", columnName = "characterClass"),
+    })
+    static class myAutoMigration implements AutoMigrationSpec
+    {
+
+    }
 
     private static volatile SheetRoomDatabase INSTANCE;
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -59,7 +86,6 @@ public abstract class SheetRoomDatabase extends RoomDatabase
             databaseWriteExecutor.execute(() ->
             {
                 SheetDao sheetDao = INSTANCE.sheetDao();
-                sheetDao.deleteAll();
             });
         }
     };

@@ -11,9 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ecnav.ficharpg.R;
+import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.util.Util;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,10 +45,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         SheetDAndD sheet = Objects.requireNonNull(sheetsList.get(position));
         String characterName = sheet.getName();
-        String characterClass = sheet.getCharacterClass();
+        ArrayList<Classes> classes = sheet.getClassFeatures();
+        StringBuilder classesText = new StringBuilder();
+        for (int i = 0; i < classes.size(); i++)
+        {
+            if (i == classes.size() - 1)
+            {
+                classesText.append(classes.get(i).getClassName());
+            }
+            else
+            {
+                classesText.append(classes.get(i).getClassName()).append(", ");
+            }
+        }
         int level = sheet.getLevel();
         holder.name.setText(characterName);
-        holder.characterClass.setText(characterClass);
+        holder.characterClass.setText(classesText);
         holder.characterLevel.setText(String.valueOf(level));
         holder.sheetLogo.setImageResource(R.drawable.dungeons_and_dragons_logo);
     }
@@ -57,7 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return sheetsList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         OnContactClickListener onContactClickListener;
         public TextView name;

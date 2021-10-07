@@ -20,10 +20,12 @@ import android.view.ViewGroup;
 
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
+import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainStats extends Fragment
@@ -68,7 +70,20 @@ public class MainStats extends Fragment
             {
                 sheetDAndD = sheet;
                 binding.characterNameText.setText(sheet.getName());
-                binding.classText.setText(sheet.getCharacterClass());
+                ArrayList<Classes> classes = sheet.getClassFeatures();
+                StringBuilder classesText = new StringBuilder();
+                for (int i = 0; i < classes.size(); i++)
+                {
+                    if (i == classes.size() - 1)
+                    {
+                        classesText.append(classes.get(i).getClassName());
+                    }
+                    else
+                    {
+                        classesText.append(classes.get(i).getClassName()).append(", ");
+                    }
+                }
+                binding.classText.setText(classesText.toString());
                 binding.speedText.setText(String.valueOf(sheet.getSpeed()));
                 binding.levelText.setText(String.valueOf(sheet.getLevel()));
                 binding.alignmentText.setText(sheet.getAlignment());
@@ -284,7 +299,7 @@ public class MainStats extends Fragment
         SheetDAndD sheetDAndD = new SheetDAndD();
         sheetDAndD.setId(id);
         sheetDAndD.setName(binding.characterNameText.getText().toString());
-        sheetDAndD.setCharacterClass(binding.classText.getText().toString());
+        sheetDAndD.setClassFeatures(this.sheetDAndD.getClassFeatures());
         sheetDAndD.setSpeed(Integer.parseInt(binding.speedText.getText().toString()));
         sheetDAndD.setArmorClass(Integer.parseInt(binding.armorClassText.getText().toString()));
         sheetDAndD.setLevel(Integer.parseInt(binding.levelText.getText().toString()));

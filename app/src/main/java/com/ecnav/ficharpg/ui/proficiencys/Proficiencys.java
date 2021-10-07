@@ -747,7 +747,7 @@ public class Proficiencys extends Fragment
         sheetDAndD.setPersuasionProficiency(binding.persuasionSkill.isChecked());
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
         sheetDAndD.setName(this.sheetDAndD.getName());
-        sheetDAndD.setCharacterClass(this.sheetDAndD.getCharacterClass());
+        sheetDAndD.setClassFeatures(this.sheetDAndD.getClassFeatures());
         sheetDAndD.setSpeed(this.sheetDAndD.getSpeed());
         sheetDAndD.setArmorClass(this.sheetDAndD.getArmorClass());
         sheetDAndD.setLevel(this.sheetDAndD.getLevel());

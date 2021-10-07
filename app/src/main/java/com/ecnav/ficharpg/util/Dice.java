@@ -1,6 +1,8 @@
 package com.ecnav.ficharpg.util;
 
-public enum Dice
+import java.io.Serializable;
+
+public enum Dice implements Serializable
 {
     D4,
     D6,
