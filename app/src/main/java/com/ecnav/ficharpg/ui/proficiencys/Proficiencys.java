@@ -13,7 +13,6 @@ import com.ecnav.ficharpg.databinding.FragmentProficiencysBinding;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
-import com.ecnav.ficharpg.util.Util;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Proficiencys extends Fragment
@@ -30,12 +29,7 @@ public class Proficiencys extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
-        {
-            //parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
-        }
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(Proficiencys.this.requireActivity().getApplication()).create(SheetViewModel.class);
-        //id = parameterReceived;
         idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
 //        idViewModel.getSelectedItem().observe(this, item ->
 //        {
@@ -493,6 +487,8 @@ public class Proficiencys extends Fragment
             }
             binding.survivalValue.setText(String.valueOf(survivalValue));
         });
+
+
 
         binding.athleticsSkill.setOnClickListener(view ->
         {
