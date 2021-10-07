@@ -71,7 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             name = itemView.findViewById(R.id.rowNameCharacter);
             characterClass = itemView.findViewById(R.id.rowCharacterClass);
             characterLevel = itemView.findViewById(R.id.rowCharacterLevel);
-            sheetLogo = itemView.findViewById(R.id.sheetGameType);
+            sheetLogo = itemView.findViewById(R.id.logoOfGame);
             this.onContactClickListener = onContactClickListener;
             itemView.setOnClickListener(this);
         }

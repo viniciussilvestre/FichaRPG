@@ -87,6 +87,8 @@
     <string name="ClassText">Class</string>
     <string name="buttonClassText">Class</string>
     <string name="spinnerToolTip">Select Class</string>
+    <string name="classLogo">Class logo</string>
+    <string name="addButtonClass">Class</string>
     <string-array name="classes">
         <item>Select class</item>
         <item>Artificer</item>
@@ -104,4 +106,4 @@
         <item>Custom</item>
     </string-array>
 
-    </resources>
+</resources>

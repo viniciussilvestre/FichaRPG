@@ -1,13 +1,10 @@
 package com.ecnav.ficharpg.model;
 
 import android.app.Application;
-import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.ecnav.ficharpg.data.Repository;
 
@@ -17,12 +14,14 @@ public class SheetViewModel extends AndroidViewModel
 {
     public static Repository repository;
     public final LiveData<List<SheetDAndD>> allSheetsDnd;
+    public final LiveData<List<Classes>> allClasses;
 
     public SheetViewModel(@NonNull Application application)
     {
         super (application);
         repository = new Repository(application);
         allSheetsDnd = repository.getAllSheetsDnd();
+        allClasses = repository.getAllClassesDnd();
     }
 
     public LiveData<List<SheetDAndD>> getAllSheetsDnd()
@@ -30,9 +29,19 @@ public class SheetViewModel extends AndroidViewModel
         return allSheetsDnd;
     }
 
+    public LiveData<List<Classes>> getAllClassesDnd()
+    {
+        return allClasses;
+    }
+
     public static void insertDnd(SheetDAndD sheetDAndD)
     {
         repository.insertDnd(sheetDAndD);
+    }
+
+    public static void insertClassDnd(Classes classes)
+    {
+        repository.insertClassDnd(classes);
     }
 
     public static void updateDnd(SheetDAndD sheetDAndD)
@@ -40,9 +49,19 @@ public class SheetViewModel extends AndroidViewModel
         repository.updateDnd(sheetDAndD);
     }
 
+    public static void updateClassDnd(Classes classes)
+    {
+        repository.updateClassDnd(classes);
+    }
+
     public LiveData<SheetDAndD> getCharacterDnd(int id)
     {
         return repository.getCharacterDnd(id);
+    }
+
+    public LiveData<Classes> getClassDnd(int id)
+    {
+        return repository.getClassDnd(id);
     }
 
     public static void deleteDnd(SheetDAndD sheetDAndD)

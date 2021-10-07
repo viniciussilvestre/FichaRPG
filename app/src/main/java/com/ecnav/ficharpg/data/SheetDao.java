@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.ecnav.ficharpg.model.ClassFeatures;
+import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetDAndD;
 
 import java.util.List;
@@ -20,9 +20,9 @@ public interface SheetDao
     //Dungeons and dragon
     //---------------------------------------------------//
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertDnd(SheetDAndD sheetDAndD);
+    void insert(SheetDAndD sheetDAndD);
     @Delete()
-    void deleteDnd(SheetDAndD sheetDAndD);
+    void delete(SheetDAndD sheetDAndD);
     @Query("SELECT * FROM character_sheet_table ORDER BY name ASC")
     LiveData<List<SheetDAndD>> getAllSheetsDnd();
     @Query("SELECT * FROM character_sheet_table WHERE character_sheet_table.id == :id")
@@ -30,6 +30,16 @@ public interface SheetDao
     @Update
     void updateDnd(SheetDAndD sheetDAndD);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Classes classes);
+    @Delete()
+    void delete(Classes classes);
+    @Query("SELECT * FROM classes_table ORDER BY className ASC")
+    LiveData<List<Classes>> getAllClassesDnd();
+    @Query("SELECT * FROM classes_table WHERE classes_table.classId == :id")
+    LiveData<Classes> getClassDnd(int id);
+    @Update
+    void updateClass(Classes classes);
 
     //---------------------------------------------------//
     //All sheets

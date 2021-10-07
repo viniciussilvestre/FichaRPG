@@ -25,4 +25,5 @@ public class Util
     public static final int DUNGEONS_AND_DRAGONS = 1;
     public static final int TORMENTA = 2;
     public static final String PARAMETER_FOR_FRAGMENT = "parameter";
+    public static final String CLASS_ID = "class_id";
 }

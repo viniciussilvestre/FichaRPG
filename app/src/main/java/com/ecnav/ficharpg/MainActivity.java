@@ -22,7 +22,7 @@ import android.widget.SearchView;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapter;
 import com.ecnav.ficharpg.databinding.ActivityMainBinding;
-import com.ecnav.ficharpg.model.ClassFeatures;
+import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     private ActivityMainBinding binding;
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapter recyclerViewAdapter;
-    private List<ClassFeatures> classFeaturesList;
+    private List<Classes> classesList;
 
     ActivityResultLauncher<Intent> launchCharacterSheet = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
