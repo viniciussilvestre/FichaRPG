@@ -89,6 +89,7 @@
     <string name="spinnerToolTip">Select Class</string>
     <string name="classLogo">Class logo</string>
     <string name="addButtonClass">Class</string>
+    <string name="addButtonCustom">Custom</string>
     <string-array name="classes">
         <item>Select class</item>
         <item>Artificer</item>
