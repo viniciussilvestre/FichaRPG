@@ -22,6 +22,8 @@ import android.view.MenuInflater;
 import android.widget.SearchView;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapter;
+import com.ecnav.ficharpg.data.AnswerListAsyncResponse;
+import com.ecnav.ficharpg.data.Repository;
 import com.ecnav.ficharpg.databinding.ActivityMainBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Feature;
@@ -109,6 +111,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(MainActivity.this.getApplication()).create(SheetViewModel.class);
+        List<Classes> classes = new Repository(MainActivity.this.getApplication()).getClassDndFeatures(classesArrayList ->
+        {
+            for (int i = 0; i < classesArrayList.size(); i++)
+            {
+                SheetViewModel.insertClassDnd(classesArrayList.get(i));
+            }
+        });
         sheetViewModel.getAllSheetsDnd().observe(this, sheets ->
         {
             recyclerViewAdapter = new RecyclerViewAdapter(sheets, MainActivity.this, this);

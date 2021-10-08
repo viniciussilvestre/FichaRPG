@@ -1,4 +1,4 @@
-package com.ecnav.ficharpg;
+package com.ecnav.ficharpg.ui;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.ActivityAddClassBinding;
 
 public class AddClassActivity extends AppCompatActivity

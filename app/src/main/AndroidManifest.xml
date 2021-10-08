@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".controller.AppController"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
@@ -13,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FichaRPG">
         <activity
-            android:name=".ClassesInfo"
+            android:name=".ui.ClassesInfo"
             android:exported="true" />
         <activity
-            android:name=".AddClassActivity"
+            android:name=".ui.AddClassActivity"
             android:exported="true" />
         <activity
-            android:name=".ClassChooser"
+            android:name=".ui.ClassChooser"
             android:exported="true" />
         <activity
             android:name=".CharacterSheet"

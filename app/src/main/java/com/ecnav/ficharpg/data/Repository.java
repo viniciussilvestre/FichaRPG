@@ -9,11 +9,15 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.ecnav.ficharpg.controller.AppController;
 import com.ecnav.ficharpg.model.Classes;
+import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.Spell;
+import com.ecnav.ficharpg.util.Dice;
 import com.ecnav.ficharpg.util.SheetRoomDatabase;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +31,14 @@ public class Repository
     ArrayList<Spell> statementsArrayList = new ArrayList<>();
     ArrayList<Classes> classesArrayList = new ArrayList<>();
     String urlSpells = "https://raw.githubusercontent.com/jcquinlan/dnd-spells/master/spells.json";
-    String urlClassFeatures = "https://raw.githubusercontent.com/BTMorton/dnd-5e-srd/master/json/02%20classes.json";
+    String urlClassFeatures = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/Classes_JSON.json?token=AO3UDMD3YPMDRTA4HRHTQYDBNF7MK";
 
 //    public List<Spell> getSpells(final AnswerListAsyncResponse callBack)
 //    {
 //
 //    }
 
-    public List<Classes> getClassFeatures(final AnswerListAsyncResponse callBack)
+    public List<Classes> getClassDndFeatures(final AnswerListAsyncResponse callBack)
     {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlClassFeatures, null, response ->
         {
@@ -43,7 +47,18 @@ public class Repository
                 try
                 {
                     Classes classes = new Classes();
-                    Log.d("TAG", "getFeatures: " + response.getJSONArray(i).getString(0));
+                    JSONArray jsonArray = response.getJSONArray(i);
+                    classes.setClassId(Integer.parseInt(jsonArray.getString(0)));
+                    classes.setClassName(jsonArray.getString(1));
+                    classes.setHitDice(Dice.valueOf(jsonArray.getString(2)));
+                    classes.setHitPointsAtHigherLevel(jsonArray.getString(3));
+                    for (int j = 4; j < jsonArray.length(); j += 2)
+                    {
+                        Feature feature = new Feature();
+                        feature.setNome(jsonArray.getString(j));
+                        feature.setDescription(jsonArray.getString(j + 1));
+                        classes.addFeatures(feature);
+                    }
                     classesArrayList.add(classes);
                 }
                 catch (JSONException e)
@@ -51,6 +66,27 @@ public class Repository
                     e.printStackTrace();
                 }
             }
+//            try
+//            {
+//                Classes classes = new Classes();
+//                JSONArray jsonArray = response.getJSONArray(0);
+//                classes.setClassId(Integer.parseInt(jsonArray.getString(0)));
+//                classes.setClassName(jsonArray.getString(1));
+//                classes.setHitDice(Dice.valueOf(jsonArray.getString(2)));
+//                classes.setHitPointsAtHigherLevel(jsonArray.getString(3));
+//                for (int j = 4; j < jsonArray.length(); j += 2)
+//                {
+//                    Feature feature = new Feature();
+//                    feature.setNome(jsonArray.getString(j));
+//                    feature.setDescription(jsonArray.getString(j + 1));
+//                    classes.addFeatures(feature);
+//                }
+//                classesArrayList.add(classes);
+//            }
+//            catch (JSONException e)
+//            {
+//                e.printStackTrace();
+//            }
             if (null != callBack)
             {
                 callBack.processFinished(classesArrayList);

@@ -1,4 +1,4 @@
-package com.ecnav.ficharpg;
+package com.ecnav.ficharpg.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,15 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
+import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
 import com.ecnav.ficharpg.databinding.ActivityClassesInfoBinding;
-import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
-
-import java.util.Objects;
 
 public class ClassesInfo extends AppCompatActivity implements RecyclerViewAdapterClassesInfo.OnContactClickListener
 {

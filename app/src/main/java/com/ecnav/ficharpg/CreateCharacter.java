@@ -4,7 +4,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,13 +13,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
 import com.ecnav.ficharpg.databinding.ActivityCreateCharacterBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.ui.ClassChooser;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
