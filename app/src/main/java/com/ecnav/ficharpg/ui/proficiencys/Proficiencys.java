@@ -368,6 +368,33 @@ public class Proficiencys extends Fragment
             binding.acrobaticsValue.setText(String.valueOf(acrobaticsValue));
         });
 
+        binding.acrobaticsSkill.setOnLongClickListener(view ->
+        {
+            int acrobaticsValue = (this.sheetDAndD.getDexterity() - 10)/2;
+            if (binding.acrobaticsSkill.isChecked())
+            {
+                acrobaticsValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseAcrobaticsProficiency())
+                {
+                    this.sheetDAndD.setExpertiseAcrobaticsProficiency(false);
+                    binding.acrobaticsValue.setText(String.valueOf(acrobaticsValue));
+                    Snackbar.make(binding.acrobaticsSkill, "Expertise disabled for acrobatics skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseAcrobaticsProficiency(true);
+                    acrobaticsValue += proficiencyBonus;
+                    binding.acrobaticsValue.setText(String.valueOf(acrobaticsValue));
+                    Snackbar.make(binding.acrobaticsSkill, "Expertise enabled for acrobatics skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseAcrobaticsProficiency(false);
+            }
+            return true;
+        });
+
         binding.stealthSkill.setOnClickListener(view ->
         {
             int stealthValue = (this.sheetDAndD.getDexterity() - 10)/2;
@@ -376,6 +403,33 @@ public class Proficiencys extends Fragment
                 stealthValue += proficiencyBonus;
             }
             binding.stealthValue.setText(String.valueOf(stealthValue));
+        });
+
+        binding.stealthSkill.setOnLongClickListener(view ->
+        {
+            int stealthValue = (this.sheetDAndD.getDexterity() - 10)/2;
+            if (binding.stealthSkill.isChecked())
+            {
+                stealthValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseStealthProficiency())
+                {
+                    this.sheetDAndD.setExpertiseStealthProficiency(false);
+                    binding.stealthValue.setText(String.valueOf(stealthValue));
+                    Snackbar.make(binding.stealthSkill, "Expertise disabled for stealth skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseStealthProficiency(true);
+                    stealthValue += proficiencyBonus;
+                    binding.stealthValue.setText(String.valueOf(stealthValue));
+                    Snackbar.make(binding.stealthSkill, "Expertise enabled for stealth skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseStealthProficiency(false);
+            }
+            return true;
         });
 
         binding.sleighHandSkill.setOnClickListener(view ->
@@ -388,6 +442,33 @@ public class Proficiencys extends Fragment
             binding.sleightHandValue.setText(String.valueOf(sleightHandValue));
         });
 
+        binding.sleighHandSkill.setOnLongClickListener(view ->
+        {
+            int sleightHandValue = (this.sheetDAndD.getDexterity() - 10)/2;
+            if (binding.sleighHandSkill.isChecked())
+            {
+                sleightHandValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseSleightOfHandProficiency())
+                {
+                    this.sheetDAndD.setExpertiseSleightOfHandProficiency(false);
+                    binding.sleightHandValue.setText(String.valueOf(sleightHandValue));
+                    Snackbar.make(binding.sleighHandSkill, "Expertise disabled for sleigh of hand skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseSleightOfHandProficiency(true);
+                    sleightHandValue += proficiencyBonus;
+                    binding.sleightHandValue.setText(String.valueOf(sleightHandValue));
+                    Snackbar.make(binding.sleighHandSkill, "Expertise enabled for sleigh of hand skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseSleightOfHandProficiency(false);
+            }
+            return true;
+        });
+
         binding.arcanaSkill.setOnClickListener(view ->
         {
             int arcanaValue = (this.sheetDAndD.getIntelligence() - 10)/2;
@@ -396,6 +477,33 @@ public class Proficiencys extends Fragment
                 arcanaValue += proficiencyBonus;
             }
             binding.arcanaValue.setText(String.valueOf(arcanaValue));
+        });
+
+        binding.arcanaSkill.setOnLongClickListener(view ->
+        {
+            int arcanaValue = (this.sheetDAndD.getIntelligence() - 10)/2;
+            if (binding.arcanaSkill.isChecked())
+            {
+                arcanaValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseArcanaProficiency())
+                {
+                    this.sheetDAndD.setExpertiseArcanaProficiency(false);
+                    binding.arcanaValue.setText(String.valueOf(arcanaValue));
+                    Snackbar.make(binding.arcanaSkill, "Expertise disabled for arcana skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseArcanaProficiency(true);
+                    arcanaValue += proficiencyBonus;
+                    binding.arcanaValue.setText(String.valueOf(arcanaValue));
+                    Snackbar.make(binding.arcanaSkill, "Expertise enabled for arcana skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseArcanaProficiency(false);
+            }
+            return true;
         });
 
         binding.historySkill.setOnClickListener(view ->
@@ -408,6 +516,33 @@ public class Proficiencys extends Fragment
            binding.historyValue.setText(String.valueOf(historyValue));
         });
 
+        binding.historySkill.setOnLongClickListener(view ->
+        {
+            int historyValue = (this.sheetDAndD.getIntelligence() - 10)/2;
+            if (binding.historySkill.isChecked())
+            {
+                historyValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseHistoryProficiency())
+                {
+                    this.sheetDAndD.setExpertiseHistoryProficiency(false);
+                    binding.historyValue.setText(String.valueOf(historyValue));
+                    Snackbar.make(binding.historySkill, "Expertise disabled for history skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseHistoryProficiency(true);
+                    historyValue += proficiencyBonus;
+                    binding.historyValue.setText(String.valueOf(historyValue));
+                    Snackbar.make(binding.historySkill, "Expertise enabled for history skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseHistoryProficiency(false);
+            }
+            return true;
+        });
+
         binding.investigationSkill.setOnClickListener(view ->
         {
             int investigationValue = (this.sheetDAndD.getIntelligence() - 10)/2;
@@ -416,6 +551,33 @@ public class Proficiencys extends Fragment
                 investigationValue += proficiencyBonus;
             }
             binding.investigationValue.setText(String.valueOf(investigationValue));
+        });
+
+        binding.investigationSkill.setOnLongClickListener(view ->
+        {
+            int investigationValue = (this.sheetDAndD.getIntelligence() - 10)/2;
+            if (binding.investigationSkill.isChecked())
+            {
+                investigationValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseInvestigationProficiency())
+                {
+                    this.sheetDAndD.setExpertiseInvestigationProficiency(false);
+                    binding.investigationValue.setText(String.valueOf(investigationValue));
+                    Snackbar.make(binding.investigationSkill, "Expertise disabled for investigation skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseInvestigationProficiency(true);
+                    investigationValue += proficiencyBonus;
+                    binding.investigationValue.setText(String.valueOf(investigationValue));
+                    Snackbar.make(binding.investigationSkill, "Expertise enabled for investigation skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseInvestigationProficiency(false);
+            }
+            return true;
         });
 
         binding.natureSkill.setOnClickListener(view ->
@@ -428,6 +590,33 @@ public class Proficiencys extends Fragment
             binding.natureValue.setText(String.valueOf(natureValue));
         });
 
+        binding.natureSkill.setOnLongClickListener(view ->
+        {
+            int natureValue = (this.sheetDAndD.getIntelligence() - 10)/2;
+            if (binding.natureSkill.isChecked())
+            {
+                natureValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseNatureProficiency())
+                {
+                    this.sheetDAndD.setExpertiseNatureProficiency(false);
+                    binding.natureValue.setText(String.valueOf(natureValue));
+                    Snackbar.make(binding.natureSkill, "Expertise disabled for nature skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseNatureProficiency(true);
+                    natureValue += proficiencyBonus;
+                    binding.natureValue.setText(String.valueOf(natureValue));
+                    Snackbar.make(binding.natureSkill, "Expertise enabled for nature skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseNatureProficiency(false);
+            }
+            return true;
+        });
+
         binding.religionSkill.setOnClickListener(view ->
         {
             int religionValue = (this.sheetDAndD.getIntelligence() - 10)/2;
@@ -436,6 +625,33 @@ public class Proficiencys extends Fragment
                 religionValue += proficiencyBonus;
             }
             binding.religionValue.setText(String.valueOf(religionValue));
+        });
+
+        binding.religionSkill.setOnLongClickListener(view ->
+        {
+            int religionValue = (this.sheetDAndD.getIntelligence() - 10)/2;
+            if (binding.religionSkill.isChecked())
+            {
+                religionValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseReligionProficiency())
+                {
+                    this.sheetDAndD.setExpertiseReligionProficiency(false);
+                    binding.religionValue.setText(String.valueOf(religionValue));
+                    Snackbar.make(binding.religionSkill, "Expertise disabled for religion skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseReligionProficiency(true);
+                    religionValue += proficiencyBonus;
+                    binding.religionValue.setText(String.valueOf(religionValue));
+                    Snackbar.make(binding.religionSkill, "Expertise enabled for religion skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseReligionProficiency(false);
+            }
+            return true;
         });
 
         binding.animHandSkill.setOnClickListener(view ->
@@ -448,6 +664,33 @@ public class Proficiencys extends Fragment
             binding.animHandValue.setText(String.valueOf(animHandValue));
         });
 
+        binding.animHandSkill.setOnLongClickListener(view ->
+        {
+            int animHandValue = (this.sheetDAndD.getWisdom() - 10)/2;
+            if (binding.animHandSkill.isChecked())
+            {
+                animHandValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseAnimalHandlingProficiency())
+                {
+                    this.sheetDAndD.setExpertiseAnimalHandlingProficiency(false);
+                    binding.animHandValue.setText(String.valueOf(animHandValue));
+                    Snackbar.make(binding.animHandSkill, "Expertise disabled for animal handling skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseAnimalHandlingProficiency(true);
+                    animHandValue += proficiencyBonus;
+                    binding.animHandValue.setText(String.valueOf(animHandValue));
+                    Snackbar.make(binding.animHandSkill, "Expertise enabled for animal handling skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseAnimalHandlingProficiency(false);
+            }
+            return true;
+        });
+
         binding.insightSkill.setOnClickListener(view ->
         {
             int insightValue = (this.sheetDAndD.getWisdom() - 10)/2;
@@ -456,6 +699,33 @@ public class Proficiencys extends Fragment
                 insightValue += proficiencyBonus;
             }
             binding.insightValue.setText(String.valueOf(insightValue));
+        });
+
+        binding.insightSkill.setOnLongClickListener(view ->
+        {
+            int insightValue = (this.sheetDAndD.getWisdom() - 10)/2;
+            if (binding.insightSkill.isChecked())
+            {
+                insightValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseInsightProficiency())
+                {
+                    this.sheetDAndD.setExpertiseInsightProficiency(false);
+                    binding.insightValue.setText(String.valueOf(insightValue));
+                    Snackbar.make(binding.insightSkill, "Expertise disabled for insight skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseInsightProficiency(true);
+                    insightValue += proficiencyBonus;
+                    binding.insightValue.setText(String.valueOf(insightValue));
+                    Snackbar.make(binding.insightSkill, "Expertise enabled for insight skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseInsightProficiency(false);
+            }
+            return true;
         });
 
         binding.medicineSkill.setOnClickListener(view ->
@@ -468,6 +738,33 @@ public class Proficiencys extends Fragment
             binding.medicineValue.setText(String.valueOf(medicineValue));
         });
 
+        binding.medicineSkill.setOnLongClickListener(view ->
+        {
+            int medicineValue = (this.sheetDAndD.getWisdom() - 10)/2;
+            if (binding.medicineSkill.isChecked())
+            {
+                medicineValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseMedicineProficiency())
+                {
+                    this.sheetDAndD.setExpertiseMedicineProficiency(false);
+                    binding.medicineValue.setText(String.valueOf(medicineValue));
+                    Snackbar.make(binding.medicineSkill, "Expertise disabled for medicine skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseMedicineProficiency(true);
+                    medicineValue += proficiencyBonus;
+                    binding.medicineValue.setText(String.valueOf(medicineValue));
+                    Snackbar.make(binding.medicineSkill, "Expertise enabled for medicine skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseMedicineProficiency(false);
+            }
+            return true;
+        });
+
         binding.perceptionSkill.setOnClickListener(view ->
         {
             int perceptionValue = (this.sheetDAndD.getWisdom() - 10)/2;
@@ -476,6 +773,33 @@ public class Proficiencys extends Fragment
                 perceptionValue += proficiencyBonus;
             }
             binding.perceptionValue.setText(String.valueOf(perceptionValue));
+        });
+
+        binding.perceptionSkill.setOnLongClickListener(view ->
+        {
+            int perceptionValue = (this.sheetDAndD.getWisdom() - 10)/2;
+            if (binding.perceptionSkill.isChecked())
+            {
+                perceptionValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertisePerceptionProficiency())
+                {
+                    this.sheetDAndD.setExpertisePerceptionProficiency(false);
+                    binding.perceptionValue.setText(String.valueOf(perceptionValue));
+                    Snackbar.make(binding.perceptionSkill, "Expertise disabled for perception skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertisePerceptionProficiency(true);
+                    perceptionValue += proficiencyBonus;
+                    binding.perceptionValue.setText(String.valueOf(perceptionValue));
+                    Snackbar.make(binding.perceptionSkill, "Expertise enabled for perception skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertisePerceptionProficiency(false);
+            }
+            return true;
         });
 
         binding.survivalSkill.setOnClickListener(view ->
@@ -488,7 +812,32 @@ public class Proficiencys extends Fragment
             binding.survivalValue.setText(String.valueOf(survivalValue));
         });
 
-
+        binding.survivalSkill.setOnLongClickListener(view ->
+        {
+            int survivalValue = (this.sheetDAndD.getWisdom() - 10)/2;
+            if (binding.survivalSkill.isChecked())
+            {
+                survivalValue += proficiencyBonus;
+                if (this.sheetDAndD.isExpertiseSurvivalProficiency())
+                {
+                    this.sheetDAndD.setExpertiseSurvivalProficiency(false);
+                    binding.survivalValue.setText(String.valueOf(survivalValue));
+                    Snackbar.make(binding.deceptionSkill, "Expertise disabled for survival skill", Snackbar.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    this.sheetDAndD.setExpertiseSurvivalProficiency(true);
+                    survivalValue += proficiencyBonus;
+                    binding.survivalValue.setText(String.valueOf(survivalValue));
+                    Snackbar.make(binding.deceptionSkill, "Expertise enabled for survival skill", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                this.sheetDAndD.setExpertiseSurvivalProficiency(false);
+            }
+            return true;
+        });
 
         binding.athleticsSkill.setOnClickListener(view ->
         {
@@ -720,18 +1069,31 @@ public class Proficiencys extends Fragment
         sheetDAndD.setWisdomSaveProficiency(binding.wisSavingThrow.isChecked());
         sheetDAndD.setCharismaSaveProficiency(binding.chaSavingThrow.isChecked());
         sheetDAndD.setAcrobaticsProficiency(binding.acrobaticsSkill.isChecked());
+        sheetDAndD.setExpertiseAcrobaticsProficiency(this.sheetDAndD.isExpertiseAcrobaticsProficiency());
         sheetDAndD.setStealthProficiency(binding.stealthSkill.isChecked());
+        sheetDAndD.setExpertiseStealthProficiency(this.sheetDAndD.isExpertiseStealthProficiency());
         sheetDAndD.setSleightOfHandProficiency(binding.sleighHandSkill.isChecked());
+        sheetDAndD.setExpertiseSleightOfHandProficiency(this.sheetDAndD.isExpertiseSleightOfHandProficiency());
         sheetDAndD.setArcanaProficiency(binding.arcanaSkill.isChecked());
+        sheetDAndD.setExpertiseArcanaProficiency(this.sheetDAndD.isExpertiseArcanaProficiency());
         sheetDAndD.setHistoryProficiency(binding.historySkill.isChecked());
+        sheetDAndD.setExpertiseHistoryProficiency(this.sheetDAndD.isExpertiseHistoryProficiency());
         sheetDAndD.setInvestigationProficiency(binding.investigationSkill.isChecked());
+        sheetDAndD.setExpertiseInvestigationProficiency(this.sheetDAndD.isExpertiseInvestigationProficiency());
         sheetDAndD.setNatureProficiency(binding.natureSkill.isChecked());
+        sheetDAndD.setExpertiseNatureProficiency(this.sheetDAndD.isExpertiseNatureProficiency());
         sheetDAndD.setReligionProficiency(binding.religionSkill.isChecked());
+        sheetDAndD.setExpertiseReligionProficiency(this.sheetDAndD.isExpertiseReligionProficiency());
         sheetDAndD.setAnimalHandlingProficiency(binding.animHandSkill.isChecked());
+        sheetDAndD.setExpertiseAnimalHandlingProficiency(this.sheetDAndD.isExpertiseAnimalHandlingProficiency());
         sheetDAndD.setInsightProficiency(binding.insightSkill.isChecked());
+        sheetDAndD.setExpertiseInsightProficiency(this.sheetDAndD.isExpertiseInsightProficiency());
         sheetDAndD.setMedicineProficiency(binding.medicineSkill.isChecked());
+        sheetDAndD.setExpertiseMedicineProficiency(this.sheetDAndD.isExpertiseMedicineProficiency());
         sheetDAndD.setPerceptionProficiency(binding.perceptionSkill.isChecked());
+        sheetDAndD.setExpertisePerceptionProficiency(this.sheetDAndD.isExpertisePerceptionProficiency());
         sheetDAndD.setSurvivalProficiency(binding.survivalSkill.isChecked());
+        sheetDAndD.setExpertiseSurvivalProficiency(this.sheetDAndD.isExpertiseSurvivalProficiency());
         sheetDAndD.setAthleticsProficiency(binding.athleticsSkill.isChecked());
         sheetDAndD.setExpertiseAthleticsProficiency(this.sheetDAndD.isExpertiseAthleticsProficiency());
         sheetDAndD.setDeceptionProficiency(binding.deceptionSkill.isChecked());

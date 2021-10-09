@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
 import com.ecnav.ficharpg.databinding.FragmentClassInfoBinding;
 import com.ecnav.ficharpg.model.Classes;
+import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
@@ -57,7 +58,12 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
             if (sheet != null)
             {
                 classes = sheet.getClassFeatures();
-                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(classes.get(0).getClassFeatures(), ClassInfo.this.requireActivity(), this);
+                ArrayList<Feature> features = new ArrayList<>();
+                for (int i = 0; i < classes.size(); i++)
+                {
+                    features.addAll(classes.get(i).getClassFeatures());
+                }
+                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, ClassInfo.this.requireActivity(), this);
                 binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
             }
         });

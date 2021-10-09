@@ -31,7 +31,7 @@ public class Repository
     ArrayList<Spell> statementsArrayList = new ArrayList<>();
     ArrayList<Classes> classesArrayList = new ArrayList<>();
     String urlSpells = "https://raw.githubusercontent.com/jcquinlan/dnd-spells/master/spells.json";
-    String urlClassFeatures = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/Classes_JSON.json?token=AO3UDMD3YPMDRTA4HRHTQYDBNF7MK";
+    String urlClassFeatures = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/Classes_JSON.json?token=AO3UDMCT5PBMRR566PMQAG3BNHEFU";
 
 //    public List<Spell> getSpells(final AnswerListAsyncResponse callBack)
 //    {
