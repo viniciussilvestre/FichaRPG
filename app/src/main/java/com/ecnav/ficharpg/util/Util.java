@@ -28,4 +28,7 @@ public class Util
     public static final String CLASS_ID = "class_id";
     public static final String CHOSEN_CLASS_BOOLEAN = "chosen_class_boolean";
     public static final String CHOSEN_CLASS_ID = "chosen_class_id";
+    public static final String CLASS_OR_SUBCLASS = "class_or_subclass";
+    public static final int CLASS_INFO_FLAG = 1;
+    public static final int SUBCLASS_INFO_FLAG = 2;
 }

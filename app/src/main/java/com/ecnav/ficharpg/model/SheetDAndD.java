@@ -16,6 +16,7 @@ public class SheetDAndD
     private int gameOfTheSheet = Util.DUNGEONS_AND_DRAGONS;
     private String name;
     private ArrayList<Classes> classFeatures = new ArrayList<>();
+    private ArrayList<Subclass> subclasses = new ArrayList<>();
     private String subClass;
     private int level = 1;
     private String background;
@@ -244,6 +245,16 @@ public class SheetDAndD
     public void setClassFeatures(ArrayList<Classes> classFeatures)
     {
         this.classFeatures = classFeatures;
+    }
+
+    public ArrayList<Subclass> getSubclasses()
+    {
+        return subclasses;
+    }
+
+    public void setSubclasses(ArrayList<Subclass> subclasses)
+    {
+        this.subclasses = subclasses;
     }
 
     public String getSubClass()

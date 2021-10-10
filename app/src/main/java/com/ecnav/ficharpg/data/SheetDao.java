@@ -10,6 +10,7 @@ import androidx.room.Update;
 
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetDAndD;
+import com.ecnav.ficharpg.model.Subclass;
 
 import java.util.List;
 
@@ -41,6 +42,18 @@ public interface SheetDao
     @Update
     void updateClass(Classes classes);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Subclass subclass);
+    @Delete()
+    void delete(Subclass subclass);
+    @Query("SELECT * FROM subclass_table ORDER BY subclassName ASC")
+    LiveData<List<Subclass>> getAllSubclassesDnd();
+    @Query("SELECT * FROM subclass_table WHERE subclass_table.subclassId == :id")
+    LiveData<Subclass> getSubclass(int id);
+    @Query("SELECT * FROM subclass_table WHERE subclass_table.mainsClassId == :id")
+    LiveData<List<Subclass>> getAllsubclassesFromClasses(int id);
+    @Update
+    void updateSubclass(Subclass subclass);
     //---------------------------------------------------//
     //All sheets
     //---------------------------------------------------//

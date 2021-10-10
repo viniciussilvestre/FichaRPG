@@ -49,9 +49,8 @@
             android:inputType="textPersonName|text"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterLevelField"
+            app:layout_constraintTop_toBottomOf="@+id/subclassText"
             tools:ignore="TextContrastCheck" />
 
         <EditText
@@ -67,7 +66,8 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterBackgroundField" />
+            app:layout_constraintTop_toBottomOf="@+id/characterBackgroundField"
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/characterAlignmentField"
@@ -121,13 +121,8 @@
 
         <Button
             android:id="@+id/addClassButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
             android:text="@string/buttonClassText"
-            android:textAllCaps="false"
             app:cornerRadius="14dp"
             app:icon="@drawable/ic_baseline_add_24"
             app:iconPadding="12dp"
@@ -136,7 +131,8 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/characterNameField"
-            tools:ignore="DuplicateSpeakableTextCheck" />
+            tools:ignore="DuplicateSpeakableTextCheck"
+            style="@style/addClass_SubClassStyle" />
 
 <!--        <androidx.appcompat.widget.AppCompatSpinner-->
 <!--            android:id="@+id/spinnerClass"-->
@@ -159,12 +155,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_medium"
             android:text="@string/ClassText"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addClassButton" />
+
+        <Button
+            android:id="@+id/addSubclassButton"
+            style="@style/addClass_SubClassStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/subclassText"
+            app:cornerRadius="@dimen/buttonCornerValue"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/characterLevelField"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/subclassText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/subclassText"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addSubclassButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

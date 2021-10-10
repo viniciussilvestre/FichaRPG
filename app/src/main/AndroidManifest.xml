@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FichaRPG">
         <activity
-            android:name=".ui.ClassesInfo"
+            android:name=".ui.SubclassChooser"
+            android:exported="true" />
+        <activity
+            android:name=".util.DisplayClassSubclassInfo"
             android:exported="true" />
         <activity
             android:name=".ui.AddClassActivity"

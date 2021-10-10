@@ -15,6 +15,7 @@ public class SheetViewModel extends AndroidViewModel
     public static Repository repository;
     public final LiveData<List<SheetDAndD>> allSheetsDnd;
     public final LiveData<List<Classes>> allClasses;
+    public final LiveData<List<Subclass>> allSubclasses;
 
     public SheetViewModel(@NonNull Application application)
     {
@@ -22,6 +23,7 @@ public class SheetViewModel extends AndroidViewModel
         repository = new Repository(application);
         allSheetsDnd = repository.getAllSheetsDnd();
         allClasses = repository.getAllClassesDnd();
+        allSubclasses = repository.getAllSubclassesDnd();
     }
 
     public LiveData<List<SheetDAndD>> getAllSheetsDnd()
@@ -34,6 +36,16 @@ public class SheetViewModel extends AndroidViewModel
         return allClasses;
     }
 
+    public LiveData<List<Subclass>> getAllSubclasses()
+    {
+        return allSubclasses;
+    }
+
+    public LiveData<List<Subclass>> getSomeSubclasses(int id)
+    {
+        return repository.getSomeSubclasses(id);
+    }
+
     public static void insertDnd(SheetDAndD sheetDAndD)
     {
         repository.insertDnd(sheetDAndD);
@@ -42,6 +54,11 @@ public class SheetViewModel extends AndroidViewModel
     public static void insertClassDnd(Classes classes)
     {
         repository.insertClassDnd(classes);
+    }
+
+    public static void insertSubclassDnd(Subclass subclass)
+    {
+        repository.insertSubclassDnd(subclass);
     }
 
     public static void updateDnd(SheetDAndD sheetDAndD)
@@ -54,6 +71,11 @@ public class SheetViewModel extends AndroidViewModel
         repository.updateClassDnd(classes);
     }
 
+    public static void updateSubclassDnd(Subclass subclass)
+    {
+        repository.updateSubclassDnd(subclass);
+    }
+
     public LiveData<SheetDAndD> getCharacterDnd(int id)
     {
         return repository.getCharacterDnd(id);
@@ -64,9 +86,24 @@ public class SheetViewModel extends AndroidViewModel
         return repository.getClassDnd(id);
     }
 
+    public LiveData<Subclass> getSubclassDnd(int id)
+    {
+        return repository.getSubclassDnd(id);
+    }
+
     public static void deleteDnd(SheetDAndD sheetDAndD)
     {
         repository.deleteDnd(sheetDAndD);
+    }
+
+    public static void deleteClassDnd(Classes classes)
+    {
+        repository.deleteClassDnd(classes);
+    }
+
+    public static void deleteSubclassDnd(Subclass subclass)
+    {
+        repository.deleteSubclassDnd(subclass);
     }
 
     public LiveData<List<SheetDAndD>> searchDatabase(String searchQuery)

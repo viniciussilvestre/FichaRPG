@@ -11,13 +11,17 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 
 import com.ecnav.ficharpg.databinding.ActivityCreateCharacterBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.ui.ClassChooser;
+import com.ecnav.ficharpg.ui.SubclassChooser;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
@@ -28,6 +32,8 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
     private String classSelected = "";
     private ArrayList<Classes> classes = new ArrayList<>();
     private SheetViewModel sheetViewModel;
+    private boolean classChosen;
+    private int classId;
 
     ActivityResultLauncher<Intent> launchClassChooser = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -40,8 +46,6 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                     {
                         Intent data = result.getData();
                         assert data != null;
-                        int classId;
-                        boolean classChosen;
                         classChosen = data.getBooleanExtra(Util.CHOSEN_CLASS_BOOLEAN, false);
                         classId = data.getIntExtra(Util.CHOSEN_CLASS_ID, 0);
                         if (classChosen && classId != 0)
@@ -84,6 +88,22 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
             }
     );
 
+    ActivityResultLauncher<Intent> launchSubclassChooser = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>()
+            {
+                @Override
+                public void onActivityResult(ActivityResult result)
+                {
+                    if (result.getResultCode() == Activity.RESULT_OK)
+                    {
+                        Intent data = result.getData();
+                        assert data != null;
+                    }
+                }
+            }
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -95,11 +115,53 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
 //        binding.spinnerClass.setAdapter(adapter);
 //        binding.spinnerClass.setOnItemSelectedListener(this);
 
+        binding.addSubclassButton.setVisibility(View.GONE);
+        binding.subclassText.setVisibility(View.GONE);
+
         binding.addClassButton.setOnClickListener(view ->
         {
             Intent intent = new Intent(CreateCharacter.this, ClassChooser.class);
             openClassChooser(intent);
             //binding.classTextView.setText(classSelected);
+        });
+
+        binding.addSubclassButton.setOnClickListener(view ->
+        {
+            if (classChosen)
+            {
+                Intent intent = new Intent(CreateCharacter.this, SubclassChooser.class);
+                intent.putExtra(Util.CHOSEN_CLASS_ID, classId);
+                intent.putExtra(Util.CLASS_OR_SUBCLASS, Util.SUBCLASS_INFO_FLAG);
+                openSubclassChooser(intent);
+            }
+        });
+
+        binding.characterLevelField.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                if (!binding.characterLevelField.getText().toString().isEmpty())
+                {
+                    if (Integer.parseInt(s.toString()) >= 3)
+                    {
+                        binding.addSubclassButton.setVisibility(View.VISIBLE);
+                        binding.subclassText.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
         });
 
         binding.saveButton.setOnClickListener(view ->
@@ -136,6 +198,11 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
     public void openClassChooser(Intent intent)
     {
         launchClassChooser.launch(intent);
+    }
+
+    public void openSubclassChooser(Intent intent)
+    {
+        launchSubclassChooser.launch(intent);
     }
 
 //    @Override

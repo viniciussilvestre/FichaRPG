@@ -20,6 +20,7 @@ import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClasses;
 import com.ecnav.ficharpg.databinding.ActivityClassChooserBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.util.DisplayClassSubclassInfo;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.Objects;
@@ -109,8 +110,9 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
     public void onContactClick(int position)
     {
         Classes classes = Objects.requireNonNull(sheetViewModel.getAllClassesDnd().getValue()).get(position);
-        Intent intent = new Intent(ClassChooser.this, ClassesInfo.class);
+        Intent intent = new Intent(ClassChooser.this, DisplayClassSubclassInfo.class);
         intent.putExtra(Util.CLASS_ID, classes.getClassId());
+        intent.putExtra(Util.CLASS_OR_SUBCLASS, Util.CLASS_INFO_FLAG);
         openClassesInfo(intent);
     }
 

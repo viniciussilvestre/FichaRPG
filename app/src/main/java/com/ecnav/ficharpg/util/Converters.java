@@ -6,6 +6,7 @@ import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Equipment;
 import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.Spell;
+import com.ecnav.ficharpg.model.Subclass;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -51,6 +52,20 @@ public class Converters
 
     @TypeConverter
     public static String fromClassFeaturesArrayList(ArrayList<Classes> list)
+    {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    @TypeConverter
+    public static ArrayList<Subclass> fromSubclassFeaturesString(String value)
+    {
+        Type listType = new TypeToken<ArrayList<Subclass>>() {}.getType();
+        return new Gson().fromJson(value, listType);
+    }
+
+    @TypeConverter
+    public static String fromSubclassFeaturesArrayList(ArrayList<Subclass> list)
     {
         Gson gson = new Gson();
         return gson.toJson(list);

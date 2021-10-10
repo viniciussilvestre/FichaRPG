@@ -16,15 +16,16 @@ import com.ecnav.ficharpg.data.SheetDao;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.SheetDAndD;
+import com.ecnav.ficharpg.model.Subclass;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(
-        entities = {SheetDAndD.class, Classes.class},
-        version = 23,
+        entities = {SheetDAndD.class, Classes.class, Subclass.class},
+        version = 28,
         autoMigrations = {
-                @AutoMigration(from = 22, to = 23, spec = SheetRoomDatabase.myAutoMigration.class),
+                @AutoMigration(from = 27, to = 28),
         },
         exportSchema = true
 )
@@ -34,7 +35,7 @@ public abstract class SheetRoomDatabase extends RoomDatabase
     public abstract SheetDao sheetDao();
     public static final int NUMBER_OF_THREADS = 4;
 
-    @DeleteColumn.Entries({
+//    @DeleteColumn.Entries({
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "sixthClassFeature"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "fifthClassFeature"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "forthClassFeature"),
@@ -50,12 +51,13 @@ public abstract class SheetRoomDatabase extends RoomDatabase
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "eighthClassFeature"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "firstClassFeature"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "hitPointsAtFirstLevel"),
-            @DeleteColumn(tableName = "character_sheet_table", columnName = "characterClass"),
-    })
-    static class myAutoMigration implements AutoMigrationSpec
-    {
-
-    }
+//            @DeleteColumn(tableName = "character_sheet_table", columnName = "characterClass"),
+//            @DeleteColumn(tableName = "classes_table", columnName = "subclassFeatures")
+//    })
+//    static class myAutoMigration implements AutoMigrationSpec
+//    {
+//
+//    }
 
     private static volatile SheetRoomDatabase INSTANCE;
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
