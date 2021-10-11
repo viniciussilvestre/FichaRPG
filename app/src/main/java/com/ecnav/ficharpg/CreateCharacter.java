@@ -255,31 +255,4 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
     {
         launchSubclassChooser.launch(intent);
     }
-
-//    @Override
-//    public void onItemSelected(@NonNull AdapterView<?> parent, View view, int position, long id)
-//    {
-//        if (position != 0)
-//        {
-//            setClassSelected(parent.getItemAtPosition(position).toString());
-//        }
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> parent)
-//    {
-//
-//    }
-//
-//    public void setClassSelected(String newClass)
-//    {
-//        if (this.classSelected.isEmpty())
-//        {
-//            this.classSelected = newClass;
-//        }
-//        if (!this.classSelected.contains(newClass))
-//        {
-//            this.classSelected = classSelected + ", " + newClass;
-//        }
-//    }
 }

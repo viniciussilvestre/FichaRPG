@@ -4,14 +4,17 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClasses;
@@ -69,6 +72,28 @@ public class SubclassChooser extends AppCompatActivity implements RecyclerViewAd
         {
             recyclerViewAdapter = new RecyclerViewAdapterSubclass(subclasses, SubclassChooser.this, this);
             binding.recyclerView.setAdapter(recyclerViewAdapter);
+        });
+
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
+        {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
+            {
+                if (dy != 0 && binding.addButton.isExtended())
+                {
+                    binding.addButton.shrink();
+                }
+                if (dy < 0 && !binding.addButton.isExtended())
+                {
+                    binding.addButton.extend();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+        binding.addButton.setOnClickListener(view ->
+        {
+
         });
     }
 
