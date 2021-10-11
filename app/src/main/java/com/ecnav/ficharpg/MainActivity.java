@@ -89,9 +89,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                         assert data != null;
                         SheetDAndD sheetDAndD = new SheetDAndD();
                         ArrayList<Classes> classes = data.getParcelableArrayListExtra(Util.CLASS_REPLY);
+                        ArrayList<Subclass> subclasses = data.getParcelableArrayListExtra(Util.SUBCLASS_REPLY);
                         sheetDAndD.setName(data.getStringExtra(Util.NAME_REPLY));
                         //sheetDAndD.setCharacterClass(data.getStringExtra(Util.CLASS_REPLY));
                         sheetDAndD.setClassFeatures(classes);
+                        if (!subclasses.isEmpty())
+                        {
+                            sheetDAndD.setSubclasses(subclasses);
+                            sheetDAndD.setHasSubClass(true);
+                        }
                         sheetDAndD.setLevel(data.getIntExtra(Util.LEVEL_REPLY, 1));
                         sheetDAndD.setRace(data.getStringExtra(Util.RACE_REPLY));
                         sheetDAndD.setBackground(data.getStringExtra(Util.BACKGROUND_REPLY));
@@ -122,8 +128,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         List<Subclass> subclasses = new Repository(MainActivity.this.getApplication()).getSubclassDndFeatures(subclassArrayList ->
         {
-
+            for (int i = 0; i < subclassArrayList.size(); i++)
+            {
+                SheetViewModel.insertSubclassDnd(subclassArrayList.get(i));
+            }
         });
+
         sheetViewModel.getAllSheetsDnd().observe(this, sheets ->
         {
             recyclerViewAdapter = new RecyclerViewAdapter(sheets, MainActivity.this, this);

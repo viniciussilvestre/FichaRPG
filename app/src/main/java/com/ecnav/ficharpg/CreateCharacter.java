@@ -20,6 +20,7 @@ import android.view.View;
 import com.ecnav.ficharpg.databinding.ActivityCreateCharacterBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.ui.ClassChooser;
 import com.ecnav.ficharpg.ui.SubclassChooser;
 import com.ecnav.ficharpg.util.Util;
@@ -31,9 +32,12 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
     private ActivityCreateCharacterBinding binding;
     private String classSelected = "";
     private ArrayList<Classes> classes = new ArrayList<>();
+    private ArrayList<Subclass> subclasses = new ArrayList<>();
     private SheetViewModel sheetViewModel;
     private boolean classChosen;
+    private boolean subclassChosen;
     private int classId;
+    private int subclassId;
 
     ActivityResultLauncher<Intent> launchClassChooser = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -60,12 +64,17 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                                 }
                                 else
                                 {
+                                    int classAlreadyAdded = 0;
                                     for (int j = 0; j < classes.size(); j++)
                                     {
-                                        if (classSelected.getClassId() != classes.get(j).getClassId())
+                                        if (classSelected.getClassId() == classes.get(j).getClassId())
                                         {
-                                            classes.add(classSelected);
+                                            classAlreadyAdded = 1;
                                         }
+                                    }
+                                    if (classAlreadyAdded == 0)
+                                    {
+                                        classes.add(classSelected);
                                     }
                                 }
                                 StringBuilder classesText = new StringBuilder();
@@ -99,6 +108,48 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                     {
                         Intent data = result.getData();
                         assert data != null;
+                        subclassChosen = data.getBooleanExtra(Util.CHOSEN_CLASS_BOOLEAN, false);
+                        subclassId = data.getIntExtra(Util.CHOSEN_CLASS_ID, 0);
+                        if (subclassChosen && subclassId != 0)
+                        {
+                            sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(CreateCharacter.this.getApplication()).create(SheetViewModel.class);
+                            sheetViewModel.getSubclassDnd(subclassId).observe(CreateCharacter.this, subclassSelected ->
+                            {
+                                if (subclasses.isEmpty())
+                                {
+                                    subclasses = new ArrayList<>();
+                                    subclasses.add(subclassSelected);
+                                }
+                                else
+                                {
+                                    int subclassAlreadySelected = 0;
+                                    for (int j = 0; j < subclasses.size(); j++)
+                                    {
+                                        if (subclassSelected.getSubclassId() == subclasses.get(j).getSubclassId())
+                                        {
+                                            subclassAlreadySelected = 1;
+                                        }
+                                    }
+                                    if (subclassAlreadySelected == 0)
+                                    {
+                                        subclasses.add(subclassSelected);
+                                    }
+                                }
+                                StringBuilder subclassesText = new StringBuilder();
+                                for (int i = 0; i < subclasses.size(); i++)
+                                {
+                                    if (i == subclasses.size() - 1)
+                                    {
+                                        subclassesText.append(subclasses.get(i).getSubclassName());
+                                    }
+                                    else
+                                    {
+                                        subclassesText.append(subclasses.get(i).getSubclassName()).append(", ");
+                                    }
+                                }
+                                binding.subclassText.setText(subclassesText.toString());
+                            });
+                        }
                     }
                 }
             }
@@ -178,8 +229,8 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                 String hp = binding.hitPointsField.getText().toString();
                 int intHp = Integer.parseInt(hp);
                 replyIntent.putExtra(Util.NAME_REPLY, name);
-                Log.d("TAG", "CreateCharacter classes value: " + classes);
                 replyIntent.putParcelableArrayListExtra(Util.CLASS_REPLY, classes);
+                replyIntent.putParcelableArrayListExtra(Util.SUBCLASS_REPLY, subclasses);
                 replyIntent.putExtra(Util.BACKGROUND_REPLY, background);
                 replyIntent.putExtra(Util.RACE_REPLY, race);
                 replyIntent.putExtra(Util.LEVEL_REPLY, intLevel);

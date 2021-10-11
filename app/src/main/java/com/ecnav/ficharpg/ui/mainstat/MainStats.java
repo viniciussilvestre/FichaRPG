@@ -300,6 +300,8 @@ public class MainStats extends Fragment
         sheetDAndD.setId(id);
         sheetDAndD.setName(binding.characterNameText.getText().toString());
         sheetDAndD.setClassFeatures(this.sheetDAndD.getClassFeatures());
+        sheetDAndD.setSubclasses(this.sheetDAndD.getSubclasses());
+        sheetDAndD.setHasSubClass(this.sheetDAndD.isHasSubClass());
         sheetDAndD.setSpeed(Integer.parseInt(binding.speedText.getText().toString()));
         sheetDAndD.setArmorClass(Integer.parseInt(binding.armorClassText.getText().toString()));
         sheetDAndD.setLevel(Integer.parseInt(binding.levelText.getText().toString()));
@@ -315,6 +317,7 @@ public class MainStats extends Fragment
         sheetDAndD.setIntelligence(Integer.parseInt(binding.intelligenceText.getText().toString()));
         sheetDAndD.setWisdom(Integer.parseInt(binding.wisdomText.getText().toString()));
         sheetDAndD.setCharisma(Integer.parseInt(binding.charismaText.getText().toString()));
+        sheetDAndD.setHasSubClass(this.sheetDAndD.isHasSubClass());
         sheetDAndD.setStrengthSaveProficiency(this.sheetDAndD.isStrengthSaveProficiency());
         sheetDAndD.setDexteritySaveProficiency(this.sheetDAndD.isDexteritySaveProficiency());
         sheetDAndD.setConstitutionSaveProficiency(this.sheetDAndD.isConstitutionSaveProficiency());

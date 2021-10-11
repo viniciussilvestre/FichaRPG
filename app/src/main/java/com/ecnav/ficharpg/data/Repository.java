@@ -97,7 +97,7 @@ public class Repository
                     subclass.setMainsClassId(Integer.parseInt(jsonArray.getString(1)));
                     subclass.setMainClass(jsonArray.getString(2));
                     subclass.setSubclassName(jsonArray.getString(3));
-                    for (int j = 4; j < jsonArray.length(); j++)
+                    for (int j = 4; j < jsonArray.length(); j += 2)
                     {
                         Feature feature = new Feature();
                         feature.setNome(jsonArray.getString(j));

@@ -34,7 +34,7 @@ public class RecyclerViewAdapterSubclass extends RecyclerView.Adapter<RecyclerVi
     @Override
     public ViewHolderSubclasses onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.class_info_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.class_row, parent, false);
         return new ViewHolderSubclasses(view, onContactClickListener);
     }
 

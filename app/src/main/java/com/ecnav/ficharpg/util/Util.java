@@ -5,6 +5,7 @@ public class Util
     public static final String CHARACTER_ID = "character_id";
     public static final String NAME_REPLY = "name_reply";
     public static final String CLASS_REPLY = "class_reply";
+    public static final String SUBCLASS_REPLY = "subclass_reply";
     public static final String LEVEL_REPLY = "level_reply";
     public static final String RACE_REPLY = "race_reply";
     public static final String BACKGROUND_REPLY = "background_reply";
