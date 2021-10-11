@@ -29,6 +29,7 @@ public class SubclassChooser extends AppCompatActivity implements RecyclerViewAd
     private ActivitySubclassChooserBinding binding;
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapterSubclass recyclerViewAdapter;
+    private int mainClassId;
 
     ActivityResultLauncher<Intent> launchSubclassInfo = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -55,11 +56,16 @@ public class SubclassChooser extends AppCompatActivity implements RecyclerViewAd
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        Bundle data = getIntent().getExtras();
+        if (data != null)
+        {
+            mainClassId = data.getInt(Util.CHOSEN_CLASS_ID);
+        }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_subclass_chooser);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(SubclassChooser.this.getApplication()).create(SheetViewModel.class);
-        sheetViewModel.getAllSubclasses().observe(this, subclasses ->
+        sheetViewModel.getSomeSubclasses(mainClassId).observe(this, subclasses ->
         {
             recyclerViewAdapter = new RecyclerViewAdapterSubclass(subclasses, SubclassChooser.this, this);
             binding.recyclerView.setAdapter(recyclerViewAdapter);
