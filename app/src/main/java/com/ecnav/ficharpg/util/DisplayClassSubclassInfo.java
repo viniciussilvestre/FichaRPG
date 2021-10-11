@@ -65,7 +65,8 @@ public class DisplayClassSubclassInfo extends AppCompatActivity implements Recyc
             else if (classSubclassFlag == Util.SUBCLASS_INFO_FLAG)
             {
                 Intent replyIntent = new Intent();
-
+                replyIntent.putExtra(Util.CHOSEN_CLASS_ID, classSubclassId);
+                replyIntent.putExtra(Util.CHOSEN_CLASS_BOOLEAN, true);
                 setResult(RESULT_OK, replyIntent);
                 finish();
             }
