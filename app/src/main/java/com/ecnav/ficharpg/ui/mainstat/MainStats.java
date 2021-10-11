@@ -7,18 +7,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.IdViewModel;
@@ -26,35 +20,19 @@ import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MainStats extends Fragment
 {
     private FragmentMainStatsBinding binding;
     private SheetViewModel sheetViewModel;
-    //private IdViewModel idViewModel;
-    //private int parameterReceived;
     private int id;
     private SheetDAndD sheetDAndD;
-    final Handler handler= new Handler(Looper.getMainLooper());
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null)
-//        {
-//            parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
-//        }
-        //id = parameterReceived;
-
         IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
-//        idViewModel.getSelectedItem().observe(MainStats.this.requireActivity(), item ->
-//        {
-//            Log.d("TAG", "onCreate: item " + item);
-//            id = item;
-//            Log.d("TAG", "onCreate: id " + id);
-//        });
 
         id = idViewModel.getSelectedItem();
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(MainStats.this.requireActivity().getApplication()).create(SheetViewModel.class);

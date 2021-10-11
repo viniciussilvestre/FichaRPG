@@ -5,18 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.ecnav.ficharpg.databinding.ActivityCharacterSheetBinding;
 import com.ecnav.ficharpg.model.IdViewModel;
@@ -24,7 +20,6 @@ import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 public class CharacterSheet extends AppCompatActivity
 {

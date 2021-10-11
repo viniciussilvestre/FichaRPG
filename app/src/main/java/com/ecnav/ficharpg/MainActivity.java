@@ -1,7 +1,5 @@
 package com.ecnav.ficharpg;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -16,21 +14,17 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.SearchView;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapter;
-import com.ecnav.ficharpg.data.AnswerListAsyncResponse;
 import com.ecnav.ficharpg.data.Repository;
 import com.ecnav.ficharpg.databinding.ActivityMainBinding;
 import com.ecnav.ficharpg.model.Classes;
-import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.model.Subclass;
-import com.ecnav.ficharpg.util.Dice;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
@@ -46,65 +40,53 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     ActivityResultLauncher<Intent> launchCharacterSheet = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>()
+            result ->
             {
-                @Override
-                public void onActivityResult(ActivityResult result)
+                if (result.getResultCode() == Activity.RESULT_OK)
                 {
-                    if (result.getResultCode() == Activity.RESULT_OK)
-                    {
-                        Intent data = result.getData();
-                        assert data != null;
-                    }
+                    Intent data = result.getData();
+                    assert data != null;
                 }
             }
     );
 
     ActivityResultLauncher<Intent> launchCreateSpell = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>()
+            result ->
             {
-                @Override
-                public void onActivityResult(ActivityResult result)
+                if (result.getResultCode() == Activity.RESULT_OK)
                 {
-                    if (result.getResultCode() == Activity.RESULT_OK)
-                    {
-                        Intent data = result.getData();
-                        assert data != null;
-                    }
+                    Intent data = result.getData();
+                    assert data != null;
                 }
             }
     );
 
     ActivityResultLauncher<Intent> launchCreateCharacter = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>()
+            result ->
             {
-                @Override
-                public void onActivityResult(ActivityResult result)
+                if (result.getResultCode() == Activity.RESULT_OK)
                 {
-                    if (result.getResultCode() == Activity.RESULT_OK)
+                    Intent data = result.getData();
+                    assert data != null;
+                    SheetDAndD sheetDAndD = new SheetDAndD();
+                    ArrayList<Classes> classes = data.getParcelableArrayListExtra(Util.CLASS_REPLY);
+                    ArrayList<Subclass> subclasses = data.getParcelableArrayListExtra(Util.SUBCLASS_REPLY);
+                    sheetDAndD.setName(data.getStringExtra(Util.NAME_REPLY));
+                    //sheetDAndD.setCharacterClass(data.getStringExtra(Util.CLASS_REPLY));
+                    sheetDAndD.setClassFeatures(classes);
+                    if (!subclasses.isEmpty())
                     {
-                        Intent data = result.getData();
-                        assert data != null;
-                        SheetDAndD sheetDAndD = new SheetDAndD();
-                        ArrayList<Classes> classes = data.getParcelableArrayListExtra(Util.CLASS_REPLY);
-                        ArrayList<Subclass> subclasses = data.getParcelableArrayListExtra(Util.SUBCLASS_REPLY);
-                        sheetDAndD.setName(data.getStringExtra(Util.NAME_REPLY));
-                        //sheetDAndD.setCharacterClass(data.getStringExtra(Util.CLASS_REPLY));
-                        sheetDAndD.setClassFeatures(classes);
-                        if (!subclasses.isEmpty())
-                        {
-                            sheetDAndD.setSubclasses(subclasses);
-                            sheetDAndD.setHasSubClass(true);
-                        }
-                        sheetDAndD.setLevel(data.getIntExtra(Util.LEVEL_REPLY, 1));
-                        sheetDAndD.setRace(data.getStringExtra(Util.RACE_REPLY));
-                        sheetDAndD.setBackground(data.getStringExtra(Util.BACKGROUND_REPLY));
-                        sheetDAndD.setAlignment(data.getStringExtra(Util.ALIGNMENT_REPLY));
-                        sheetDAndD.setHitPoints(data.getIntExtra(Util.HITPOINTS_REPLY, 0));
-                        SheetViewModel.insertDnd(sheetDAndD);
+                        sheetDAndD.setSubclasses(subclasses);
+                        sheetDAndD.setHasSubClass(true);
                     }
+                    sheetDAndD.setLevel(data.getIntExtra(Util.LEVEL_REPLY, 1));
+                    sheetDAndD.setRace(data.getStringExtra(Util.RACE_REPLY));
+                    sheetDAndD.setBackground(data.getStringExtra(Util.BACKGROUND_REPLY));
+                    sheetDAndD.setAlignment(data.getStringExtra(Util.ALIGNMENT_REPLY));
+                    sheetDAndD.setHitPoints(data.getIntExtra(Util.HITPOINTS_REPLY, 0));
+                    SheetViewModel.insertDnd(sheetDAndD);
                 }
             }
     );

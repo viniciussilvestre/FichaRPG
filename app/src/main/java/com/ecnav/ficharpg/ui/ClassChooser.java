@@ -1,7 +1,5 @@
 package com.ecnav.ficharpg.ui;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -33,37 +31,29 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
 
     ActivityResultLauncher<Intent> launchAddClass = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>()
+            result ->
             {
-                @Override
-                public void onActivityResult(ActivityResult result)
+                if (result.getResultCode() == Activity.RESULT_OK)
                 {
-                    if (result.getResultCode() == Activity.RESULT_OK)
-                    {
-                        Intent data = result.getData();
-                        assert data != null;
-                    }
+                    Intent data = result.getData();
+                    assert data != null;
                 }
             }
     );
 
     ActivityResultLauncher<Intent> launchClassesInfo = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>()
+            result ->
             {
-                @Override
-                public void onActivityResult(ActivityResult result)
+                if (result.getResultCode() == Activity.RESULT_OK)
                 {
-                    if (result.getResultCode() == Activity.RESULT_OK)
-                    {
-                        Intent data = result.getData();
-                        assert data != null;
-                        Intent replyIntent = new Intent();
-                        replyIntent.putExtra(Util.CHOSEN_CLASS_ID, data.getIntExtra(Util.CHOSEN_CLASS_ID, 0));
-                        replyIntent.putExtra(Util.CHOSEN_CLASS_BOOLEAN, data.getBooleanExtra(Util.CHOSEN_CLASS_BOOLEAN, false));
-                        setResult(RESULT_OK, replyIntent);
-                        finish();
-                    }
+                    Intent data = result.getData();
+                    assert data != null;
+                    Intent replyIntent = new Intent();
+                    replyIntent.putExtra(Util.CHOSEN_CLASS_ID, data.getIntExtra(Util.CHOSEN_CLASS_ID, 0));
+                    replyIntent.putExtra(Util.CHOSEN_CLASS_BOOLEAN, data.getBooleanExtra(Util.CHOSEN_CLASS_BOOLEAN, false));
+                    setResult(RESULT_OK, replyIntent);
+                    finish();
                 }
             }
     );

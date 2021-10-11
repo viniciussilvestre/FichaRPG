@@ -2,6 +2,7 @@ package com.ecnav.ficharpg.ui.classinfo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,8 +25,6 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
 {
     private FragmentClassInfoBinding binding;
     private SheetViewModel sheetViewModel;
-    private IdViewModel idViewModel;
-    private int parameterReceived;
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
     private int id;
     private ArrayList<Classes> classes = new ArrayList<>();
@@ -36,18 +35,13 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null)
-//        {
-//            parameterReceived = getArguments().getInt(Util.PARAMETER_FOR_FRAGMENT, 0);
-//        }
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(ClassInfo.this.requireActivity().getApplication()).create(SheetViewModel.class);
-        idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
-        //id = parameterReceived;
+        IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
         id = idViewModel.getSelectedItem();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         binding = FragmentClassInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

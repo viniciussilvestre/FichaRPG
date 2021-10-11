@@ -2,6 +2,7 @@ package com.ecnav.ficharpg.ui.subclassinfo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,18 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
-import com.ecnav.ficharpg.adapter.RecyclerViewAdapterSubclass;
 import com.ecnav.ficharpg.databinding.FragmentSubclassInfoBinding;
-import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.model.Subclass;
-import com.ecnav.ficharpg.ui.classinfo.ClassInfo;
-import com.ecnav.ficharpg.ui.proficiencys.Proficiencys;
 
 import java.util.ArrayList;
 
@@ -29,7 +25,6 @@ public class SubclassInfo extends Fragment implements RecyclerViewAdapterClasses
 {
     private FragmentSubclassInfoBinding binding;
     private SheetViewModel sheetViewModel;
-    private IdViewModel idViewModel;
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
     private ArrayList<Subclass> subclasses = new ArrayList<>();
     private int id;
@@ -40,12 +35,12 @@ public class SubclassInfo extends Fragment implements RecyclerViewAdapterClasses
     {
         super.onCreate(savedInstanceState);
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(SubclassInfo.this.requireActivity().getApplication()).create(SheetViewModel.class);
-        idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
+        IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
         id = idViewModel.getSelectedItem();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         binding = FragmentSubclassInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

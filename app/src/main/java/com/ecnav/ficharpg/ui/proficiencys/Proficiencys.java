@@ -2,6 +2,7 @@ package com.ecnav.ficharpg.ui.proficiencys;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -19,7 +20,6 @@ public class Proficiencys extends Fragment
 {
     private FragmentProficiencysBinding binding;
     private SheetViewModel sheetViewModel;
-    private IdViewModel idViewModel;
     //private int parameterReceived;
     private int id;
     private SheetDAndD sheetDAndD;
@@ -30,16 +30,12 @@ public class Proficiencys extends Fragment
     {
         super.onCreate(savedInstanceState);
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(Proficiencys.this.requireActivity().getApplication()).create(SheetViewModel.class);
-        idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
-//        idViewModel.getSelectedItem().observe(this, item ->
-//        {
-//            id = item;
-//        });
+        IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
         id = idViewModel.getSelectedItem();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         binding = FragmentProficiencysBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

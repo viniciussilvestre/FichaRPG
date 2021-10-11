@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 
 import com.ecnav.ficharpg.databinding.ActivityCreateCharacterBinding;
@@ -30,14 +29,11 @@ import java.util.ArrayList;
 public class CreateCharacter extends AppCompatActivity //implements AdapterView.OnItemSelectedListener
 {
     private ActivityCreateCharacterBinding binding;
-    private String classSelected = "";
     private ArrayList<Classes> classes = new ArrayList<>();
     private ArrayList<Subclass> subclasses = new ArrayList<>();
     private SheetViewModel sheetViewModel;
     private boolean classChosen;
-    private boolean subclassChosen;
     private int classId;
-    private int subclassId;
 
     ActivityResultLauncher<Intent> launchClassChooser = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -108,8 +104,8 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                     {
                         Intent data = result.getData();
                         assert data != null;
-                        subclassChosen = data.getBooleanExtra(Util.CHOSEN_CLASS_BOOLEAN, false);
-                        subclassId = data.getIntExtra(Util.CHOSEN_CLASS_ID, 0);
+                        boolean subclassChosen = data.getBooleanExtra(Util.CHOSEN_CLASS_BOOLEAN, false);
+                        int subclassId = data.getIntExtra(Util.CHOSEN_CLASS_ID, 0);
                         if (subclassChosen && subclassId != 0)
                         {
                             sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(CreateCharacter.this.getApplication()).create(SheetViewModel.class);
@@ -160,12 +156,6 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
     {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_character);
-
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.classes, R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
-//        binding.spinnerClass.setAdapter(adapter);
-//        binding.spinnerClass.setOnItemSelectedListener(this);
-
         binding.addSubclassButton.setVisibility(View.GONE);
         binding.subclassText.setVisibility(View.GONE);
 
@@ -173,7 +163,6 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
         {
             Intent intent = new Intent(CreateCharacter.this, ClassChooser.class);
             openClassChooser(intent);
-            //binding.classTextView.setText(classSelected);
         });
 
         binding.addSubclassButton.setOnClickListener(view ->
