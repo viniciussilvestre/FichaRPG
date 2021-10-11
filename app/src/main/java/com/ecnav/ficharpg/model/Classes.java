@@ -24,7 +24,7 @@ public class Classes implements Parcelable
     private int hitPointsAtFirstLevel;
     private String hitPointsAtHigherLevel;
     //Proficiencies
-    //Equipment
+    //EquipmentInfo
     private ArrayList<Feature> classFeatures = new ArrayList<>();
 
     public Classes()

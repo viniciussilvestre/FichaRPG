@@ -31,8 +31,8 @@
 
     <fragment
         android:id="@+id/equipment_info"
-        android:name="com.ecnav.ficharpg.ui.equipment.Equipment"
+        android:name="com.ecnav.ficharpg.ui.equipment.EquipmentInfo"
         android:label="Equipment"
-        tools:layout="@layout/fragment_equipment" />
+        tools:layout="@layout/fragment_equipment_info" />
 
 </navigation>
