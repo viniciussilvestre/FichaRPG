@@ -29,4 +29,10 @@
         android:label="Subclass"
         tools:layout="@layout/fragment_subclass_info"/>
 
+    <fragment
+        android:id="@+id/equipment_info"
+        android:name="com.ecnav.ficharpg.ui.equipment.Equipment"
+        android:label="Equipment"
+        tools:layout="@layout/fragment_equipment" />
+
 </navigation>

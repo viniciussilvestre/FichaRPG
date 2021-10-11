@@ -4,18 +4,26 @@
 
     <item
         android:id="@+id/main_stat"
+        android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/statsMenuText" />
-<!--    android:icon="@drawable/ic_home_black_24dp"-->
 
     <item
         android:id="@+id/proficiency_info"
+        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/proficiencyMenuText" />
 
     <item
         android:id="@+id/class_info"
+        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/classMenuText" />
 
     <item
         android:id="@+id/subclass_info"
+        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/subclassMenuText" />
+
+    <item
+        android:id="@+id/equipment_info"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/equipmentMenuText" />
 </menu>

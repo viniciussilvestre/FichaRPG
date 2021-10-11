@@ -53,7 +53,7 @@
     <string name="classMenuText">Class</string>
     <string name="subclassMenuText">Subclass</string>
     <string name="habilityPlaceHolder">ipslum lore</string>
-    <string name="proficiencyMenuText">Proficiency</string>
+    <string name="proficiencyMenuText">Skills</string>
     <string name="savingThrowLabel">Saving Throws</string>
     <string name="profileDescription">Profile Photo</string>
     <string name="skillsLabel">Skills</string>
@@ -93,6 +93,7 @@
     <string name="addClassToSheetButton">Add Class</string>
     <string name="subclassText">Subclass</string>
     <string name="addButtonSubclass">Subclass</string>
+    <string name="equipmentMenuText">Equip</string>
     <string-array name="classes">
         <item>Select class</item>
         <item>Artificer</item>
