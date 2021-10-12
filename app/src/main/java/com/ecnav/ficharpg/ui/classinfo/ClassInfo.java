@@ -56,7 +56,15 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
                 ArrayList<Feature> features = new ArrayList<>();
                 for (int i = 0; i < classes.size(); i++)
                 {
-                    features.addAll(classes.get(i).getClassFeatures());
+                    ArrayList<Feature> temp = classes.get(i).getClassFeatures();
+                    for (int j = 0; j < temp.size(); j++)
+                    {
+                        if (temp.get(j).getLevel() <= sheet.getLevel())
+                        {
+                            features.add(temp.get(j));
+                        }
+                    }
+//                    features.addAll(classes.get(i).getClassFeatures());
                 }
                 recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, ClassInfo.this.requireActivity(), this);
                 binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);

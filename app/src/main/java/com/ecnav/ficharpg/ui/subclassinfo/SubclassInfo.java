@@ -55,7 +55,15 @@ public class SubclassInfo extends Fragment implements RecyclerViewAdapterClasses
                 ArrayList<Feature> features = new ArrayList<>();
                 for (int i = 0; i < subclasses.size(); i++)
                 {
-                    features.addAll(subclasses.get(i).getFeatures());
+                    ArrayList<Feature> temp = subclasses.get(i).getFeatures();
+                    for (int j = 0; j < temp.size(); j++)
+                    {
+                        if (temp.get(j).getLevel() <= sheet.getLevel())
+                        {
+                            features.add(temp.get(j));
+                        }
+                    }
+//                    features.addAll(subclasses.get(i).getFeatures());
                 }
                 recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, SubclassInfo.this.requireActivity(), this);
                 binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterSubclass;
@@ -21,6 +22,8 @@ import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.util.DisplayClassSubclassInfo;
 import com.ecnav.ficharpg.util.Util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SubclassChooser extends AppCompatActivity implements RecyclerViewAdapterSubclass.OnContactClickListener
@@ -92,11 +95,14 @@ public class SubclassChooser extends AppCompatActivity implements RecyclerViewAd
     @Override
     public void onContactClick(int position)
     {
-        Subclass subclass = Objects.requireNonNull(sheetViewModel.getAllSubclasses().getValue()).get(position);
         Intent intent = new Intent(SubclassChooser.this, DisplayClassSubclassInfo.class);
-        intent.putExtra(Util.CLASS_ID, subclass.getSubclassId());
-        intent.putExtra(Util.CLASS_OR_SUBCLASS, Util.SUBCLASS_INFO_FLAG);
-        openSubclassInfo(intent);
+        sheetViewModel.getSomeSubclasses(mainClassId).observe(this, subclasses ->
+        {
+            Subclass subclass = subclasses.get(position);
+            intent.putExtra(Util.CLASS_ID, subclass.getSubclassId());
+            intent.putExtra(Util.CLASS_OR_SUBCLASS, Util.SUBCLASS_INFO_FLAG);
+            openSubclassInfo(intent);
+        });
     }
 
     public void openSubclassInfo(Intent intent)

@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Feature implements Parcelable
 {
     private String name;
+    private int level;
     private String description;
 
     public Feature()
@@ -17,6 +18,7 @@ public class Feature implements Parcelable
     public Feature(Parcel source)
     {
         this.name = source.readString();
+        this.level = source.readInt();
         this.description = source.readString();
     }
 
@@ -28,6 +30,16 @@ public class Feature implements Parcelable
     public void setNome(String name)
     {
         this.name = name;
+    }
+
+    public int getLevel()
+    {
+        return level;
+    }
+
+    public void setLevel(int level)
+    {
+        this.level = level;
     }
 
     public String getDescription()
@@ -50,6 +62,7 @@ public class Feature implements Parcelable
     public void writeToParcel(Parcel dest, int flags)
     {
         dest.writeString(name);
+        dest.writeInt(level);
         dest.writeString(description);
     }
 

@@ -1,6 +1,7 @@
 package com.ecnav.ficharpg.model;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -26,6 +27,11 @@ public class SheetViewModel extends AndroidViewModel
         allSubclasses = repository.getAllSubclassesDnd();
     }
 
+    public LiveData<List<Subclass>> getAllSubclasses()
+    {
+        return allSubclasses;
+    }
+
     public LiveData<List<SheetDAndD>> getAllSheetsDnd()
     {
         return allSheetsDnd;
@@ -34,11 +40,6 @@ public class SheetViewModel extends AndroidViewModel
     public LiveData<List<Classes>> getAllClassesDnd()
     {
         return allClasses;
-    }
-
-    public LiveData<List<Subclass>> getAllSubclasses()
-    {
-        return allSubclasses;
     }
 
     public LiveData<List<Subclass>> getSomeSubclasses(int id)

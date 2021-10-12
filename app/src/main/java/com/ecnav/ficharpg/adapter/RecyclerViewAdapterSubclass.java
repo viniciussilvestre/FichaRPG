@@ -71,7 +71,7 @@ public class RecyclerViewAdapterSubclass extends RecyclerView.Adapter<RecyclerVi
         }
 
         @Override
-        public void onClick(View v)
+        public void onClick(View view)
         {
             onContactClickListener.onContactClick(getAdapterPosition());
         }

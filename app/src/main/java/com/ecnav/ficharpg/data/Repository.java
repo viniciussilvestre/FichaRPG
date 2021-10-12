@@ -26,17 +26,17 @@ import java.util.List;
 public class Repository
 {
     private SheetDao sheetDao;
-    private LiveData<List<SheetDAndD>> allSheetsDnd;
-    private LiveData<List<Classes>> allClasses;
-    private LiveData<List<Subclass>> allSubclasses;
+    private final LiveData<List<SheetDAndD>> allSheetsDnd;
+    private final LiveData<List<Classes>> allClasses;
+    private final LiveData<List<Subclass>> allSubclasses;
     private LiveData<List<Subclass>> someSubclasses;
 
     ArrayList<Spell> statementsArrayList = new ArrayList<>();
     ArrayList<Classes> classesArrayList = new ArrayList<>();
     ArrayList<Subclass> subclassArrayList = new ArrayList<>();
     String urlSpells = "https://raw.githubusercontent.com/jcquinlan/dnd-spells/master/spells.json";
-    String urlClassFeatures = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/Classes_JSON.json?token=AO3UDMCT5PBMRR566PMQAG3BNHEFU";
-    String urlSubclasses = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/subclassJSON.json?token=AO3UDMEA7QRISLGKP6HIAO3BNR5BE";
+    String urlClassFeatures = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/Classes_JSON.json?token=AO3UDMFB5IMAPIGWEFAVALDBN3VQA";
+    String urlSubclasses = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/subclassJSON.json?token=AO3UDMGWZM7I6L7SAJCJR63BN3VQ2";
 
 //    public List<Spell> getSpells(final AnswerListAsyncResponse callBack)
 //    {
@@ -57,11 +57,12 @@ public class Repository
                     classes.setClassName(jsonArray.getString(1));
                     classes.setHitDice(Dice.valueOf(jsonArray.getString(2)));
                     classes.setHitPointsAtHigherLevel(jsonArray.getString(3));
-                    for (int j = 4; j < jsonArray.length(); j += 2)
+                    for (int j = 4; j < jsonArray.length(); j += 3)
                     {
                         Feature feature = new Feature();
-                        feature.setNome(jsonArray.getString(j));
-                        feature.setDescription(jsonArray.getString(j + 1));
+                        feature.setLevel(Integer.parseInt(jsonArray.getString(j)));
+                        feature.setNome(jsonArray.getString(j + 1));
+                        feature.setDescription(jsonArray.getString(j + 2));
                         classes.addFeatures(feature);
                     }
                     classesArrayList.add(classes);
@@ -97,11 +98,12 @@ public class Repository
                     subclass.setMainsClassId(Integer.parseInt(jsonArray.getString(1)));
                     subclass.setMainClass(jsonArray.getString(2));
                     subclass.setSubclassName(jsonArray.getString(3));
-                    for (int j = 4; j < jsonArray.length(); j += 2)
+                    for (int j = 4; j < jsonArray.length(); j += 3)
                     {
                         Feature feature = new Feature();
-                        feature.setNome(jsonArray.getString(j));
-                        feature.setDescription(jsonArray.getString(j + 1));
+                        feature.setLevel(Integer.parseInt(jsonArray.getString(j)));
+                        feature.setNome(jsonArray.getString(j + 1));
+                        feature.setDescription(jsonArray.getString(j + 2));
                         subclass.addFeatures(feature);
                     }
                     subclassArrayList.add(subclass);
@@ -127,9 +129,14 @@ public class Repository
     {
         SheetRoomDatabase db = SheetRoomDatabase.getDatabase(application);
         sheetDao = db.sheetDao();
+        allSubclasses = sheetDao.getAllSubclassesDnd();
         allSheetsDnd = sheetDao.getAllSheetsDnd();
         allClasses = sheetDao.getAllClassesDnd();
-        allSubclasses = sheetDao.getAllSubclassesDnd();
+    }
+
+    public LiveData<List<Subclass>> getAllSubclassesDnd()
+    {
+        return allSubclasses;
     }
 
     public LiveData<List<SheetDAndD>> getAllSheetsDnd()
@@ -142,14 +149,10 @@ public class Repository
         return allClasses;
     }
 
-    public LiveData<List<Subclass>> getAllSubclassesDnd()
-    {
-        return allSubclasses;
-    }
-
     public LiveData<List<Subclass>> getSomeSubclasses(int id)
     {
-        return sheetDao.getAllsubclassesFromClasses(id);
+        someSubclasses = sheetDao.getAllSubclassesFromClasses(id);
+        return someSubclasses;
     }
 
     public void insertDnd(SheetDAndD sheetDAndD)

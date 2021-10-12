@@ -48,10 +48,10 @@ public interface SheetDao
     void delete(Subclass subclass);
     @Query("SELECT * FROM subclass_table ORDER BY subclassName ASC")
     LiveData<List<Subclass>> getAllSubclassesDnd();
+    @Query("SELECT * FROM subclass_table WHERE subclass_table.mainsClassId == :id ORDER BY subclassName ASC")
+    LiveData<List<Subclass>> getAllSubclassesFromClasses(int id);
     @Query("SELECT * FROM subclass_table WHERE subclass_table.subclassId == :id")
     LiveData<Subclass> getSubclass(int id);
-    @Query("SELECT * FROM subclass_table WHERE subclass_table.mainsClassId == :id")
-    LiveData<List<Subclass>> getAllsubclassesFromClasses(int id);
     @Update
     void updateSubclass(Subclass subclass);
     //---------------------------------------------------//
