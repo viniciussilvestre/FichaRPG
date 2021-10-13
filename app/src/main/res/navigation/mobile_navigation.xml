@@ -24,10 +24,10 @@
         tools:layout="@layout/fragment_class_info"/>
 
     <fragment
-        android:id="@+id/subclass_info"
-        android:name="com.ecnav.ficharpg.ui.subclassinfo.SubclassInfo"
+        android:id="@+id/spells_info"
+        android:name="com.ecnav.ficharpg.ui.spellsinfo.SpellsInfo"
         android:label="Subclass"
-        tools:layout="@layout/fragment_subclass_info"/>
+        tools:layout="@layout/fragment_spells_info"/>
 
     <fragment
         android:id="@+id/equipment_info"

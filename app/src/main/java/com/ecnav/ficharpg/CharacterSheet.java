@@ -46,7 +46,7 @@ public class CharacterSheet extends AppCompatActivity
         binding = ActivityCharacterSheetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         BottomNavigationView navView = findViewById(R.id.bottomNavigationView);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.main_stat, R.id.proficiency_info, R.id.class_info, R.id.subclass_info, R.id.equipment_info).build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.main_stat, R.id.proficiency_info, R.id.class_info, R.id.spells_info, R.id.equipment_info).build();
         NavController navController = getNavController();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
@@ -57,16 +57,6 @@ public class CharacterSheet extends AppCompatActivity
             if (sheet != null)
             {
                 sheetDAndD = sheet;
-                if (!sheet.isHasSubClass())
-                {
-                    navView.getMenu().findItem(R.id.subclass_info).setEnabled(false);
-                    navView.getMenu().findItem(R.id.subclass_info).setVisible(false);
-                }
-                else
-                {
-                    navView.getMenu().findItem(R.id.subclass_info).setEnabled(true);
-                    navView.getMenu().findItem(R.id.subclass_info).setVisible(true);
-                }
             }
             else
             {

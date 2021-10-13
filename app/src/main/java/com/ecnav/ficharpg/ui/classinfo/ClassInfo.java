@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.model.Subclass;
 
 import java.util.ArrayList;
 
@@ -28,6 +30,7 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
     private int id;
     private ArrayList<Classes> classes = new ArrayList<>();
+    private ArrayList<Subclass> subclasses = new ArrayList<>();
     private SheetDAndD sheetDAndD;
 
 
@@ -53,22 +56,84 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
             {
                 sheetDAndD = sheet;
                 classes = sheet.getClassFeatures();
+                subclasses = sheet.getSubclasses();
+                int level = sheet.getLevel();
                 ArrayList<Feature> features = new ArrayList<>();
+                ArrayList<Feature> classFeatures = new ArrayList<>();
                 for (int i = 0; i < classes.size(); i++)
                 {
                     ArrayList<Feature> temp = classes.get(i).getClassFeatures();
                     for (int j = 0; j < temp.size(); j++)
                     {
-                        if (temp.get(j).getLevel() <= sheet.getLevel())
+                        if (temp.get(j).getLevel() <= level)
                         {
-                            features.add(temp.get(j));
+                            classFeatures.add(temp.get(j));
                         }
                     }
 //                    features.addAll(classes.get(i).getClassFeatures());
                 }
+                ArrayList<Feature> subclassFeatures = new ArrayList<>();
+                for (int i = 0; i < subclasses.size(); i++)
+                {
+                    ArrayList<Feature> temp = subclasses.get(i).getFeatures();
+                    for (int j = 0; j < temp.size(); j++)
+                    {
+                        if (temp.get(j).getLevel() <= level)
+                        {
+                            subclassFeatures.add(temp.get(j));
+                        }
+                    }
+                }
+                int i = 0;
+                int j = 0;
+                while (i < classFeatures.size() && j < subclassFeatures.size())
+                {
+                    if (classFeatures.get(i).getLevel() < subclassFeatures.get(j).getLevel())
+                    {
+                        features.add(classFeatures.get(i));
+                        i++;
+                    }
+                    else
+                    {
+                        features.add(subclassFeatures.get(j));
+                        j++;
+                    }
+                }
+                while (i < classFeatures.size())
+                {
+                    features.add(classFeatures.get(i));
+                    i++;
+                }
+                while (j < subclassFeatures.size())
+                {
+                    features.add(subclassFeatures.get(j));
+                    j++;
+                }
                 recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, ClassInfo.this.requireActivity(), this);
                 binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
             }
+        });
+
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
+        {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
+            {
+                if (dy != 0 && binding.addButton.isExtended())
+                {
+                    binding.addButton.shrink();
+                }
+                if (dy < 0 && !binding.addButton.isExtended())
+                {
+                    binding.addButton.extend();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+        binding.addButton.setOnClickListener(view ->
+        {
+
         });
         return root;
     }

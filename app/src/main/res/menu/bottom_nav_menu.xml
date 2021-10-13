@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
-        android:id="@+id/main_stat"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/statsMenuText" />
+        android:id="@+id/class_info"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/classMenuText" />
 
     <item
         android:id="@+id/proficiency_info"
@@ -13,17 +12,17 @@
         android:title="@string/proficiencyMenuText" />
 
     <item
-        android:id="@+id/class_info"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/classMenuText" />
-
-    <item
-        android:id="@+id/subclass_info"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/subclassMenuText" />
+        android:id="@+id/main_stat"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/statsMenuText" />
 
     <item
         android:id="@+id/equipment_info"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/equipmentMenuText" />
+
+    <item
+        android:id="@+id/spells_info"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/spellsMenuText" />
 </menu>

@@ -1,4 +1,4 @@
-package com.ecnav.ficharpg.ui.subclassinfo;
+package com.ecnav.ficharpg.ui.spellsinfo;
 
 import android.os.Bundle;
 
@@ -6,13 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
-import com.ecnav.ficharpg.databinding.FragmentSubclassInfoBinding;
+import com.ecnav.ficharpg.databinding.FragmentSpellsInfoBinding;
 import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
@@ -21,12 +22,11 @@ import com.ecnav.ficharpg.model.Subclass;
 
 import java.util.ArrayList;
 
-public class SubclassInfo extends Fragment implements RecyclerViewAdapterClassesInfo.OnContactClickListener
+public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesInfo.OnContactClickListener
 {
-    private FragmentSubclassInfoBinding binding;
+    private FragmentSpellsInfoBinding binding;
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
-    private ArrayList<Subclass> subclasses = new ArrayList<>();
     private int id;
     private SheetDAndD sheetDAndD;
 
@@ -34,7 +34,7 @@ public class SubclassInfo extends Fragment implements RecyclerViewAdapterClasses
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(SubclassInfo.this.requireActivity().getApplication()).create(SheetViewModel.class);
+        sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(SpellsInfo.this.requireActivity().getApplication()).create(SheetViewModel.class);
         IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
         id = idViewModel.getSelectedItem();
     }
@@ -42,32 +42,54 @@ public class SubclassInfo extends Fragment implements RecyclerViewAdapterClasses
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        binding = FragmentSubclassInfoBinding.inflate(inflater, container, false);
+        binding = FragmentSpellsInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(SubclassInfo.this.requireActivity()));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(SpellsInfo.this.requireActivity()));
         sheetViewModel.getCharacterDnd(id).observe(getViewLifecycleOwner(), sheet ->
         {
             if (sheet != null)
             {
                 sheetDAndD = sheet;
-                subclasses = sheet.getSubclasses();
-                ArrayList<Feature> features = new ArrayList<>();
-                for (int i = 0; i < subclasses.size(); i++)
-                {
-                    ArrayList<Feature> temp = subclasses.get(i).getFeatures();
-                    for (int j = 0; j < temp.size(); j++)
-                    {
-                        if (temp.get(j).getLevel() <= sheet.getLevel())
-                        {
-                            features.add(temp.get(j));
-                        }
-                    }
-//                    features.addAll(subclasses.get(i).getFeatures());
-                }
-                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, SubclassInfo.this.requireActivity(), this);
-                binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
+//                subclasses = sheet.getSubclasses();
+//                ArrayList<Feature> features = new ArrayList<>();
+//                for (int i = 0; i < subclasses.size(); i++)
+//                {
+//                    ArrayList<Feature> temp = subclasses.get(i).getFeatures();
+//                    for (int j = 0; j < temp.size(); j++)
+//                    {
+//                        if (temp.get(j).getLevel() <= sheet.getLevel())
+//                        {
+//                            features.add(temp.get(j));
+//                        }
+//                    }
+////                    features.addAll(subclasses.get(i).getFeatures());
+//                }
+//                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, SpellsInfo.this.requireActivity(), this);
+//                binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
             }
+        });
+
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
+        {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
+            {
+                if (dy != 0 && binding.addButton.isExtended())
+                {
+                    binding.addButton.shrink();
+                }
+                if (dy < 0 && !binding.addButton.isExtended())
+                {
+                    binding.addButton.extend();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+        binding.addButton.setOnClickListener(view ->
+        {
+
         });
         return root;
     }
