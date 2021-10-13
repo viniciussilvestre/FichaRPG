@@ -19,14 +19,14 @@
 
     <fragment
         android:id="@+id/class_info"
-        android:name="com.ecnav.ficharpg.ui.classinfo.ClassInfo"
-        android:label="Class"
-        tools:layout="@layout/fragment_class_info"/>
+        android:name="com.ecnav.ficharpg.ui.featureinfo.FeatureInfo"
+        android:label="Features"
+        tools:layout="@layout/fragment_feature_info"/>
 
     <fragment
         android:id="@+id/spells_info"
         android:name="com.ecnav.ficharpg.ui.spellsinfo.SpellsInfo"
-        android:label="Subclass"
+        android:label="Spells"
         tools:layout="@layout/fragment_spells_info"/>
 
     <fragment

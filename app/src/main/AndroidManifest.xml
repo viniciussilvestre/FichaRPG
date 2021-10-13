@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FichaRPG">
         <activity
+            android:name=".ui.addfeature.AddFeature"
+            android:exported="false" />
+        <activity
             android:name=".ui.SubclassChooser"
             android:exported="true" />
         <activity

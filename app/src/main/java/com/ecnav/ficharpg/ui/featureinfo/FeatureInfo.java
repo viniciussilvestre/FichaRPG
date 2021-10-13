@@ -1,7 +1,11 @@
-package com.ecnav.ficharpg.ui.classinfo;
+package com.ecnav.ficharpg.ui.featureinfo;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,19 +17,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
-import com.ecnav.ficharpg.databinding.FragmentClassInfoBinding;
+import com.ecnav.ficharpg.databinding.FragmentFeatureInfoBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.model.Subclass;
+import com.ecnav.ficharpg.ui.addfeature.AddFeature;
 
 import java.util.ArrayList;
 
-public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInfo.OnContactClickListener
+public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesInfo.OnContactClickListener
 {
-    private FragmentClassInfoBinding binding;
+    private FragmentFeatureInfoBinding binding;
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
     private int id;
@@ -33,12 +38,23 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
     private ArrayList<Subclass> subclasses = new ArrayList<>();
     private SheetDAndD sheetDAndD;
 
+    ActivityResultLauncher<Intent> launchAddFeature = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result ->
+            {
+                if (result.getResultCode() == Activity.RESULT_OK)
+                {
+                    Intent data = result.getData();
+                    assert data != null;
+                }
+            }
+    );
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(ClassInfo.this.requireActivity().getApplication()).create(SheetViewModel.class);
+        sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(FeatureInfo.this.requireActivity().getApplication()).create(SheetViewModel.class);
         IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
         id = idViewModel.getSelectedItem();
     }
@@ -46,10 +62,10 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        binding = FragmentClassInfoBinding.inflate(inflater, container, false);
+        binding = FragmentFeatureInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(ClassInfo.this.requireActivity()));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(FeatureInfo.this.requireActivity()));
         sheetViewModel.getCharacterDnd(id).observe(getViewLifecycleOwner(), sheet ->
         {
             if (sheet != null)
@@ -109,7 +125,7 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
                     features.add(subclassFeatures.get(j));
                     j++;
                 }
-                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, ClassInfo.this.requireActivity(), this);
+                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, FeatureInfo.this.requireActivity(), this);
                 binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
             }
         });
@@ -133,7 +149,8 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
 
         binding.addButton.setOnClickListener(view ->
         {
-
+            Intent intent = new Intent(getActivity(), AddFeature.class);
+            openAddFeature(intent);
         });
         return root;
     }
@@ -150,6 +167,11 @@ public class ClassInfo extends Fragment implements RecyclerViewAdapterClassesInf
     public void onContactClick(int position)
     {
 
+    }
+
+    public void openAddFeature(Intent intent)
+    {
+        launchAddFeature.launch(intent);
     }
 
     public SheetDAndD getNewSheetData()

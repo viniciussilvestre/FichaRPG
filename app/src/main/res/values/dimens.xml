@@ -11,4 +11,5 @@
     <dimen name="minWidthAtribute">109dp</dimen>
     <dimen name="minWidthText">50dp</dimen>
     <dimen name="buttonCornerValue">14dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
