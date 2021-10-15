@@ -30,6 +30,9 @@ public class Util
     public static final String CHOSEN_CLASS_BOOLEAN = "chosen_class_boolean";
     public static final String CHOSEN_CLASS_ID = "chosen_class_id";
     public static final String CLASS_OR_SUBCLASS = "class_or_subclass";
+    public static final String FEATURE_LEVEL = "feature_level";
+    public static final String FEATURE_NAME = "feature_bane";
+    public static final String FEATURE_DESCRIPTION = "feature_description";
     public static final int CLASS_INFO_FLAG = 1;
     public static final int SUBCLASS_INFO_FLAG = 2;
 }

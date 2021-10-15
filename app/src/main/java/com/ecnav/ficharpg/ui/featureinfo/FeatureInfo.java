@@ -24,7 +24,8 @@ import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.model.Subclass;
-import com.ecnav.ficharpg.ui.addfeature.AddFeature;
+import com.ecnav.ficharpg.ui.addthings.AddFeature;
+import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,7 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
     private int id;
     private ArrayList<Classes> classes = new ArrayList<>();
     private ArrayList<Subclass> subclasses = new ArrayList<>();
+    private ArrayList<Feature> extraFeatures = new ArrayList<>();
     private SheetDAndD sheetDAndD;
 
     ActivityResultLauncher<Intent> launchAddFeature = registerForActivityResult(
@@ -46,6 +48,15 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
                 {
                     Intent data = result.getData();
                     assert data != null;
+                    ArrayList<Feature> featureArrayList = sheetDAndD.getFeatures();
+                    Feature feature = new Feature();
+                    feature.setLevel(data.getIntExtra(Util.FEATURE_LEVEL, 1));
+                    feature.setNome(data.getStringExtra(Util.FEATURE_NAME));
+                    feature.setDescription(data.getStringExtra(Util.FEATURE_DESCRIPTION));
+                    featureArrayList.add(feature);
+                    extraFeatures = featureArrayList;
+                    SheetDAndD sheetDAndD = getNewSheetData();
+                    SheetViewModel.updateDnd(sheetDAndD);
                 }
             }
     );
@@ -73,58 +84,10 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
                 sheetDAndD = sheet;
                 classes = sheet.getClassFeatures();
                 subclasses = sheet.getSubclasses();
+                extraFeatures = sheet.getFeatures();
                 int level = sheet.getLevel();
                 ArrayList<Feature> features = new ArrayList<>();
-                ArrayList<Feature> classFeatures = new ArrayList<>();
-                for (int i = 0; i < classes.size(); i++)
-                {
-                    ArrayList<Feature> temp = classes.get(i).getClassFeatures();
-                    for (int j = 0; j < temp.size(); j++)
-                    {
-                        if (temp.get(j).getLevel() <= level)
-                        {
-                            classFeatures.add(temp.get(j));
-                        }
-                    }
-//                    features.addAll(classes.get(i).getClassFeatures());
-                }
-                ArrayList<Feature> subclassFeatures = new ArrayList<>();
-                for (int i = 0; i < subclasses.size(); i++)
-                {
-                    ArrayList<Feature> temp = subclasses.get(i).getFeatures();
-                    for (int j = 0; j < temp.size(); j++)
-                    {
-                        if (temp.get(j).getLevel() <= level)
-                        {
-                            subclassFeatures.add(temp.get(j));
-                        }
-                    }
-                }
-                int i = 0;
-                int j = 0;
-                while (i < classFeatures.size() && j < subclassFeatures.size())
-                {
-                    if (classFeatures.get(i).getLevel() < subclassFeatures.get(j).getLevel())
-                    {
-                        features.add(classFeatures.get(i));
-                        i++;
-                    }
-                    else
-                    {
-                        features.add(subclassFeatures.get(j));
-                        j++;
-                    }
-                }
-                while (i < classFeatures.size())
-                {
-                    features.add(classFeatures.get(i));
-                    i++;
-                }
-                while (j < subclassFeatures.size())
-                {
-                    features.add(subclassFeatures.get(j));
-                    j++;
-                }
+                sortFeatures(classes, subclasses, extraFeatures, features, level);
                 recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, FeatureInfo.this.requireActivity(), this);
                 binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
             }
@@ -240,6 +203,86 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
         sheetDAndD.setExpertisePerformanceProficiency(this.sheetDAndD.isExpertisePerformanceProficiency());
         sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
+        sheetDAndD.setFeatures(extraFeatures);
         return sheetDAndD;
+    }
+
+    private void sortFeatures(ArrayList<Classes> classes, ArrayList<Subclass> subclasses, ArrayList<Feature> extraFeatures, ArrayList<Feature> features, int level)
+    {
+        ArrayList<Feature> classFeatures = new ArrayList<>();
+        for (int i = 0; i < classes.size(); i++)
+        {
+            ArrayList<Feature> temp = classes.get(i).getClassFeatures();
+            for (int j = 0; j < temp.size(); j++)
+            {
+                if (temp.get(j).getLevel() <= level)
+                {
+                    classFeatures.add(temp.get(j));
+                }
+            }
+        }
+        ArrayList<Feature> subclassFeatures = new ArrayList<>();
+        for (int i = 0; i < subclasses.size(); i++)
+        {
+            ArrayList<Feature> temp = subclasses.get(i).getFeatures();
+            for (int j = 0; j < temp.size(); j++)
+            {
+                if (temp.get(j).getLevel() <= level)
+                {
+                    subclassFeatures.add(temp.get(j));
+                }
+            }
+        }
+        ArrayList<Feature> aux = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        while (i < classFeatures.size() && j < subclassFeatures.size())
+        {
+            if (classFeatures.get(i).getLevel() < subclassFeatures.get(j).getLevel())
+            {
+                aux.add(classFeatures.get(i));
+                i++;
+            }
+            else
+            {
+                aux.add(subclassFeatures.get(j));
+                j++;
+            }
+        }
+        while (i < classFeatures.size())
+        {
+            aux.add(classFeatures.get(i));
+            i++;
+        }
+        while (j < subclassFeatures.size())
+        {
+            aux.add(subclassFeatures.get(j));
+            j++;
+        }
+        i = 0;
+        j = 0;
+        while (i < aux.size() && j < extraFeatures.size())
+        {
+            if (aux.get(i).getLevel() < extraFeatures.get(j).getLevel())
+            {
+                features.add(aux.get(i));
+                i++;
+            }
+            else
+            {
+                features.add(extraFeatures.get(j));
+                j++;
+            }
+        }
+        while (i < aux.size())
+        {
+            features.add(aux.get(i));
+            i++;
+        }
+        while (j < extraFeatures.size())
+        {
+            features.add(extraFeatures.get(j));
+            j++;
+        }
     }
 }

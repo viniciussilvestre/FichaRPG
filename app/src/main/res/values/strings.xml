@@ -97,21 +97,15 @@
     <string name="addFeatureText">Feature</string>
     <string name="featureNameText">Feature name</string>
     <string name="featureDescriptionHint">Feature description</string>
-    <string-array name="classes">
-        <item>Select class</item>
-        <item>Artificer</item>
-        <item>Barbarian</item>
-        <item>Cleric</item>
-        <item>Druid</item>
-        <item>Fighter</item>
-        <item>Monk</item>
-        <item>Paladin</item>
-        <item>Ranger</item>
-        <item>Rogue</item>
-        <item>Sorcerer</item>
-        <item>Warlock</item>
-        <item>Wizard</item>
-        <item>Custom</item>
+    <string-array name="equipTypes">
+        <item>Select type</item>
+        <item>Heavy armor</item>
+        <item>Medium armor</item>
+        <item>Light armor</item>
+        <item>Weapon</item>
+        <item>Shield</item>
+        <item>Consumable</item>
+        <item>Ammo</item>
     </string-array>
     <string name="title_activity_add_feature">AddFeature</string>
     <!-- Strings used for fragments for navigation -->
@@ -122,5 +116,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="equipmentDescriptionHint">Equipment description</string>
+    <string name="attackBonusHint">Attack bonus</string>
+    <string name="damageBonusHint">Damage bonus</string>
+    <string name="usagesHint">Usages</string>
+    <string name="weightHint">Weight</string>
+    <string name="amountHint">Amount</string>
 
 </resources>

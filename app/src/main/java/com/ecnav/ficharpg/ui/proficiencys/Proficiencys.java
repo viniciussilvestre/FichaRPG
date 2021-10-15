@@ -1120,6 +1120,7 @@ public class Proficiencys extends Fragment
         sheetDAndD.setIntelligence(this.sheetDAndD.getIntelligence());
         sheetDAndD.setWisdom(this.sheetDAndD.getWisdom());
         sheetDAndD.setCharisma(this.sheetDAndD.getCharisma());
+        sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
         return sheetDAndD;
     }
 }

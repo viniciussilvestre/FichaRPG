@@ -116,6 +116,7 @@ public class SheetDAndD
     private int spellSlotsLevel7;
     private int spellSlotsLevel8;
     private int spellSlotsLevel9;
+    private ArrayList<Feature> features = new ArrayList<>();
     private ArrayList<Spell> level0 = new ArrayList<>();
     private ArrayList<Spell> level1 = new ArrayList<>();
     private ArrayList<Spell> level2 = new ArrayList<>();
@@ -1267,6 +1268,16 @@ public class SheetDAndD
         this.spellAttackBonus = spellAttackBonus;
     }
 
+    public ArrayList<Feature> getFeatures()
+    {
+        return features;
+    }
+
+    public void setFeatures(ArrayList<Feature> features)
+    {
+        this.features = features;
+    }
+
     public ArrayList<Spell> getLevel0()
     {
         return level0;
@@ -1422,6 +1433,11 @@ public class SheetDAndD
                 break;
             }
         }
+    }
+
+    public void addFeature(Feature feature)
+    {
+        features.add(feature);
     }
 
     public void addEquipment(Equipment equipment)

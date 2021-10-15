@@ -23,9 +23,9 @@ import java.util.concurrent.Executors;
 
 @Database(
         entities = {SheetDAndD.class, Classes.class, Subclass.class},
-        version = 28,
+        version = 29,
         autoMigrations = {
-                @AutoMigration(from = 27, to = 28),
+                @AutoMigration(from = 28, to = 29),
         },
         exportSchema = true
 )

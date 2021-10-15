@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FichaRPG">
         <activity
-            android:name=".ui.addfeature.AddFeature"
+            android:name=".ui.addthings.AddSpell"
+            android:exported="false" />
+        <activity
+            android:name=".ui.addthings.AddEquipment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.addthings.AddFeature"
             android:exported="false" />
         <activity
             android:name=".ui.SubclassChooser"

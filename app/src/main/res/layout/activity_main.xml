@@ -30,29 +30,12 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:icon="@drawable/ic_baseline_add_24"
+            app:shapeAppearanceOverlay="@style/fab_square"
             app:iconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_add_24"
             tools:ignore="TextContrastCheck" />
-
-<!--        <Button-->
-<!--            android:id="@+id/addButton"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:layout_marginBottom="16dp"-->
-<!--            android:fontFamily="@font/roboto_medium"-->
-<!--            android:insetTop="0dp"-->
-<!--            android:insetBottom="0dp"-->
-<!--            android:text="@string/addButtonCharacter"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textSize="16sp"-->
-<!--            android:typeface="normal"-->
-<!--            app:cornerRadius="14dp"-->
-<!--            app:icon="@drawable/ic_baseline_add_24"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

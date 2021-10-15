@@ -338,6 +338,7 @@ public class MainStats extends Fragment
         sheetDAndD.setExpertisePerformanceProficiency(this.sheetDAndD.isExpertisePerformanceProficiency());
         sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
+        sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
         return sheetDAndD;
     }
 

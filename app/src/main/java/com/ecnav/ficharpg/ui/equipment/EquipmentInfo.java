@@ -1,8 +1,11 @@
 package com.ecnav.ficharpg.ui.equipment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,6 +21,7 @@ import com.ecnav.ficharpg.databinding.FragmentEquipmentInfoBinding;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.ui.addthings.AddEquipment;
 import com.ecnav.ficharpg.ui.spellsinfo.SpellsInfo;
 
 public class EquipmentInfo extends Fragment
@@ -26,6 +30,18 @@ public class EquipmentInfo extends Fragment
     private SheetViewModel sheetViewModel;
     private int id;
     private SheetDAndD sheetDAndD;
+
+    ActivityResultLauncher<Intent> launchAddEquipment = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result ->
+            {
+                if (result.getResultCode() == Activity.RESULT_OK)
+                {
+                    Intent data = result.getData();
+                    assert data != null;
+                }
+            }
+    );
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -70,7 +86,8 @@ public class EquipmentInfo extends Fragment
 
         binding.addButton.setOnClickListener(view ->
         {
-
+            Intent intent = new Intent(getActivity(), AddEquipment.class);
+            openAddEquipment(intent);
         });
         return root;
     }
@@ -81,6 +98,11 @@ public class EquipmentInfo extends Fragment
         super.onPause();
         SheetDAndD sheetDAndD = getNewSheetData();
         SheetViewModel.updateDnd(sheetDAndD);
+    }
+
+    public void openAddEquipment(Intent intent)
+    {
+        launchAddEquipment.launch(intent);
     }
 
     public SheetDAndD getNewSheetData()
@@ -149,6 +171,7 @@ public class EquipmentInfo extends Fragment
         sheetDAndD.setExpertisePerformanceProficiency(this.sheetDAndD.isExpertisePerformanceProficiency());
         sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
+        sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
         return sheetDAndD;
     }
 }

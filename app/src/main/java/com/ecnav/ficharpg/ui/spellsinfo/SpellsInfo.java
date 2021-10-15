@@ -1,7 +1,11 @@
 package com.ecnav.ficharpg.ui.spellsinfo;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,6 +23,7 @@ import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.model.Subclass;
+import com.ecnav.ficharpg.ui.addthings.AddSpell;
 
 import java.util.ArrayList;
 
@@ -29,6 +34,18 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
     private int id;
     private SheetDAndD sheetDAndD;
+
+    ActivityResultLauncher<Intent> launchAddSpell = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result ->
+            {
+                if (result.getResultCode() == Activity.RESULT_OK)
+                {
+                    Intent data = result.getData();
+                    assert data != null;
+                }
+            }
+    );
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -89,9 +106,15 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
 
         binding.addButton.setOnClickListener(view ->
         {
-
+            Intent intent = new Intent(getActivity(), AddSpell.class);
+            openAddSpell(intent);
         });
         return root;
+    }
+
+    public void openAddSpell(Intent intent)
+    {
+        launchAddSpell.launch(intent);
     }
 
     @Override
@@ -174,6 +197,7 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
         sheetDAndD.setExpertisePerformanceProficiency(this.sheetDAndD.isExpertisePerformanceProficiency());
         sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
+        sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
         return sheetDAndD;
     }
 }
