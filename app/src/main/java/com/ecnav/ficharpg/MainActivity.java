@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                     sheetDAndD.setRace(data.getStringExtra(Util.RACE_REPLY));
                     sheetDAndD.setBackground(data.getStringExtra(Util.BACKGROUND_REPLY));
                     sheetDAndD.setAlignment(data.getStringExtra(Util.ALIGNMENT_REPLY));
-                    sheetDAndD.setHitPoints(data.getIntExtra(Util.HITPOINTS_REPLY, 0));
                     SheetViewModel.insertDnd(sheetDAndD);
                 }
             }

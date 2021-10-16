@@ -3,6 +3,7 @@ package com.ecnav.ficharpg.ui.addthings;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,13 +12,14 @@ import android.widget.ArrayAdapter;
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.ActivityAddEquipmentBinding;
 import com.ecnav.ficharpg.util.EquipmentType;
+import com.ecnav.ficharpg.util.Util;
 
 import java.util.Objects;
 
 public class AddEquipment extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     private ActivityAddEquipmentBinding binding;
-    private EquipmentType equipmentType = null;
+    private EquipmentType equipmentType = EquipmentType.NOTHING;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,7 +33,54 @@ public class AddEquipment extends AppCompatActivity implements AdapterView.OnIte
 
         binding.saveButton.setOnClickListener(view ->
         {
-            finish();
+            if (!binding.equipmentName.getText().toString().isEmpty() && !binding.equipDescriptionEditText.getText().toString().isEmpty() && equipmentType != EquipmentType.NOTHING)
+            {
+                Intent replyIntent = new Intent();
+                String equipName = binding.equipmentName.getText().toString();
+                String equipDescription = binding.equipDescriptionEditText.getText().toString();
+                replyIntent.putExtra(Util.EQUIP_NAME, equipName);
+                replyIntent.putExtra(Util.EQUIP_DESCRIPTION, equipDescription);
+                if (equipmentType == EquipmentType.HEAVY_ARMOR || equipmentType == EquipmentType.LIGHT_ARMOR || equipmentType == EquipmentType.MEDIUM_ARMOR)
+                {
+                    int armorClass = Integer.parseInt(binding.armorClassEditText.getText().toString());
+                    int usages = Integer.parseInt(binding.usagesEditText.getText().toString());
+                    replyIntent.putExtra(Util.EQUIP_TYPE, equipmentType);
+                    replyIntent.putExtra(Util.ARMORCLASS_REPLY, armorClass);
+                    replyIntent.putExtra(Util.EQUIP_USAGES, usages);
+                }
+                else if (equipmentType == EquipmentType.WEAPON)
+                {
+                    int attackBonus = Integer.parseInt(binding.attackBonusEditText.getText().toString());
+                    int damageBonus = Integer.parseInt(binding.damageBonusEditText.getText().toString());
+                    int usages = Integer.parseInt(binding.usagesEditText.getText().toString());
+                    replyIntent.putExtra(Util.EQUIP_TYPE, equipmentType);
+                    replyIntent.putExtra(Util.EQUIP_ATTACK, attackBonus);
+                    replyIntent.putExtra(Util.EQUIP_DAMAGE, damageBonus);
+                    replyIntent.putExtra(Util.EQUIP_USAGES, usages);
+                }
+                else if (equipmentType == EquipmentType.SHIELD)
+                {
+                    int armorClass = Integer.parseInt(binding.armorClassEditText.getText().toString());
+                    int usages = Integer.parseInt(binding.usagesEditText.getText().toString());
+                    replyIntent.putExtra(Util.EQUIP_TYPE, equipmentType);
+                    replyIntent.putExtra(Util.ARMORCLASS_REPLY, armorClass);
+                    replyIntent.putExtra(Util.EQUIP_USAGES, usages);
+                }
+                else if (equipmentType == EquipmentType.CONSUMABLE)
+                {
+                    int amount = Integer.parseInt(binding.usagesEditText.getText().toString());
+                    replyIntent.putExtra(Util.EQUIP_TYPE, equipmentType);
+                    replyIntent.putExtra(Util.EQUIP_AMOUNT, amount);
+                }
+                else if (equipmentType == EquipmentType.AMMO)
+                {
+                    int amount = Integer.parseInt(binding.usagesEditText.getText().toString());
+                    replyIntent.putExtra(Util.EQUIP_TYPE, equipmentType);
+                    replyIntent.putExtra(Util.EQUIP_AMOUNT, amount);
+                }
+                setResult(RESULT_OK, replyIntent);
+                finish();
+            }
         });
     }
 
@@ -39,12 +88,10 @@ public class AddEquipment extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
         String equipType = (String) parent.getItemAtPosition(position);
-        equipmentType = EquipmentType.NOTHING;
         switch (equipType)
         {
             case "Select type":
             {
-                equipmentType = EquipmentType.NOTHING;
                 break;
             }
             case "Heavy armor":

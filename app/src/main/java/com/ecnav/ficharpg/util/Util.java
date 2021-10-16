@@ -35,4 +35,12 @@ public class Util
     public static final String FEATURE_DESCRIPTION = "feature_description";
     public static final int CLASS_INFO_FLAG = 1;
     public static final int SUBCLASS_INFO_FLAG = 2;
+    public static final String EQUIP_NAME = "equip_name";
+    public static final String EQUIP_DESCRIPTION = "equip_description";
+    public static final String EQUIP_TYPE = "equip_type";
+    public static final String EQUIP_AMOUNT = "equip_amount";
+    public static final String EQUIP_USAGES = "equip_usages";
+    public static final String EQUIP_DAMAGE = "equip_damage";
+    public static final String EQUIP_ATTACK = "equip_attack";
+
 }

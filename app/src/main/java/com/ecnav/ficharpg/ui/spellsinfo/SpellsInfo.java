@@ -198,6 +198,7 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
         sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
         sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
+        sheetDAndD.setEquipments(this.sheetDAndD.getEquipments());
         return sheetDAndD;
     }
 }

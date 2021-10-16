@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hitPointsField" />
+            app:layout_constraintTop_toBottomOf="@+id/characterAlignmentField" />
 
         <EditText
             android:id="@+id/characterBackgroundField"
@@ -98,23 +98,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/classTextView" />
-
-        <EditText
-            android:id="@+id/hitPointsField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:hint="@string/healthPointsHint"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterAlignmentField"
-            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
         <Button
             android:id="@+id/addClassButton"

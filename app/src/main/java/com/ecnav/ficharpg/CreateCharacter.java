@@ -220,8 +220,6 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                 String stringLevel = binding.characterLevelField.getText().toString();
                 int intLevel = Integer.parseInt(stringLevel);
                 String alignment = binding.characterAlignmentField.getText().toString();
-                String hp = binding.hitPointsField.getText().toString();
-                int intHp = Integer.parseInt(hp);
                 replyIntent.putExtra(Util.NAME_REPLY, name);
                 replyIntent.putParcelableArrayListExtra(Util.CLASS_REPLY, classes);
                 replyIntent.putParcelableArrayListExtra(Util.SUBCLASS_REPLY, subclasses);
@@ -229,7 +227,6 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                 replyIntent.putExtra(Util.RACE_REPLY, race);
                 replyIntent.putExtra(Util.LEVEL_REPLY, intLevel);
                 replyIntent.putExtra(Util.ALIGNMENT_REPLY, alignment);
-                replyIntent.putExtra(Util.HITPOINTS_REPLY, intHp);
                 setResult(RESULT_OK, replyIntent);
             }
             else
