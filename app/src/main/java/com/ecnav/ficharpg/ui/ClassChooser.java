@@ -18,6 +18,7 @@ import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClasses;
 import com.ecnav.ficharpg.databinding.ActivityClassChooserBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.ui.addthings.AddClass;
 import com.ecnav.ficharpg.util.DisplayClassSubclassInfo;
 import com.ecnav.ficharpg.util.Util;
 
@@ -91,7 +92,7 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
 
         binding.addButton.setOnClickListener(view ->
         {
-            Intent intent = new Intent(ClassChooser.this, AddClassActivity.class);
+            Intent intent = new Intent(ClassChooser.this, AddClass.class);
             openAddClass(intent);
         });
     }

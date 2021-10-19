@@ -29,7 +29,7 @@
             android:name=".util.DisplayClassSubclassInfo"
             android:exported="true" />
         <activity
-            android:name=".ui.AddClassActivity"
+            android:name=".ui.addthings.AddClass"
             android:exported="true" />
         <activity
             android:name=".ui.ClassChooser"

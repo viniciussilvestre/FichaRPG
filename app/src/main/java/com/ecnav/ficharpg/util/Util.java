@@ -42,5 +42,6 @@ public class Util
     public static final String EQUIP_USAGES = "equip_usages";
     public static final String EQUIP_DAMAGE = "equip_damage";
     public static final String EQUIP_ATTACK = "equip_attack";
-
+    public static final int SHOW_FEATURE_IN_CHARACTER = 1;
+    public static final int CLASS_AND_SUBCLASS_CHOOSER = 2;
 }

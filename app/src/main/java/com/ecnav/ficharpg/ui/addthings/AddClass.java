@@ -1,4 +1,4 @@
-package com.ecnav.ficharpg.ui;
+package com.ecnav.ficharpg.ui.addthings;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -14,7 +14,7 @@ import android.os.Bundle;
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.ActivityAddClassBinding;
 
-public class AddClassActivity extends AppCompatActivity
+public class AddClass extends AppCompatActivity
 {
     private ActivityAddClassBinding binding;
 

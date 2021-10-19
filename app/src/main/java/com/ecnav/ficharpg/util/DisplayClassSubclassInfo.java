@@ -12,6 +12,7 @@ import android.util.Log;
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
 import com.ecnav.ficharpg.databinding.ActivityClassesInfoBinding;
+import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.SheetViewModel;
 
 public class DisplayClassSubclassInfo extends AppCompatActivity implements RecyclerViewAdapterClassesInfo.OnContactClickListener
@@ -33,6 +34,7 @@ public class DisplayClassSubclassInfo extends AppCompatActivity implements Recyc
             classSubclassId = data.getInt(Util.CLASS_ID);
             classSubclassFlag = data.getInt(Util.CLASS_OR_SUBCLASS, 0);
         }
+        int flag = Util.CLASS_AND_SUBCLASS_CHOOSER;
         binding.recyclerViewClassInfo.setHasFixedSize(true);
         binding.recyclerViewClassInfo.setLayoutManager(new LinearLayoutManager(this));
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(DisplayClassSubclassInfo.this.getApplication()).create(SheetViewModel.class);
@@ -40,7 +42,7 @@ public class DisplayClassSubclassInfo extends AppCompatActivity implements Recyc
         {
             sheetViewModel.getClassDnd(classSubclassId).observe(this, classInfo ->
             {
-                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(classInfo.getClassFeatures(), DisplayClassSubclassInfo.this, this);
+                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(classInfo.getClassFeatures(), DisplayClassSubclassInfo.this, this, flag);
                 binding.recyclerViewClassInfo.setAdapter(recyclerViewAdapterClassesInfo);
             });
         }
@@ -48,7 +50,7 @@ public class DisplayClassSubclassInfo extends AppCompatActivity implements Recyc
         {
             sheetViewModel.getSubclassDnd(classSubclassId).observe(this, subclass ->
             {
-                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(subclass.getFeatures(), DisplayClassSubclassInfo.this, this);
+                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(subclass.getFeatures(), DisplayClassSubclassInfo.this, this, flag);
                 binding.recyclerViewClassInfo.setAdapter(recyclerViewAdapterClassesInfo);
             });
         }

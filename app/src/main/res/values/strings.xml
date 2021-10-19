@@ -122,5 +122,6 @@
     <string name="usagesHint">Usages</string>
     <string name="weightHint">Weight</string>
     <string name="amountHint">Amount</string>
+    <string name="deleteEquipDescription">Delete equipment</string>
 
 </resources>

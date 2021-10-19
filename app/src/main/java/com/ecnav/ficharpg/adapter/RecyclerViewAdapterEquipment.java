@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.model.Equipment;
 import com.ecnav.ficharpg.util.EquipmentType;
-import com.ecnav.ficharpg.util.Util;
 
 import java.util.List;
 import java.util.Objects;
@@ -61,12 +61,16 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
             if (equipment.getUsages() != 0)
             {
                 holder.usages.setVisibility(View.VISIBLE);
-                holder.usages.setText(String.valueOf(equipment.getUsages()));
+                StringBuilder usagesString = new StringBuilder();
+                usagesString.append("Usages: ").append(equipment.getUsages());
+                holder.usages.setText(usagesString);
             }
             if (equipment.getWeight() != 0)
             {
                 holder.weight.setVisibility(View.VISIBLE);
-                holder.weight.setText(String.valueOf(equipment.getWeight()));
+                StringBuilder weightString = new StringBuilder();
+                weightString.append("Weight: ").append(equipment.getWeight());
+                holder.weight.setText(weightString);
             }
         }
         else if (equipmentType == EquipmentType.WEAPON)
@@ -86,12 +90,16 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
             if (equipment.getUsages() != 0)
             {
                 holder.usages.setVisibility(View.VISIBLE);
-                holder.usages.setText(String.valueOf(equipment.getUsages()));
+                StringBuilder usagesString = new StringBuilder();
+                usagesString.append("Usages: ").append(equipment.getUsages());
+                holder.usages.setText(usagesString);
             }
             if (equipment.getWeight() != 0)
             {
                 holder.weight.setVisibility(View.VISIBLE);
-                holder.weight.setText(String.valueOf(equipment.getWeight()));
+                StringBuilder weightString = new StringBuilder();
+                weightString.append("Weight: ").append(equipment.getWeight());
+                holder.weight.setText(weightString);
             }
         }
         else if (equipmentType == EquipmentType.SHIELD)
@@ -106,12 +114,16 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
             if (equipment.getUsages() != 0)
             {
                 holder.usages.setVisibility(View.VISIBLE);
-                holder.usages.setText(String.valueOf(equipment.getUsages()));
+                StringBuilder usagesString = new StringBuilder();
+                usagesString.append("Usages: ").append(equipment.getUsages());
+                holder.usages.setText(usagesString);
             }
             if (equipment.getWeight() != 0)
             {
                 holder.weight.setVisibility(View.VISIBLE);
-                holder.weight.setText(String.valueOf(equipment.getWeight()));
+                StringBuilder weightString = new StringBuilder();
+                weightString.append("Weight: ").append(equipment.getWeight());
+                holder.weight.setText(weightString);
             }
         }
         else if (equipmentType == EquipmentType.CONSUMABLE || equipmentType == EquipmentType.AMMO)
@@ -127,9 +139,20 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
             if (equipment.getWeight() != 0)
             {
                 holder.weight.setVisibility(View.VISIBLE);
-                holder.weight.setText(String.valueOf(equipment.getWeight()));
+                StringBuilder weightString = new StringBuilder();
+                weightString.append("Weight: ").append(equipment.getWeight());
+                holder.weight.setText(weightString);
             }
         }
+        holder.deleteButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                equipmentList.remove(equipment);
+                notifyItemRemoved(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -149,6 +172,7 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
         public TextView usages;
         public TextView weight;
         public TextView amount;
+        public ImageButton deleteButton;
 
         public ViewHolderEquipment(@NonNull View itemView, OnContactClickListener onContactClickListener)
         {
@@ -161,6 +185,7 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
             usages = itemView.findViewById(R.id.usages);
             weight = itemView.findViewById(R.id.weight);
             amount = itemView.findViewById(R.id.amount);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
             this.onContactClickListener = onContactClickListener;
             itemView.setOnClickListener(this);
         }

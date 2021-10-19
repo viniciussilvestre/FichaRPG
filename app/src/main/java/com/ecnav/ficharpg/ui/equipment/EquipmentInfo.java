@@ -27,6 +27,7 @@ import com.ecnav.ficharpg.util.EquipmentType;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class EquipmentInfo extends Fragment implements RecyclerViewAdapterEquipment.OnContactClickListener
 {

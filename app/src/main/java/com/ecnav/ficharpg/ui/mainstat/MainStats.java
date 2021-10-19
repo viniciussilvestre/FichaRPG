@@ -15,9 +15,11 @@ import android.view.ViewGroup;
 
 import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
 import com.ecnav.ficharpg.model.Classes;
+import com.ecnav.ficharpg.model.Equipment;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.util.EquipmentType;
 
 import java.util.ArrayList;
 
@@ -67,7 +69,6 @@ public class MainStats extends Fragment
                 binding.alignmentText.setText(sheet.getAlignment());
                 binding.raceText.setText(sheet.getRace());
                 binding.backgroundText.setText(sheet.getBackground());
-                binding.armorClassText.setText(String.valueOf(sheet.getArmorClass()));
                 binding.healthText.setText(String.valueOf(sheet.getHitPoints()));
                 binding.strenghtText.setText(String.valueOf(sheet.getStrength()));
                 int strMod = (sheet.getStrength() - 10)/2;
@@ -141,14 +142,44 @@ public class MainStats extends Fragment
                     int dexMod = (Integer.parseInt(binding.dexterityText.getText().toString()) - 10)/2;
                     binding.modDexText.setText(String.valueOf(dexMod));
                     binding.initiativeText.setText(String.valueOf(dexMod));
-                    int armorClass;
-                    if (dexMod > 0)
+                    int armorClass = 10;
+                    boolean hasArmor = false;
+                    ArrayList<Equipment> equipments = sheetDAndD.getEquipments();
+                    for (int i = 0; i < equipments.size(); i++)
                     {
-                        armorClass = 10 + dexMod;
+                        if (equipments.get(i).getEquipmentType() == EquipmentType.LIGHT_ARMOR || equipments.get(i).getEquipmentType() == EquipmentType.MEDIUM_ARMOR || equipments.get(i).getEquipmentType() == EquipmentType.HEAVY_ARMOR)
+                        {
+                            if (equipments.get(i).getEquipmentType() == EquipmentType.LIGHT_ARMOR)
+                            {
+                                armorClass = equipments.get(i).getArmorClass() + dexMod;
+                                hasArmor = true;
+                            }
+                            else if (equipments.get(i).getEquipmentType() == EquipmentType.MEDIUM_ARMOR)
+                            {
+                                if (dexMod <= 2)
+                                {
+                                    armorClass = equipments.get(i).getArmorClass() + dexMod;
+                                    hasArmor = true;
+                                }
+                                else
+                                {
+                                    armorClass = equipments.get(i).getArmorClass() + 2;
+                                    hasArmor = true;
+                                }
+                            }
+                            else
+                            {
+                                armorClass = equipments.get(i).getArmorClass();
+                                hasArmor = true;
+                            }
+                        }
                     }
-                    else
+                    if (!hasArmor)
                     {
-                        armorClass = 10;
+                        if (dexMod > 0)
+                        {
+                            armorClass = 10 + dexMod;
+                        }
                     }
                     binding.armorClassText.setText(String.valueOf(armorClass));
                 }

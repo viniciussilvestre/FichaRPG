@@ -148,7 +148,7 @@
             android:fontFamily="@font/roboto_medium"
             android:hint="@string/equipmentDescriptionHint"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="textImeMultiLine|textMultiLine"
             android:minHeight="48dp"
             android:padding="@dimen/padding"
             android:textSize="20sp"

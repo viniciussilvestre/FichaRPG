@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,9 +36,9 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
     private int id;
-    private ArrayList<Classes> classes = new ArrayList<>();
-    private ArrayList<Subclass> subclasses = new ArrayList<>();
-    private ArrayList<Feature> extraFeatures = new ArrayList<>();
+    private static ArrayList<Classes> classes = new ArrayList<>();
+    private static ArrayList<Subclass> subclasses = new ArrayList<>();
+    private static ArrayList<Feature> extraFeatures = new ArrayList<>();
     private SheetDAndD sheetDAndD;
 
     ActivityResultLauncher<Intent> launchAddFeature = registerForActivityResult(
@@ -55,8 +56,7 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
                     feature.setDescription(data.getStringExtra(Util.FEATURE_DESCRIPTION));
                     featureArrayList.add(feature);
                     extraFeatures = featureArrayList;
-                    SheetDAndD sheetDAndD = getNewSheetData();
-                    SheetViewModel.updateDnd(sheetDAndD);
+                    updateSheet();
                 }
             }
     );
@@ -81,6 +81,7 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
         {
             if (sheet != null)
             {
+                int flag = Util.SHOW_FEATURE_IN_CHARACTER;
                 sheetDAndD = sheet;
                 classes = sheet.getClassFeatures();
                 subclasses = sheet.getSubclasses();
@@ -88,7 +89,7 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
                 int level = sheet.getLevel();
                 ArrayList<Feature> features = new ArrayList<>();
                 sortFeatures(classes, subclasses, extraFeatures, features, level);
-                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, FeatureInfo.this.requireActivity(), this);
+                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, FeatureInfo.this.requireActivity(), this, flag);
                 binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
             }
         });
@@ -122,8 +123,7 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
     public void onPause()
     {
         super.onPause();
-        SheetDAndD sheetDAndD = getNewSheetData();
-        SheetViewModel.updateDnd(sheetDAndD);
+        updateSheet();
     }
 
     @Override
@@ -135,6 +135,32 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
     public void openAddFeature(Intent intent)
     {
         launchAddFeature.launch(intent);
+    }
+
+    public static void removeFeature(Feature removedFeature)
+    {
+        if (removedFeature != null)
+        {
+            extraFeatures.remove(removedFeature);
+            ArrayList<Feature> classFeatures;
+            for (int i = 0; i < classes.size(); i++)
+            {
+                classFeatures = classes.get(i).getClassFeatures();
+                classFeatures.remove(removedFeature);
+            }
+            ArrayList<Feature> subclassFeatures;
+            for (int i = 0; i < subclasses.size(); i++)
+            {
+                subclassFeatures = subclasses.get(i).getFeatures();
+                subclassFeatures.remove(removedFeature);
+            }
+        }
+    }
+
+    public void updateSheet()
+    {
+        SheetDAndD sheetDAndD = getNewSheetData();
+        SheetViewModel.updateDnd(sheetDAndD);
     }
 
     public SheetDAndD getNewSheetData()

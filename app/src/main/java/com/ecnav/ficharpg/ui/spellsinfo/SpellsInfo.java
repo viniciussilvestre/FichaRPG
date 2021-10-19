@@ -68,22 +68,6 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
             if (sheet != null)
             {
                 sheetDAndD = sheet;
-//                subclasses = sheet.getSubclasses();
-//                ArrayList<Feature> features = new ArrayList<>();
-//                for (int i = 0; i < subclasses.size(); i++)
-//                {
-//                    ArrayList<Feature> temp = subclasses.get(i).getFeatures();
-//                    for (int j = 0; j < temp.size(); j++)
-//                    {
-//                        if (temp.get(j).getLevel() <= sheet.getLevel())
-//                        {
-//                            features.add(temp.get(j));
-//                        }
-//                    }
-////                    features.addAll(subclasses.get(i).getFeatures());
-//                }
-//                recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, SpellsInfo.this.requireActivity(), this);
-//                binding.recyclerView.setAdapter(recyclerViewAdapterClassesInfo);
             }
         });
 

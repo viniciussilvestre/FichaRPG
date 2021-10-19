@@ -1,7 +1,6 @@
 package com.ecnav.ficharpg.data;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -18,7 +17,6 @@ import com.ecnav.ficharpg.util.SheetRoomDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +33,8 @@ public class Repository
     ArrayList<Classes> classesArrayList = new ArrayList<>();
     ArrayList<Subclass> subclassArrayList = new ArrayList<>();
     String urlSpells = "https://raw.githubusercontent.com/jcquinlan/dnd-spells/master/spells.json";
-    String urlClassFeatures = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/Classes_JSON.json?token=AO3UDMFB5IMAPIGWEFAVALDBN3VQA";
-    String urlSubclasses = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/subclassJSON.json?token=AO3UDMGWZM7I6L7SAJCJR63BN3VQ2";
+    String urlClassFeatures = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/Classes_JSON.json";
+    String urlSubclasses = "https://raw.githubusercontent.com/viniciussilvestre/ClassFeaturesDND/main/subclassJSON.json";
 
 //    public List<Spell> getSpells(final AnswerListAsyncResponse callBack)
 //    {

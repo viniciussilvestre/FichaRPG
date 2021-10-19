@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.model.Feature;
+import com.ecnav.ficharpg.ui.featureinfo.FeatureInfo;
+import com.ecnav.ficharpg.util.Util;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,12 +23,15 @@ public class RecyclerViewAdapterClassesInfo extends RecyclerView.Adapter<Recycle
     private OnContactClickListener onContactClickListener;
     private List<Feature> featureList;
     private Context context;
+    private int flag;
+    private static Feature removedFeature;
 
-    public RecyclerViewAdapterClassesInfo (List<Feature> featureList, Context context, OnContactClickListener onContactClickListener)
+    public RecyclerViewAdapterClassesInfo (List<Feature> featureList, Context context, OnContactClickListener onContactClickListener, int flag)
     {
         this.featureList = featureList;
         this.context = context;
         this.onContactClickListener = onContactClickListener;
+        this.flag = flag;
     }
 
     @NonNull
@@ -44,6 +50,18 @@ public class RecyclerViewAdapterClassesInfo extends RecyclerView.Adapter<Recycle
         String featureDescription = feature.getDescription();
         holder.featureName.setText(featureName);
         holder.featureDescription.setText(featureDescription);
+        holder.deleteButton.setVisibility(View.GONE);
+        if (flag == Util.SHOW_FEATURE_IN_CHARACTER)
+        {
+            holder.deleteButton.setVisibility(View.VISIBLE);
+            holder.deleteButton.setOnClickListener(view ->
+            {
+                removedFeature = feature;
+                featureList.remove(feature);
+                notifyItemRemoved(holder.getAdapterPosition());
+                FeatureInfo.removeFeature(removedFeature);
+            });
+        }
     }
 
     @Override
@@ -57,12 +75,14 @@ public class RecyclerViewAdapterClassesInfo extends RecyclerView.Adapter<Recycle
         OnContactClickListener onContactClickListener;
         public TextView featureName;
         public TextView featureDescription;
+        public ImageButton deleteButton;
 
         public ViewHolderClassesInfo(@NonNull View itemView, OnContactClickListener onContactClickListener)
         {
             super(itemView);
             featureName = itemView.findViewById(R.id.nameFeatureText);
             featureDescription = itemView.findViewById(R.id.descriptionText);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
             this.onContactClickListener = onContactClickListener;
             itemView.setOnClickListener(this);
         }
