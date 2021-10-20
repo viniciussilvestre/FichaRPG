@@ -102,11 +102,11 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && recyclerView.canScrollVertically(Integer.MIN_VALUE))
                 {
-                    binding.addButton.setVisibility(View.INVISIBLE);
+                    binding.addButton.hide();
                 }
                 else
                 {
-                    binding.addButton.setVisibility(View.VISIBLE);
+                    binding.addButton.show();
                 }
             }
 
