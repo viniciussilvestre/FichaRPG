@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.widget.SearchView;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapter;
@@ -123,6 +124,20 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
         {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState)
+            {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && recyclerView.canScrollVertically(Integer.MIN_VALUE))
+                {
+                    binding.addButton.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+                    binding.addButton.setVisibility(View.VISIBLE);
+                }
+            }
+
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
             {

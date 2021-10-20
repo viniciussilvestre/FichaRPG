@@ -74,6 +74,20 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
         binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
         {
             @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState)
+            {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && recyclerView.canScrollVertically(Integer.MIN_VALUE))
+                {
+                    binding.addButton.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+                    binding.addButton.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
             {
                 if (dy != 0 && binding.addButton.isExtended())
