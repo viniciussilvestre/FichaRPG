@@ -23,6 +23,7 @@ import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.ui.ClassChooser;
 import com.ecnav.ficharpg.ui.SubclassChooser;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -174,6 +175,10 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                 intent.putExtra(Util.CLASS_OR_SUBCLASS, Util.SUBCLASS_INFO_FLAG);
                 openSubclassChooser(intent);
             }
+            else
+            {
+                Snackbar.make(binding.addSubclassButton, "Please select a class first", Snackbar.LENGTH_SHORT).show();
+            }
         });
 
         binding.characterLevelField.addTextChangedListener(new TextWatcher()
@@ -196,6 +201,11 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                 if (!binding.characterLevelField.getText().toString().isEmpty())
                 {
                     if (Integer.parseInt(s.toString()) >= 3)
+                    {
+                        binding.addSubclassButton.setVisibility(View.VISIBLE);
+                        binding.subclassText.setVisibility(View.VISIBLE);
+                    }
+                    else if (classId == 2)
                     {
                         binding.addSubclassButton.setVisibility(View.VISIBLE);
                         binding.subclassText.setVisibility(View.VISIBLE);

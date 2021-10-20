@@ -1,6 +1,7 @@
 package com.ecnav.ficharpg.data;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -55,12 +56,9 @@ public class Repository
                     classes.setClassName(jsonArray.getString(1));
                     classes.setHitDice(Dice.valueOf(jsonArray.getString(2)));
                     classes.setHitPointsAtHigherLevel(jsonArray.getString(3));
-                    for (int j = 4; j < jsonArray.length(); j += 3)
+                    for (int j = 4; j < jsonArray.length() - 1; j += 3)
                     {
-                        Feature feature = new Feature();
-                        feature.setLevel(Integer.parseInt(jsonArray.getString(j)));
-                        feature.setNome(jsonArray.getString(j + 1));
-                        feature.setDescription(jsonArray.getString(j + 2));
+                        Feature feature = new Feature(jsonArray.getString(j + 1), Integer.parseInt(jsonArray.getString(j)), jsonArray.getString(j + 2));
                         classes.addFeatures(feature);
                     }
                     classesArrayList.add(classes);
@@ -90,20 +88,15 @@ public class Repository
             {
                 try
                 {
-                    Subclass subclass = new Subclass();
                     JSONArray jsonArray = response.getJSONArray(i);
-                    subclass.setSubclassId(Integer.parseInt(jsonArray.getString(0)));
-                    subclass.setMainsClassId(Integer.parseInt(jsonArray.getString(1)));
-                    subclass.setMainClass(jsonArray.getString(2));
-                    subclass.setSubclassName(jsonArray.getString(3));
-                    for (int j = 4; j < jsonArray.length(); j += 3)
+                    Subclass subclass = new Subclass(jsonArray.getInt(0), jsonArray.getInt(1), jsonArray.getString(2), jsonArray.getString(3));
+                    ArrayList<Feature> features = new ArrayList<>();
+                    for (int j = 4; j < jsonArray.length() - 1; j += 3)
                     {
-                        Feature feature = new Feature();
-                        feature.setLevel(Integer.parseInt(jsonArray.getString(j)));
-                        feature.setNome(jsonArray.getString(j + 1));
-                        feature.setDescription(jsonArray.getString(j + 2));
-                        subclass.addFeatures(feature);
+                        Feature feature = new Feature(jsonArray.getString(j + 1), jsonArray.getInt(j), jsonArray.getString(j + 2));
+                        features.add(feature);
                     }
+                    subclass.setFeatures(features);
                     subclassArrayList.add(subclass);
                 }
                 catch (JSONException e)

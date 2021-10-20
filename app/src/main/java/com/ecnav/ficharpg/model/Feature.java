@@ -16,6 +16,13 @@ public class Feature implements Parcelable
     {
     }
 
+    public Feature(String name, int level, String description)
+    {
+        this.name = name;
+        this.level = level;
+        this.description = description;
+    }
+
     public Feature(Parcel source)
     {
         this.name = source.readString();
