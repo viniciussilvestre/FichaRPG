@@ -123,5 +123,6 @@
     <string name="weightHint">Weight</string>
     <string name="amountHint">Amount</string>
     <string name="deleteEquipDescription">Delete equipment</string>
+    <string name="addSubclassClass">Add</string>
 
 </resources>

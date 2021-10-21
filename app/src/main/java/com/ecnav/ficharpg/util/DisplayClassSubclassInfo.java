@@ -1,13 +1,16 @@
 package com.ecnav.ficharpg.util;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
@@ -54,6 +57,23 @@ public class DisplayClassSubclassInfo extends AppCompatActivity implements Recyc
                 binding.recyclerViewClassInfo.setAdapter(recyclerViewAdapterClassesInfo);
             });
         }
+
+        binding.recyclerViewClassInfo.addOnScrollListener(new RecyclerView.OnScrollListener()
+        {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState)
+            {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && recyclerView.canScrollVertically(Integer.MIN_VALUE))
+                {
+                    binding.button.show();
+                }
+                else
+                {
+                    binding.button.hide();
+                }
+            }
+        });
 
         binding.button.setOnClickListener(view ->
         {

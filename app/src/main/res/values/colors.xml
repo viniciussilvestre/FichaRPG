@@ -17,14 +17,14 @@
 <!--    <color name="primaryTextColor">#ffffff</color>-->
 <!--    <color name="secondaryTextColor">#000000</color>-->
 
-    <color name="primaryColor">#4264ff</color>
-    <color name="primaryLightColor">#8491ff</color>
-    <color name="primaryDarkColor">#003acb</color>
-    <color name="secondaryColor">#5c87ff</color>
-    <color name="secondaryLightColor">#95b6ff</color>
-    <color name="secondaryDarkColor">#005bcb</color>
-    <color name="primaryTextColor">#ffffff</color>
-    <color name="secondaryTextColor">#000000</color>
+<!--    <color name="primaryColor">#4264ff</color>-->
+<!--    <color name="primaryLightColor">#8491ff</color>-->
+<!--    <color name="primaryDarkColor">#003acb</color>-->
+<!--    <color name="secondaryColor">#5c87ff</color>-->
+<!--    <color name="secondaryLightColor">#95b6ff</color>-->
+<!--    <color name="secondaryDarkColor">#005bcb</color>-->
+<!--    <color name="primaryTextColor">#ffffff</color>-->
+<!--    <color name="secondaryTextColor">#000000</color>-->
 
 <!--    <color name="primaryColor">#e8663f</color>-->
 <!--    <color name="primaryLightColor">#ff976b</color>-->
@@ -40,4 +40,13 @@
 <!--    <color name="primaryLightColor">#b3ffff</color>-->
 <!--    <color name="primaryDarkColor">#43cbb1</color>-->
 <!--    <color name="primaryTextColor">#000000</color>-->
+
+    <color name="primaryColor">#1a237e</color>
+    <color name="primaryLightColor">#534bae</color>
+    <color name="primaryDarkColor">#000051</color>
+    <color name="secondaryColor">#303f9f</color>
+    <color name="secondaryLightColor">#666ad1</color>
+    <color name="secondaryDarkColor">#001970</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
 </resources>
