@@ -124,5 +124,12 @@
     <string name="amountHint">Amount</string>
     <string name="deleteEquipDescription">Delete equipment</string>
     <string name="addSubclassClass">Add</string>
+    <string name="spellName">Name</string>
+    <string name="spellLevel">Level</string>
+    <string name="spellDescription">Description</string>
+    <string name="somaticText">Somatic</string>
+    <string name="verbalText">Verbal</string>
+    <string name="materialText">Material</string>
+    <string name="componentsText">Components</string>
 
 </resources>
