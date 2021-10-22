@@ -14,7 +14,7 @@ public class Spell
     {
     }
 
-    public Spell(String spellName, int spellLevel, String spellDescription, boolean somatic, boolean verbal, boolean material)
+    public Spell(String spellName, int spellLevel, String spellDescription, boolean somatic, boolean verbal, boolean material, String materialComponents)
     {
         this.spellName = spellName;
         this.spellLevel = spellLevel;
@@ -22,6 +22,7 @@ public class Spell
         this.somatic = somatic;
         this.verbal = verbal;
         this.material = material;
+        this.materialComponents = materialComponents;
     }
 
     public String getSpellName()

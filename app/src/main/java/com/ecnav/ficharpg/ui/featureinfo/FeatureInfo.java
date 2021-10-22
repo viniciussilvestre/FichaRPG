@@ -245,6 +245,16 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
         sheetDAndD.setFeatures(extraFeatures);
         sheetDAndD.setEquipments(this.sheetDAndD.getEquipments());
+        sheetDAndD.setLevel0(this.sheetDAndD.getLevel0());
+        sheetDAndD.setLevel1(this.sheetDAndD.getLevel1());
+        sheetDAndD.setLevel2(this.sheetDAndD.getLevel2());
+        sheetDAndD.setLevel3(this.sheetDAndD.getLevel3());
+        sheetDAndD.setLevel4(this.sheetDAndD.getLevel4());
+        sheetDAndD.setLevel5(this.sheetDAndD.getLevel5());
+        sheetDAndD.setLevel6(this.sheetDAndD.getLevel6());
+        sheetDAndD.setLevel7(this.sheetDAndD.getLevel7());
+        sheetDAndD.setLevel8(this.sheetDAndD.getLevel8());
+        sheetDAndD.setLevel9(this.sheetDAndD.getLevel9());
         return sheetDAndD;
     }
 

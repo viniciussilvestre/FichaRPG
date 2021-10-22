@@ -22,8 +22,10 @@ import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.model.Spell;
 import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.ui.addthings.AddSpell;
+import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,9 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
                 {
                     Intent data = result.getData();
                     assert data != null;
+                    Spell spell = new Spell(data.getStringExtra(Util.SPELL_NAME), data.getIntExtra(Util.SPELL_LEVEL, 0), data.getStringExtra(Util.SPELL_DESCRIPTION), data.getBooleanExtra(Util.SPELL_SOMATIC, false), data.getBooleanExtra(Util.SPELL_VERBAL, false), data.getBooleanExtra(Util.SPELL_MATERIAL, false), data.getStringExtra(Util.SPELL_COMPONENTS));
+                    sheetDAndD.addSpells(spell.getSpellLevel(), spell);
+                    updateSheet();
                 }
             }
     );
@@ -119,14 +124,19 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
     public void onPause()
     {
         super.onPause();
-        SheetDAndD sheetDAndD = getNewSheetData();
-        SheetViewModel.updateDnd(sheetDAndD);
+        updateSheet();
     }
 
     @Override
     public void onContactClick(int position)
     {
 
+    }
+
+    public void updateSheet()
+    {
+        SheetDAndD sheetDAndD = getNewSheetData();
+        SheetViewModel.updateDnd(sheetDAndD);
     }
 
     public SheetDAndD getNewSheetData()
@@ -197,6 +207,16 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
         sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
         sheetDAndD.setEquipments(this.sheetDAndD.getEquipments());
+        sheetDAndD.setLevel0(this.sheetDAndD.getLevel0());
+        sheetDAndD.setLevel1(this.sheetDAndD.getLevel1());
+        sheetDAndD.setLevel2(this.sheetDAndD.getLevel2());
+        sheetDAndD.setLevel3(this.sheetDAndD.getLevel3());
+        sheetDAndD.setLevel4(this.sheetDAndD.getLevel4());
+        sheetDAndD.setLevel5(this.sheetDAndD.getLevel5());
+        sheetDAndD.setLevel6(this.sheetDAndD.getLevel6());
+        sheetDAndD.setLevel7(this.sheetDAndD.getLevel7());
+        sheetDAndD.setLevel8(this.sheetDAndD.getLevel8());
+        sheetDAndD.setLevel9(this.sheetDAndD.getLevel9());
         return sheetDAndD;
     }
 }

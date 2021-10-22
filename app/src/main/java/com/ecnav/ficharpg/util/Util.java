@@ -44,4 +44,11 @@ public class Util
     public static final String EQUIP_ATTACK = "equip_attack";
     public static final int SHOW_FEATURE_IN_CHARACTER = 1;
     public static final int CLASS_AND_SUBCLASS_CHOOSER = 2;
+    public static final String SPELL_NAME = "spell_name";
+    public static final String SPELL_LEVEL = "spell_level";
+    public static final String SPELL_DESCRIPTION = "spell_description";
+    public static final String SPELL_SOMATIC = "spell_somatic";
+    public static final String SPELL_VERBAL = "spell_verbal";
+    public static final String SPELL_MATERIAL = "spell_material";
+    public static final String SPELL_COMPONENTS = "spell_components";
 }
