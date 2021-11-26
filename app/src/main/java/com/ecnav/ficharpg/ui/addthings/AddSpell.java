@@ -50,6 +50,7 @@ public class AddSpell extends AppCompatActivity
                 replyIntent.putExtra(Util.SPELL_VERBAL, binding.switchVerbal.isChecked());
                 replyIntent.putExtra(Util.SPELL_MATERIAL, binding.switchMaterial.isChecked());
                 replyIntent.putExtra(Util.SPELL_COMPONENTS, binding.spellComponents.getText().toString());
+                setResult(RESULT_OK, replyIntent);
                 finish();
             }
         });

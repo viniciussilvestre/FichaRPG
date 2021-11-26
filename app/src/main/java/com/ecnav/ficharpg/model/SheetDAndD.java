@@ -1378,63 +1378,6 @@ public class SheetDAndD
         this.level9 = level9;
     }
 
-    public void addSpells(int level, Spell spell)
-    {
-        switch (level)
-        {
-            case 0:
-            {
-                level0.add(spell);
-                break;
-            }
-            case 1:
-            {
-                level1.add(spell);
-                break;
-            }
-            case 2:
-            {
-                level2.add(spell);
-                break;
-            }
-            case 3:
-            {
-                level3.add(spell);
-                break;
-            }
-            case 4:
-            {
-                level4.add(spell);
-                break;
-            }
-            case 5:
-            {
-                level5.add(spell);
-                break;
-            }
-            case 6:
-            {
-                level6.add(spell);
-                break;
-            }
-            case 7:
-            {
-                level7.add(spell);
-                break;
-            }
-            case 8:
-            {
-                level8.add(spell);
-                break;
-            }
-            case 9:
-            {
-                level9.add(spell);
-                break;
-            }
-        }
-    }
-
     public void addFeature(Feature feature)
     {
         features.add(feature);

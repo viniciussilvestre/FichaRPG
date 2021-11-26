@@ -12,29 +12,39 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ecnav.ficharpg.adapter.RecyclerViewAdapterClassesInfo;
+import com.ecnav.ficharpg.adapter.RecyclerViewAdapterSpell;
 import com.ecnav.ficharpg.databinding.FragmentSpellsInfoBinding;
-import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.model.Spell;
-import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.ui.addthings.AddSpell;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
 
-public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesInfo.OnContactClickListener
+public class SpellsInfo extends Fragment implements RecyclerViewAdapterSpell.OnContactClickListener
 {
     private FragmentSpellsInfoBinding binding;
     private SheetViewModel sheetViewModel;
-    private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
+    private RecyclerViewAdapterSpell recyclerViewAdapterSpell;
     private int id;
+    private static ArrayList<Spell> spellArrayList = new ArrayList<>();
+    private static ArrayList<Spell> level0;
+    private static ArrayList<Spell> level1;
+    private static ArrayList<Spell> level2;
+    private static ArrayList<Spell> level3;
+    private static ArrayList<Spell> level4;
+    private static ArrayList<Spell> level5;
+    private static ArrayList<Spell> level6;
+    private static ArrayList<Spell> level7;
+    private static ArrayList<Spell> level8;
+    private static ArrayList<Spell> level9;
     private SheetDAndD sheetDAndD;
 
     ActivityResultLauncher<Intent> launchAddSpell = registerForActivityResult(
@@ -46,7 +56,7 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
                     Intent data = result.getData();
                     assert data != null;
                     Spell spell = new Spell(data.getStringExtra(Util.SPELL_NAME), data.getIntExtra(Util.SPELL_LEVEL, 0), data.getStringExtra(Util.SPELL_DESCRIPTION), data.getBooleanExtra(Util.SPELL_SOMATIC, false), data.getBooleanExtra(Util.SPELL_VERBAL, false), data.getBooleanExtra(Util.SPELL_MATERIAL, false), data.getStringExtra(Util.SPELL_COMPONENTS));
-                    sheetDAndD.addSpells(spell.getSpellLevel(), spell);
+                    addSpell(spell);
                     updateSheet();
                 }
             }
@@ -73,6 +83,19 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
             if (sheet != null)
             {
                 sheetDAndD = sheet;
+                level0 = sheet.getLevel0();
+                level1 = sheet.getLevel1();
+                level2 = sheet.getLevel2();
+                level3 = sheet.getLevel3();
+                level4 = sheet.getLevel4();
+                level5 = sheet.getLevel5();
+                level6 = sheet.getLevel6();
+                level7 = sheet.getLevel7();
+                level8 = sheet.getLevel8();
+                level9 = sheet.getLevel9();
+                spellArrayList = getSpellArrayList(level0, level1, level2, level3, level4, level5, level6, level7, level8, level9);
+                recyclerViewAdapterSpell = new RecyclerViewAdapterSpell(spellArrayList, SpellsInfo.this.requireActivity(), this);
+                binding.recyclerView.setAdapter(recyclerViewAdapterSpell);
             }
         });
 
@@ -133,10 +156,123 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
 
     }
 
+    public static void removeSpell(Spell removedSpell)
+    {
+        if (removedSpell != null)
+        {
+            spellArrayList.remove(removedSpell);
+            removeSpellFromCharacter(removedSpell);
+        }
+    }
+
+    private static void removeSpellFromCharacter(Spell spell)
+    {
+        if (spell.getSpellLevel() == 0)
+        {
+            level0.remove(spell);
+        }
+        if (spell.getSpellLevel() == 1)
+        {
+            level1.remove(spell);
+        }
+        if (spell.getSpellLevel() == 2)
+        {
+            level2.remove(spell);
+        }
+        if (spell.getSpellLevel() == 3)
+        {
+            level3.remove(spell);
+        }
+        if (spell.getSpellLevel() == 4)
+        {
+            level4.remove(spell);
+        }
+        if (spell.getSpellLevel() == 5)
+        {
+            level5.remove(spell);
+        }
+        if (spell.getSpellLevel() == 6)
+        {
+            level6.remove(spell);
+        }
+        if (spell.getSpellLevel() == 7)
+        {
+            level7.remove(spell);
+        }
+        if (spell.getSpellLevel() == 8)
+        {
+            level8.remove(spell);
+        }
+        if (spell.getSpellLevel() == 9)
+        {
+            level9.remove(spell);
+        }
+    }
+
+    public ArrayList<Spell> getSpellArrayList(ArrayList<Spell> level0, ArrayList<Spell> level1, ArrayList<Spell> level2, ArrayList<Spell> level3, ArrayList<Spell> level4, ArrayList<Spell> level5, ArrayList<Spell> level6, ArrayList<Spell> level7, ArrayList<Spell> level8, ArrayList<Spell> level9)
+    {
+        ArrayList<Spell> spells = new ArrayList<>();
+        spells.addAll(level0);
+        spells.addAll(level1);
+        spells.addAll(level2);
+        spells.addAll(level3);
+        spells.addAll(level4);
+        spells.addAll(level5);
+        spells.addAll(level6);
+        spells.addAll(level7);
+        spells.addAll(level8);
+        spells.addAll(level9);
+        return spells;
+    }
+
     public void updateSheet()
     {
         SheetDAndD sheetDAndD = getNewSheetData();
         SheetViewModel.updateDnd(sheetDAndD);
+    }
+
+    public void addSpell(Spell spell)
+    {
+        if (spell.getSpellLevel() == 0)
+        {
+            level0.add(spell);
+        }
+        if (spell.getSpellLevel() == 1)
+        {
+            level1.add(spell);
+        }
+        if (spell.getSpellLevel() == 2)
+        {
+            level2.add(spell);
+        }
+        if (spell.getSpellLevel() == 3)
+        {
+            level3.add(spell);
+        }
+        if (spell.getSpellLevel() == 4)
+        {
+            level4.add(spell);
+        }
+        if (spell.getSpellLevel() == 5)
+        {
+            level5.add(spell);
+        }
+        if (spell.getSpellLevel() == 6)
+        {
+            level6.add(spell);
+        }
+        if (spell.getSpellLevel() == 7)
+        {
+            level7.add(spell);
+        }
+        if (spell.getSpellLevel() == 8)
+        {
+            level8.add(spell);
+        }
+        if (spell.getSpellLevel() == 9)
+        {
+            level9.add(spell);
+        }
     }
 
     public SheetDAndD getNewSheetData()
@@ -207,16 +343,16 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterClassesIn
         sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
         sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
         sheetDAndD.setEquipments(this.sheetDAndD.getEquipments());
-        sheetDAndD.setLevel0(this.sheetDAndD.getLevel0());
-        sheetDAndD.setLevel1(this.sheetDAndD.getLevel1());
-        sheetDAndD.setLevel2(this.sheetDAndD.getLevel2());
-        sheetDAndD.setLevel3(this.sheetDAndD.getLevel3());
-        sheetDAndD.setLevel4(this.sheetDAndD.getLevel4());
-        sheetDAndD.setLevel5(this.sheetDAndD.getLevel5());
-        sheetDAndD.setLevel6(this.sheetDAndD.getLevel6());
-        sheetDAndD.setLevel7(this.sheetDAndD.getLevel7());
-        sheetDAndD.setLevel8(this.sheetDAndD.getLevel8());
-        sheetDAndD.setLevel9(this.sheetDAndD.getLevel9());
+        sheetDAndD.setLevel0(this.level0);
+        sheetDAndD.setLevel1(this.level1);
+        sheetDAndD.setLevel2(this.level2);
+        sheetDAndD.setLevel3(this.level3);
+        sheetDAndD.setLevel4(this.level4);
+        sheetDAndD.setLevel5(this.level5);
+        sheetDAndD.setLevel6(this.level6);
+        sheetDAndD.setLevel7(this.level7);
+        sheetDAndD.setLevel8(this.level8);
+        sheetDAndD.setLevel9(this.level9);
         return sheetDAndD;
     }
 }
