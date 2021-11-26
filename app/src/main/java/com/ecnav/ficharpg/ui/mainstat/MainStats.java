@@ -2,7 +2,6 @@ package com.ecnav.ficharpg.ui.mainstat;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -23,13 +21,10 @@ import android.view.ViewGroup;
 import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Equipment;
-import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.EquipmentType;
-import com.ecnav.ficharpg.util.Util;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -191,13 +186,12 @@ public class MainStats extends Fragment
                                 if (dexMod <= 2)
                                 {
                                     armorClass = equipments.get(i).getArmorClass() + dexMod;
-                                    hasArmor = true;
                                 }
                                 else
                                 {
                                     armorClass = equipments.get(i).getArmorClass() + 2;
-                                    hasArmor = true;
                                 }
+                                hasArmor = true;
                             }
                             else
                             {
