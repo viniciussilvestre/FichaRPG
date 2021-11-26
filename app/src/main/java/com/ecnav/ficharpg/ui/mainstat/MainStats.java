@@ -1,12 +1,19 @@
 package com.ecnav.ficharpg.ui.mainstat;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,10 +23,13 @@ import android.view.ViewGroup;
 import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Equipment;
+import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.EquipmentType;
+import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -29,6 +39,20 @@ public class MainStats extends Fragment
     private SheetViewModel sheetViewModel;
     private int id;
     private SheetDAndD sheetDAndD;
+
+    ActivityResultLauncher<Intent> launchAddProfilePicture = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result ->
+            {
+                if (result.getResultCode() == Activity.RESULT_OK)
+                {
+                    Intent data = result.getData();
+                    assert data != null;
+                    Uri selectedImage = data.getData();
+                    binding.imageView.setImageURI(selectedImage);
+                }
+            }
+    );
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
@@ -93,6 +117,14 @@ public class MainStats extends Fragment
             {
                 binding.characterNameText.setText(String.valueOf(id));
             }
+        });
+
+        binding.imageView.setOnClickListener(v ->
+        {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            openAddImage(intent);
         });
 
         binding.strenghtText.addTextChangedListener(new TextWatcher()
@@ -301,6 +333,11 @@ public class MainStats extends Fragment
     {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void openAddImage(Intent intent)
+    {
+        launchAddProfilePicture.launch(intent);
     }
 
     public SheetDAndD getNewSheetData()
