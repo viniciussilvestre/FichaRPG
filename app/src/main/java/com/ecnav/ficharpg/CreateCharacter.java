@@ -205,7 +205,7 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
                         binding.addSubclassButton.setVisibility(View.VISIBLE);
                         binding.subclassText.setVisibility(View.VISIBLE);
                     }
-                    else if (classId == 2)
+                    else if (classId == 2 || classId == 5)
                     {
                         binding.addSubclassButton.setVisibility(View.VISIBLE);
                         binding.subclassText.setVisibility(View.VISIBLE);

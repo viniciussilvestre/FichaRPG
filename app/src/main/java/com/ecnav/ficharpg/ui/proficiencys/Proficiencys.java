@@ -24,6 +24,7 @@ public class Proficiencys extends Fragment
     private int id;
     private SheetDAndD sheetDAndD;
     private int proficiencyBonus;
+    private boolean jackOfAllTrades = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -44,6 +45,13 @@ public class Proficiencys extends Fragment
             if (sheet != null)
             {
                 sheetDAndD = sheet;
+                for (int i = 0; i < sheet.getClassFeatures().size(); i++)
+                {
+                    if (sheet.getClassFeatures().get(i).getClassId() == 6 && sheet.getLevel() >= 2);
+                    {
+                        jackOfAllTrades = true;
+                    }
+                }
                 setProficiencyBonusAuto(sheet.getLevel());
                 proficiencyBonus = Integer.parseInt(binding.proficiencyText.getText().toString());
                 int strValue = (sheet.getStrength() - 10)/2;
@@ -103,12 +111,26 @@ public class Proficiencys extends Fragment
                         acrobaticsValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        acrobaticsValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isStealthProficiency())
                 {
                     stealthValue += proficiencyBonus;
                     if (sheet.isExpertiseStealthProficiency())
                     {
                         stealthValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        stealthValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isSleightOfHandProficiency())
@@ -119,12 +141,26 @@ public class Proficiencys extends Fragment
                         sleightHandValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        sleightHandValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isArcanaProficiency())
                 {
                     arcanaValue += proficiencyBonus;
                     if (sheet.isExpertiseArcanaProficiency())
                     {
                         arcanaValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        arcanaValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isHistoryProficiency())
@@ -135,12 +171,26 @@ public class Proficiencys extends Fragment
                         historyValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        historyValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isInvestigationProficiency())
                 {
                     investigationValue += proficiencyBonus;
                     if (sheet.isExpertiseIntimidationProficiency())
                     {
                         investigationValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        investigationValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isNatureProficiency())
@@ -151,12 +201,26 @@ public class Proficiencys extends Fragment
                         natureValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        natureValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isReligionProficiency())
                 {
                     religionValue += proficiencyBonus;
                     if (sheet.isExpertiseReligionProficiency())
                     {
                         religionValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        religionValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isAnimalHandlingProficiency())
@@ -167,12 +231,26 @@ public class Proficiencys extends Fragment
                         animalHandlingValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        animalHandlingValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isInsightProficiency())
                 {
                     insightValue += proficiencyBonus;
                     if (sheet.isExpertiseInsightProficiency())
                     {
                         insightValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        insightValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isMedicineProficiency())
@@ -183,12 +261,26 @@ public class Proficiencys extends Fragment
                         medicineValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        medicineValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isPerceptionProficiency())
                 {
                     perceptionValue += proficiencyBonus;
                     if (sheet.isExpertisePerceptionProficiency())
                     {
                         perceptionValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        perceptionValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isSurvivalProficiency())
@@ -199,13 +291,26 @@ public class Proficiencys extends Fragment
                         survivalValue += proficiencyBonus;
                     }
                 }
-
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        survivalValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isAthleticsProficiency())
                 {
                     athleticsValue += proficiencyBonus;
                     if (sheet.isExpertiseAthleticsProficiency())
                     {
                         athleticsValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        athleticsValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isDeceptionProficiency())
@@ -216,12 +321,26 @@ public class Proficiencys extends Fragment
                         deceptionValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        deceptionValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isIntimidationProficiency())
                 {
                     intimidationValue += proficiencyBonus;
                     if (sheet.isExpertiseIntimidationProficiency())
                     {
                         intimidationValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        intimidationValue += proficiencyBonus/2;
                     }
                 }
                 if (sheet.isPerformanceProficiency())
@@ -232,12 +351,26 @@ public class Proficiencys extends Fragment
                         performanceValue += proficiencyBonus;
                     }
                 }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        performanceValue += proficiencyBonus/2;
+                    }
+                }
                 if (sheet.isPersuasionProficiency())
                 {
                     persuasionValue += proficiencyBonus;
                     if (sheet.isExpertisePersuasionProficiency())
                     {
                         persuasionValue += proficiencyBonus;
+                    }
+                }
+                else
+                {
+                    if (jackOfAllTrades)
+                    {
+                        persuasionValue += proficiencyBonus/2;
                     }
                 }
 
