@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,9 @@ import com.ecnav.ficharpg.model.Equipment;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.ui.levelup.LevelUp;
 import com.ecnav.ficharpg.util.EquipmentType;
+import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
 
@@ -45,6 +48,18 @@ public class MainStats extends Fragment
                     assert data != null;
                     Uri selectedImage = data.getData();
                     binding.imageView.setImageURI(selectedImage);
+                }
+            }
+    );
+
+    ActivityResultLauncher<Intent> launchLevelUp = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result ->
+            {
+                if (result.getResultCode() == Activity.RESULT_OK)
+                {
+                    Intent data = result.getData();
+                    assert data != null;
                 }
             }
     );
@@ -120,6 +135,49 @@ public class MainStats extends Fragment
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
             openAddImage(intent);
+        });
+
+        binding.levelText.addTextChangedListener(new TextWatcher()
+        {
+            int oldLevel;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+                oldLevel = sheetDAndD.getLevel();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                if (!binding.levelText.getText().toString().isEmpty())
+                {
+                    int level = Integer.parseInt(binding.levelText.getText().toString());
+                    if (level != sheetDAndD.getLevel())
+                    {
+                        if (oldLevel < level && level < 21)
+                        {
+                            int levelDiference = level - oldLevel;
+                            if (levelDiference > 0)
+                            {
+                                while (levelDiference != 0)
+                                {
+                                    Intent intent = new Intent(getActivity(), LevelUp.class);
+                                    intent.putExtra(Util.CHARACTER_ID, id);
+                                    openLevelUp(intent);
+                                    levelDiference--;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         });
 
         binding.strenghtText.addTextChangedListener(new TextWatcher()
@@ -329,12 +387,17 @@ public class MainStats extends Fragment
         binding = null;
     }
 
-    public void openAddImage(Intent intent)
+    private void openAddImage(Intent intent)
     {
         launchAddProfilePicture.launch(intent);
     }
 
-    public SheetDAndD getNewSheetData()
+    public void openLevelUp(Intent intent)
+    {
+        launchLevelUp.launch(intent);
+    }
+
+    private SheetDAndD getNewSheetData()
     {
         SheetDAndD sheetDAndD = new SheetDAndD();
         sheetDAndD.setId(id);
