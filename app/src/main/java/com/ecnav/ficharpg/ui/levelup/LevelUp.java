@@ -65,32 +65,15 @@ public class LevelUp extends AppCompatActivity
                 cha = sheet.getCharisma();
                 if (skillOrPoints == Util.POINTS_VALUE)
                 {
-                    binding.pointsCard.setVisibility(View.VISIBLE);
-                    binding.newSkillCard.setVisibility(View.GONE);
-                    points = 2;
-                    binding.strenghtText.setText(String.valueOf(str));
-                    int strMod = (str - 10)/2;
-                    binding.modStrText.setText(String.valueOf(strMod));
-                    binding.dexterityText.setText(String.valueOf(dex));
-                    int dexMod = (dex - 10)/2;
-                    binding.modDexText.setText(String.valueOf(dexMod));
-                    binding.constitutionText.setText(String.valueOf(con));
-                    int conMod = (con - 10)/2;
-                    binding.modConText.setText(String.valueOf(conMod));
-                    binding.intelligenceText.setText(String.valueOf(inte));
-                    int intMod = (inte - 10)/2;
-                    binding.modIntText.setText(String.valueOf(intMod));
-                    binding.wisdomText.setText(String.valueOf(wis));
-                    int wisMod = (wis - 10)/2;
-                    binding.modWisText.setText(String.valueOf(wisMod));
-                    binding.charismaText.setText(String.valueOf(cha));
-                    int chaMod = (cha - 10)/2;
-                    binding.modChaText.setText(String.valueOf(chaMod));
+                    binding.choiceGroup.setVisibility(View.VISIBLE);
+                    binding.pointsGroup.setVisibility(View.GONE);
+                    binding.skillGroup.setVisibility(View.GONE);
                 }
                 else
                 {
-                    binding.newSkillCard.setVisibility(View.VISIBLE);
-                    binding.pointsCard.setVisibility(View.GONE);
+                    binding.choiceGroup.setVisibility(View.GONE);
+                    binding.skillGroup.setVisibility(View.VISIBLE);
+                    binding.pointsGroup.setVisibility(View.GONE);
                     binding.nameFeatureText.setText(featureName);
                     binding.descriptionText.setText(featureDescription);
                 }
@@ -99,6 +82,39 @@ public class LevelUp extends AppCompatActivity
             {
                 finish();
             }
+        });
+
+        binding.pointsChoice.setOnClickListener(v ->
+        {
+            binding.choiceGroup.setVisibility(View.GONE);
+            binding.pointsGroup.setVisibility(View.VISIBLE);
+            binding.skillGroup.setVisibility(View.GONE);
+            points = 2;
+            binding.strenghtText.setText(String.valueOf(str));
+            int strMod = (str - 10)/2;
+            binding.modStrText.setText(String.valueOf(strMod));
+            binding.dexterityText.setText(String.valueOf(dex));
+            int dexMod = (dex - 10)/2;
+            binding.modDexText.setText(String.valueOf(dexMod));
+            binding.constitutionText.setText(String.valueOf(con));
+            int conMod = (con - 10)/2;
+            binding.modConText.setText(String.valueOf(conMod));
+            binding.intelligenceText.setText(String.valueOf(inte));
+            int intMod = (inte - 10)/2;
+            binding.modIntText.setText(String.valueOf(intMod));
+            binding.wisdomText.setText(String.valueOf(wis));
+            int wisMod = (wis - 10)/2;
+            binding.modWisText.setText(String.valueOf(wisMod));
+            binding.charismaText.setText(String.valueOf(cha));
+            int chaMod = (cha - 10)/2;
+            binding.modChaText.setText(String.valueOf(chaMod));
+        });
+
+        binding.featChoice.setOnClickListener(v ->
+        {
+            Intent replyIntent = new Intent();
+            replyIntent.putExtra(Util.FEAT_REPLY, Util.FEAT_VALUE);
+            finish();
         });
 
         binding.strenghtText.setOnClickListener(v ->
@@ -112,7 +128,7 @@ public class LevelUp extends AppCompatActivity
             }
             else
             {
-                Snackbar.make(binding.pointsCard, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.pointsGroup, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -152,7 +168,7 @@ public class LevelUp extends AppCompatActivity
             }
             else
             {
-                Snackbar.make(binding.pointsCard, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.pointsGroup, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -192,7 +208,7 @@ public class LevelUp extends AppCompatActivity
             }
             else
             {
-                Snackbar.make(binding.pointsCard, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.pointsGroup, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -232,7 +248,7 @@ public class LevelUp extends AppCompatActivity
             }
             else
             {
-                Snackbar.make(binding.pointsCard, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.pointsGroup, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -272,7 +288,7 @@ public class LevelUp extends AppCompatActivity
             }
             else
             {
-                Snackbar.make(binding.pointsCard, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.pointsGroup, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -312,7 +328,7 @@ public class LevelUp extends AppCompatActivity
             }
             else
             {
-                Snackbar.make(binding.pointsCard, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.pointsGroup, "Você não tem mais pontos", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -405,85 +421,5 @@ public class LevelUp extends AppCompatActivity
                 Snackbar.make(binding.skillRadioGroup, "Escolha como deseja aumentar a vida", Snackbar.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private SheetDAndD getNewSheetData()
-    {
-        SheetDAndD sheetDAndD = new SheetDAndD();
-        sheetDAndD.setId(id);
-        sheetDAndD.setName(this.sheetDAndD.getName());
-        sheetDAndD.setClassFeatures(this.sheetDAndD.getClassFeatures());
-        sheetDAndD.setSubclasses(this.sheetDAndD.getSubclasses());
-        sheetDAndD.setHasSubClass(this.sheetDAndD.isHasSubClass());
-        sheetDAndD.setSpeed(this.sheetDAndD.getSpeed());
-        sheetDAndD.setLevel(this.sheetDAndD.getLevel());
-        sheetDAndD.setRace(this.sheetDAndD.getRace());
-        sheetDAndD.setBackground(this.sheetDAndD.getBackground());
-        sheetDAndD.setAlignment(this.sheetDAndD.getAlignment());
-        sheetDAndD.setInitiative(this.sheetDAndD.getInitiative());
-        sheetDAndD.setArmorClass(this.sheetDAndD.getArmorClass());
-        sheetDAndD.setHitPoints(this.sheetDAndD.getHitPoints());
-        sheetDAndD.setStrength(Integer.parseInt(binding.strenghtText.getText().toString()));
-        sheetDAndD.setDexterity(Integer.parseInt(binding.dexterityText.getText().toString()));
-        sheetDAndD.setConstitution(Integer.parseInt(binding.constitutionText.getText().toString()));
-        sheetDAndD.setIntelligence(Integer.parseInt(binding.intelligenceText.getText().toString()));
-        sheetDAndD.setWisdom(Integer.parseInt(binding.wisdomText.getText().toString()));
-        sheetDAndD.setCharisma(Integer.parseInt(binding.charismaText.getText().toString()));
-        sheetDAndD.setHasSubClass(this.sheetDAndD.isHasSubClass());
-        sheetDAndD.setStrengthSaveProficiency(this.sheetDAndD.isStrengthSaveProficiency());
-        sheetDAndD.setDexteritySaveProficiency(this.sheetDAndD.isDexteritySaveProficiency());
-        sheetDAndD.setConstitutionSaveProficiency(this.sheetDAndD.isConstitutionSaveProficiency());
-        sheetDAndD.setIntelligenceSaveProficiency(this.sheetDAndD.isIntelligenceSaveProficiency());
-        sheetDAndD.setWisdomSaveProficiency(this.sheetDAndD.isWisdomSaveProficiency());
-        sheetDAndD.setCharismaSaveProficiency(this.sheetDAndD.isCharismaSaveProficiency());
-        sheetDAndD.setAcrobaticsProficiency(this.sheetDAndD.isAcrobaticsProficiency());
-        sheetDAndD.setExpertiseAcrobaticsProficiency(this.sheetDAndD.isExpertiseAcrobaticsProficiency());
-        sheetDAndD.setStealthProficiency(this.sheetDAndD.isStealthProficiency());
-        sheetDAndD.setExpertiseStealthProficiency(this.sheetDAndD.isExpertiseStealthProficiency());
-        sheetDAndD.setSleightOfHandProficiency(this.sheetDAndD.isSleightOfHandProficiency());
-        sheetDAndD.setExpertiseSleightOfHandProficiency(this.sheetDAndD.isExpertiseSleightOfHandProficiency());
-        sheetDAndD.setArcanaProficiency(this.sheetDAndD.isArcanaProficiency());
-        sheetDAndD.setExpertiseArcanaProficiency(this.sheetDAndD.isExpertiseArcanaProficiency());
-        sheetDAndD.setHistoryProficiency(this.sheetDAndD.isHistoryProficiency());
-        sheetDAndD.setExpertiseHistoryProficiency(this.sheetDAndD.isExpertiseHistoryProficiency());
-        sheetDAndD.setInvestigationProficiency(this.sheetDAndD.isInvestigationProficiency());
-        sheetDAndD.setExpertiseInvestigationProficiency(this.sheetDAndD.isExpertiseInvestigationProficiency());
-        sheetDAndD.setNatureProficiency(this.sheetDAndD.isNatureProficiency());
-        sheetDAndD.setExpertiseNatureProficiency(this.sheetDAndD.isExpertiseNatureProficiency());
-        sheetDAndD.setReligionProficiency(this.sheetDAndD.isReligionProficiency());
-        sheetDAndD.setExpertiseReligionProficiency(this.sheetDAndD.isExpertiseReligionProficiency());
-        sheetDAndD.setAnimalHandlingProficiency(this.sheetDAndD.isAnimalHandlingProficiency());
-        sheetDAndD.setExpertiseAnimalHandlingProficiency(this.sheetDAndD.isExpertiseAnimalHandlingProficiency());
-        sheetDAndD.setInsightProficiency(this.sheetDAndD.isInsightProficiency());
-        sheetDAndD.setExpertiseInsightProficiency(this.sheetDAndD.isExpertiseInsightProficiency());
-        sheetDAndD.setMedicineProficiency(this.sheetDAndD.isMedicineProficiency());
-        sheetDAndD.setExpertiseMedicineProficiency(this.sheetDAndD.isExpertiseMedicineProficiency());
-        sheetDAndD.setPerceptionProficiency(this.sheetDAndD.isPerceptionProficiency());
-        sheetDAndD.setExpertisePerceptionProficiency(this.sheetDAndD.isExpertisePerceptionProficiency());
-        sheetDAndD.setSurvivalProficiency(this.sheetDAndD.isSurvivalProficiency());
-        sheetDAndD.setExpertiseSurvivalProficiency(this.sheetDAndD.isExpertiseSurvivalProficiency());
-        sheetDAndD.setAthleticsProficiency(this.sheetDAndD.isAthleticsProficiency());
-        sheetDAndD.setExpertiseAthleticsProficiency(this.sheetDAndD.isExpertiseAthleticsProficiency());
-        sheetDAndD.setDeceptionProficiency(this.sheetDAndD.isDeceptionProficiency());
-        sheetDAndD.setExpertiseDeceptionProficiency(this.sheetDAndD.isExpertiseDeceptionProficiency());
-        sheetDAndD.setIntimidationProficiency(this.sheetDAndD.isIntimidationProficiency());
-        sheetDAndD.setExpertiseIntimidationProficiency(this.sheetDAndD.isExpertiseIntimidationProficiency());
-        sheetDAndD.setPerformanceProficiency(this.sheetDAndD.isPerformanceProficiency());
-        sheetDAndD.setExpertisePerformanceProficiency(this.sheetDAndD.isExpertisePerformanceProficiency());
-        sheetDAndD.setPersuasionProficiency(this.sheetDAndD.isPersuasionProficiency());
-        sheetDAndD.setExpertisePersuasionProficiency(this.sheetDAndD.isExpertisePersuasionProficiency());
-        sheetDAndD.setFeatures(this.sheetDAndD.getFeatures());
-        sheetDAndD.setEquipments(this.sheetDAndD.getEquipments());
-        sheetDAndD.setLevel0(this.sheetDAndD.getLevel0());
-        sheetDAndD.setLevel1(this.sheetDAndD.getLevel1());
-        sheetDAndD.setLevel2(this.sheetDAndD.getLevel2());
-        sheetDAndD.setLevel3(this.sheetDAndD.getLevel3());
-        sheetDAndD.setLevel4(this.sheetDAndD.getLevel4());
-        sheetDAndD.setLevel5(this.sheetDAndD.getLevel5());
-        sheetDAndD.setLevel6(this.sheetDAndD.getLevel6());
-        sheetDAndD.setLevel7(this.sheetDAndD.getLevel7());
-        sheetDAndD.setLevel8(this.sheetDAndD.getLevel8());
-        sheetDAndD.setLevel9(this.sheetDAndD.getLevel9());
-        return sheetDAndD;
     }
 }

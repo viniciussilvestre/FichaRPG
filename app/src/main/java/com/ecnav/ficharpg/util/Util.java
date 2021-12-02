@@ -57,4 +57,6 @@ public class Util
     public static final String RAND_OR_AVG_LIFE = "rand_or_avg_life";
     public static final int RAND_LIFE_VALUE = 1;
     public static final int AVG_LIFE_VALUE = 2;
+    public static final String FEAT_REPLY = "feat_reply";
+    public static final int FEAT_VALUE = 3;
 }
