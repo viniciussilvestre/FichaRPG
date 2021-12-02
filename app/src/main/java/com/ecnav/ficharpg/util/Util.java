@@ -51,4 +51,10 @@ public class Util
     public static final String SPELL_VERBAL = "spell_verbal";
     public static final String SPELL_MATERIAL = "spell_material";
     public static final String SPELL_COMPONENTS = "spell_components";
+    public static final String POINTS_OR_SKILL = "points_or_skill";
+    public static final int POINTS_VALUE = 1;
+    public static final int SKILL_VALUE = 2;
+    public static final String RAND_OR_AVG_LIFE = "rand_or_avg_life";
+    public static final int RAND_LIFE_VALUE = 1;
+    public static final int AVG_LIFE_VALUE = 2;
 }

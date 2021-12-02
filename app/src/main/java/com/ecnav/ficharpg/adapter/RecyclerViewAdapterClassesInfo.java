@@ -53,6 +53,7 @@ public class RecyclerViewAdapterClassesInfo extends RecyclerView.Adapter<Recycle
         holder.deleteButton.setVisibility(View.GONE);
         if (flag == Util.SHOW_FEATURE_IN_CHARACTER)
         {
+            holder.featureDescription.setVisibility(View.GONE);
             holder.deleteButton.setVisibility(View.VISIBLE);
             holder.deleteButton.setOnClickListener(view ->
             {
@@ -60,6 +61,18 @@ public class RecyclerViewAdapterClassesInfo extends RecyclerView.Adapter<Recycle
                 featureList.remove(feature);
                 notifyItemRemoved(holder.getAdapterPosition());
                 FeatureInfo.removeFeature(removedFeature);
+            });
+
+            holder.featureName.setOnClickListener(v ->
+            {
+                if (holder.featureDescription.getVisibility() == View.GONE)
+                {
+                    holder.featureDescription.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    holder.featureDescription.setVisibility(View.GONE);
+                }
             });
         }
     }

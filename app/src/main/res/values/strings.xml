@@ -131,5 +131,10 @@
     <string name="verbalText">Verbal</string>
     <string name="materialText">Material</string>
     <string name="componentsText">Components</string>
+    <string name="resetButtonText">Reset</string>
+    <string name="okayText">OK</string>
+    <string name="avgLifeButton">Average</string>
+    <string name="randLifeButton">Dice</string>
+    <string name="lifeInreaseText">Increase life based on</string>
 
 </resources>

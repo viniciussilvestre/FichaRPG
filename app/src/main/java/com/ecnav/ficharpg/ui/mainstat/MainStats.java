@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,14 +23,18 @@ import android.view.ViewGroup;
 import com.ecnav.ficharpg.databinding.FragmentMainStatsBinding;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.Equipment;
+import com.ecnav.ficharpg.model.Feature;
 import com.ecnav.ficharpg.model.IdViewModel;
 import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.ui.levelup.LevelUp;
+import com.ecnav.ficharpg.util.Dice;
 import com.ecnav.ficharpg.util.EquipmentType;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainStats extends Fragment
 {
@@ -60,6 +65,76 @@ public class MainStats extends Fragment
                 {
                     Intent data = result.getData();
                     assert data != null;
+                    if (data.getIntExtra(Util.RAND_OR_AVG_LIFE, 0) == Util.RAND_LIFE_VALUE)
+                    {
+                        Dice hitDice = sheetDAndD.getClassFeatures().get(0).getHitDice();
+                        int random = 0;
+                        if (hitDice == Dice.D6)
+                        {
+                            random = new Random().nextInt(1) + 5;
+                        }
+                        else if (hitDice == Dice.D8)
+                        {
+                            random = new Random().nextInt(1) + 7;
+                        }
+                        else if (hitDice == Dice.D10)
+                        {
+                            random = new Random().nextInt(1) + 9;
+                        }
+                        else if (hitDice == Dice.D12)
+                        {
+                            random = new Random().nextInt(1) + 11;
+                        }
+                        int currentHealth = Integer.parseInt(binding.healthText.getText().toString());
+                        int conMod = (sheetDAndD.getConstitution() - 10)/2;
+                        currentHealth = currentHealth + random + conMod;
+                        binding.healthText.setText(String.valueOf(currentHealth));
+                    }
+                    else
+                    {
+                        int str = data.getIntExtra(Util.STR_REPLY, sheetDAndD.getStrength());
+                        int dex = data.getIntExtra(Util.DEX_REPLY, sheetDAndD.getDexterity());
+                        int con = data.getIntExtra(Util.CON_REPLY, sheetDAndD.getConstitution());
+                        int inte = data.getIntExtra(Util.INT_REPLY, sheetDAndD.getIntelligence());
+                        int wis = data.getIntExtra(Util.WIS_REPLY, sheetDAndD.getWisdom());
+                        int cha = data.getIntExtra(Util.CHA_REPLY, sheetDAndD.getCharisma());
+                        binding.strenghtText.setText(String.valueOf(str));
+                        binding.dexterityText.setText(String.valueOf(dex));
+                        binding.constitutionText.setText(String.valueOf(con));
+                        binding.intelligenceText.setText(String.valueOf(inte));
+                        binding.wisdomText.setText(String.valueOf(wis));
+                        binding.charismaText.setText(String.valueOf(cha));
+                        Dice hitDice = sheetDAndD.getClassFeatures().get(0).getHitDice();
+                        int average = 0;
+                        if (hitDice == Dice.D6)
+                        {
+                            average = 4;
+                        }
+                        else if (hitDice == Dice.D8)
+                        {
+                            average = 5;
+                        }
+                        else if (hitDice == Dice.D10)
+                        {
+                            average = 6;
+                        }
+                        else if (hitDice == Dice.D12)
+                        {
+                            average = 7;
+                        }
+                        int currentHealth = Integer.parseInt(binding.healthText.getText().toString());
+                        int conMod = (con - 10)/2;
+                        int healthDif = 0;
+                        if (conMod != ((sheetDAndD.getConstitution() - 10)/2))
+                        {
+                            int conDif = conMod - (sheetDAndD.getConstitution() - 10)/2;
+                            healthDif = conDif*(Integer.parseInt(binding.levelText.getText().toString()) - 1);
+                        }
+                        currentHealth = currentHealth + average + conMod + healthDif;
+                        binding.healthText.setText(String.valueOf(currentHealth));
+                        SheetDAndD sheetDAndD = getNewSheetData();
+                        SheetViewModel.updateDnd(sheetDAndD);
+                    }
                 }
             }
     );
@@ -69,7 +144,6 @@ public class MainStats extends Fragment
     {
         super.onCreate(savedInstanceState);
         IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
-
         id = idViewModel.getSelectedItem();
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(MainStats.this.requireActivity().getApplication()).create(SheetViewModel.class);
     }
@@ -170,6 +244,31 @@ public class MainStats extends Fragment
                                 {
                                     Intent intent = new Intent(getActivity(), LevelUp.class);
                                     intent.putExtra(Util.CHARACTER_ID, id);
+                                    ArrayList<Classes> classes = sheetDAndD.getClassFeatures();
+                                    ArrayList<Subclass> subclasses = sheetDAndD.getSubclasses();
+                                    ArrayList<Feature> extraFeatures = sheetDAndD.getFeatures();
+                                    ArrayList<Feature> features = new ArrayList<>();
+                                    sortFeatures(classes, subclasses, extraFeatures, features, level);
+                                    if (features.get(features.size() - 1).getNome().contains("(Optional)"))
+                                    {
+                                        if (features.get(features.size() - 2).getNome().equals("Ability Score Improvement"))
+                                        {
+                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (features.get(features.size() - 1).getNome().equals("Ability Score Improvement"))
+                                        {
+                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
+                                        }
+                                        else
+                                        {
+                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.SKILL_VALUE);
+                                            intent.putExtra(Util.FEATURE_NAME, features.get(features.size() - 1).getNome());
+                                            intent.putExtra(Util.FEATURE_DESCRIPTION, features.get(features.size() - 1).getDescription());
+                                        }
+                                    }
                                     openLevelUp(intent);
                                     levelDiference--;
                                 }
@@ -387,12 +486,18 @@ public class MainStats extends Fragment
         binding = null;
     }
 
+    private void updateSheet()
+    {
+        SheetDAndD sheetDAndD = getNewSheetData();
+        SheetViewModel.updateDnd(sheetDAndD);
+    }
+
     private void openAddImage(Intent intent)
     {
         launchAddProfilePicture.launch(intent);
     }
 
-    public void openLevelUp(Intent intent)
+    private void openLevelUp(Intent intent)
     {
         launchLevelUp.launch(intent);
     }
@@ -487,6 +592,85 @@ public class MainStats extends Fragment
         if (backgroundTextWidth > raceTextWidth)
         {
             binding.raceText.setWidth(backgroundTextWidth);
+        }
+    }
+
+    private void sortFeatures(ArrayList<Classes> classes, ArrayList<Subclass> subclasses, ArrayList<Feature> extraFeatures, ArrayList<Feature> features, int level)
+    {
+        ArrayList<Feature> classFeatures = new ArrayList<>();
+        for (int i = 0; i < classes.size(); i++)
+        {
+            ArrayList<Feature> temp = classes.get(i).getClassFeatures();
+            for (int j = 0; j < temp.size(); j++)
+            {
+                if (temp.get(j).getLevel() <= level)
+                {
+                    classFeatures.add(temp.get(j));
+                }
+            }
+        }
+        ArrayList<Feature> subclassFeatures = new ArrayList<>();
+        for (int i = 0; i < subclasses.size(); i++)
+        {
+            ArrayList<Feature> temp = subclasses.get(i).getFeatures();
+            for (int j = 0; j < temp.size(); j++)
+            {
+                if (temp.get(j).getLevel() <= level)
+                {
+                    subclassFeatures.add(temp.get(j));
+                }
+            }
+        }
+        ArrayList<Feature> aux = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        while (i < classFeatures.size() && j < subclassFeatures.size())
+        {
+            if (classFeatures.get(i).getLevel() < subclassFeatures.get(j).getLevel())
+            {
+                aux.add(classFeatures.get(i));
+                i++;
+            }
+            else
+            {
+                aux.add(subclassFeatures.get(j));
+                j++;
+            }
+        }
+        while (i < classFeatures.size())
+        {
+            aux.add(classFeatures.get(i));
+            i++;
+        }
+        while (j < subclassFeatures.size())
+        {
+            aux.add(subclassFeatures.get(j));
+            j++;
+        }
+        i = 0;
+        j = 0;
+        while (i < aux.size() && j < extraFeatures.size())
+        {
+            if (aux.get(i).getLevel() < extraFeatures.get(j).getLevel())
+            {
+                features.add(aux.get(i));
+                i++;
+            }
+            else
+            {
+                features.add(extraFeatures.get(j));
+                j++;
+            }
+        }
+        while (i < aux.size())
+        {
+            features.add(aux.get(i));
+            i++;
+        }
+        while (j < extraFeatures.size())
+        {
+            features.add(extraFeatures.get(j));
+            j++;
         }
     }
 }
