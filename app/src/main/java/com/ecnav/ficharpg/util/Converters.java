@@ -44,32 +44,32 @@ public class Converters
     }
 
     @TypeConverter
-    public static ArrayList<Classes> fromClassFeaturesString(String value)
+    public static ArrayList<Integer> fromIntegerToString(String value)
     {
-        Type listType = new TypeToken<ArrayList<Classes>>() {}.getType();
+        Type listType = new TypeToken<ArrayList<Integer>>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
     @TypeConverter
-    public static String fromClassFeaturesArrayList(ArrayList<Classes> list)
+    public static String fromStringToIntegerArrayList(ArrayList<Integer> list)
     {
         Gson gson = new Gson();
         return gson.toJson(list);
     }
 
-    @TypeConverter
-    public static ArrayList<Subclass> fromSubclassFeaturesString(String value)
-    {
-        Type listType = new TypeToken<ArrayList<Subclass>>() {}.getType();
-        return new Gson().fromJson(value, listType);
-    }
-
-    @TypeConverter
-    public static String fromSubclassFeaturesArrayList(ArrayList<Subclass> list)
-    {
-        Gson gson = new Gson();
-        return gson.toJson(list);
-    }
+//    @TypeConverter
+//    public static ArrayList<Integer> fromSubclassFeaturesString(String value)
+//    {
+//        Type listType = new TypeToken<ArrayList<Integer>>() {}.getType();
+//        return new Gson().fromJson(value, listType);
+//    }
+//
+//    @TypeConverter
+//    public static String fromSubclassFeaturesArrayList(ArrayList<Integer> list)
+//    {
+//        Gson gson = new Gson();
+//        return gson.toJson(list);
+//    }
 
     @TypeConverter
     public static ArrayList<Feature> fromFeaturesString(String value)

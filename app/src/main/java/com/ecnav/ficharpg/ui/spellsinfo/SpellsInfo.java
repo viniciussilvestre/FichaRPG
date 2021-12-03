@@ -280,8 +280,8 @@ public class SpellsInfo extends Fragment implements RecyclerViewAdapterSpell.OnC
         SheetDAndD sheetDAndD = new SheetDAndD();
         sheetDAndD.setId(id);
         sheetDAndD.setName(this.sheetDAndD.getName());
-        sheetDAndD.setClassFeatures(this.sheetDAndD.getClassFeatures());
-        sheetDAndD.setSubclasses(this.sheetDAndD.getSubclasses());
+        sheetDAndD.setClassesId(this.sheetDAndD.getClassesId());
+        sheetDAndD.setSubclassesId(this.sheetDAndD.getSubclassesId());
         sheetDAndD.setHasSubClass(this.sheetDAndD.isHasSubClass());
         sheetDAndD.setSpeed(this.sheetDAndD.getSpeed());
         sheetDAndD.setArmorClass(this.sheetDAndD.getArmorClass());

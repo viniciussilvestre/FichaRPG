@@ -36,6 +36,8 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
     private SheetViewModel sheetViewModel;
     private RecyclerViewAdapterClassesInfo recyclerViewAdapterClassesInfo;
     private int id;
+    private ArrayList<Integer> classesId = new ArrayList<>();
+    private ArrayList<Integer> subclassesId = new ArrayList<>();
     private static ArrayList<Classes> classes = new ArrayList<>();
     private static ArrayList<Subclass> subclasses = new ArrayList<>();
     private static ArrayList<Feature> extraFeatures = new ArrayList<>();
@@ -81,12 +83,38 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
         {
             if (sheet != null)
             {
-                int flag = Util.SHOW_FEATURE_IN_CHARACTER;
                 sheetDAndD = sheet;
-                classes = sheet.getClassFeatures();
-                subclasses = sheet.getSubclasses();
-                extraFeatures = sheet.getFeatures();
+                int flag = Util.SHOW_FEATURE_IN_CHARACTER;
                 int level = sheet.getLevel();
+                classesId = sheet.getClassesId();
+                sheetViewModel.getAllClassesDnd().observe(getViewLifecycleOwner(), classesObserver ->
+                {
+                    for (int i = 0; i < classesId.size(); i++)
+                    {
+                        for (int j = 0; j < classesObserver.size(); j++)
+                        {
+                            if (classesObserver.get(j).getClassId() == classesId.get(i))
+                            {
+                                classes.add(classesObserver.get(j));
+                            }
+                        }
+                    }
+                });
+                subclassesId = sheet.getSubclassesId();
+                sheetViewModel.getAllSubclasses().observe(getViewLifecycleOwner(), subclassesObserver ->
+                {
+                    for (int i = 0; i < subclassesId.size(); i++)
+                    {
+                        for (int j = 0; j < subclassesObserver.size(); j++)
+                        {
+                            if (subclassesObserver.get(j).getSubclassId() == subclassesId.get(i))
+                            {
+                                subclasses.add(subclassesObserver.get(j));
+                            }
+                        }
+                    }
+                });
+                extraFeatures = sheet.getFeatures();
                 ArrayList<Feature> features = new ArrayList<>();
                 sortFeatures(classes, subclasses, extraFeatures, features, level);
                 recyclerViewAdapterClassesInfo = new RecyclerViewAdapterClassesInfo(features, FeatureInfo.this.requireActivity(), this, flag);
@@ -182,8 +210,8 @@ public class FeatureInfo extends Fragment implements RecyclerViewAdapterClassesI
         SheetDAndD sheetDAndD = new SheetDAndD();
         sheetDAndD.setId(id);
         sheetDAndD.setName(this.sheetDAndD.getName());
-        sheetDAndD.setClassFeatures(this.sheetDAndD.getClassFeatures());
-        sheetDAndD.setSubclasses(this.sheetDAndD.getSubclasses());
+        sheetDAndD.setClassesId(this.sheetDAndD.getClassesId());
+        sheetDAndD.setSubclassesId(this.sheetDAndD.getSubclassesId());
         sheetDAndD.setHasSubClass(this.sheetDAndD.isHasSubClass());
         sheetDAndD.setSpeed(this.sheetDAndD.getSpeed());
         sheetDAndD.setArmorClass(this.sheetDAndD.getArmorClass());

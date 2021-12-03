@@ -8,11 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.model.Classes;
 import com.ecnav.ficharpg.model.SheetDAndD;
+import com.ecnav.ficharpg.model.SheetViewModel;
+import com.ecnav.ficharpg.ui.featureinfo.FeatureInfo;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
@@ -45,17 +48,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         SheetDAndD sheet = Objects.requireNonNull(sheetsList.get(position));
         String characterName = sheet.getName();
-        ArrayList<Classes> classes = sheet.getClassFeatures();
+        ArrayList<Integer> classesId = sheet.getClassesId();
+        ArrayList<String> classes = sheet.getClassName(classesId);
         StringBuilder classesText = new StringBuilder();
+//        for (int i = 0; i < classes.size(); i++)
+//        {
+//            if (i == classes.size() - 1)
+//            {
+//                classesText.append(classes.get(i).getClassName());
+//            }
+//            else
+//            {
+//                classesText.append(classes.get(i).getClassName()).append(", ");
+//            }
+//        }
         for (int i = 0; i < classes.size(); i++)
         {
             if (i == classes.size() - 1)
             {
-                classesText.append(classes.get(i).getClassName());
+                classesText.append(classes.get(i));
             }
             else
             {
-                classesText.append(classes.get(i).getClassName()).append(", ");
+                classesText.append(classes.get(i)).append(", ");
             }
         }
         int level = sheet.getLevel();

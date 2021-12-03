@@ -12,10 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +65,7 @@ public class MainStats extends Fragment
                     assert data != null;
                     if (data.getIntExtra(Util.RAND_OR_AVG_LIFE, 0) == Util.RAND_LIFE_VALUE)
                     {
-                        Dice hitDice = sheetDAndD.getClassFeatures().get(0).getHitDice();
+                        Dice hitDice = sheetDAndD.getDice(sheetDAndD.getClassesId());
                         int random = 0;
                         if (hitDice == Dice.D6)
                         {
@@ -104,7 +102,7 @@ public class MainStats extends Fragment
                         binding.intelligenceText.setText(String.valueOf(inte));
                         binding.wisdomText.setText(String.valueOf(wis));
                         binding.charismaText.setText(String.valueOf(cha));
-                        Dice hitDice = sheetDAndD.getClassFeatures().get(0).getHitDice();
+                        Dice hitDice = sheetDAndD.getDice(sheetDAndD.getClassesId());
                         int average = 0;
                         if (hitDice == Dice.D6)
                         {
@@ -158,17 +156,18 @@ public class MainStats extends Fragment
             {
                 sheetDAndD = sheet;
                 binding.characterNameText.setText(sheet.getName());
-                ArrayList<Classes> classes = sheet.getClassFeatures();
+                ArrayList<Integer> classesId = sheet.getClassesId();
+                ArrayList<String> classesNames = sheet.getClassName(classesId);
                 StringBuilder classesText = new StringBuilder();
-                for (int i = 0; i < classes.size(); i++)
+                for (int i = 0; i < classesNames.size(); i++)
                 {
-                    if (i == classes.size() - 1)
+                    if (i == classesNames.size() - 1)
                     {
-                        classesText.append(classes.get(i).getClassName());
+                        classesText.append(classesNames.get(i));
                     }
                     else
                     {
-                        classesText.append(classes.get(i).getClassName()).append(", ");
+                        classesText.append(classesNames.get(i)).append(", ");
                     }
                 }
                 binding.classText.setText(classesText.toString());
@@ -244,8 +243,36 @@ public class MainStats extends Fragment
                                 {
                                     Intent intent = new Intent(getActivity(), LevelUp.class);
                                     intent.putExtra(Util.CHARACTER_ID, id);
-                                    ArrayList<Classes> classes = sheetDAndD.getClassFeatures();
-                                    ArrayList<Subclass> subclasses = sheetDAndD.getSubclasses();
+                                    ArrayList<Classes> classes = new ArrayList<>();
+                                    ArrayList<Subclass> subclasses = new ArrayList<>();
+                                    ArrayList<Integer> classesId = sheetDAndD.getClassesId();
+                                    sheetViewModel.getAllClassesDnd().observe(getViewLifecycleOwner(), classesObserver ->
+                                    {
+                                        for (int i = 0; i < classesId.size(); i++)
+                                        {
+                                            for (int j = 0; j < classesObserver.size(); j++)
+                                            {
+                                                if (classesObserver.get(j).getClassId() == classesId.get(i))
+                                                {
+                                                    classes.add(classesObserver.get(j));
+                                                }
+                                            }
+                                        }
+                                    });
+                                    ArrayList<Integer> subclassesId = sheetDAndD.getSubclassesId();
+                                    sheetViewModel.getAllSubclasses().observe(getViewLifecycleOwner(), subclassesObserver ->
+                                    {
+                                        for (int i = 0; i < subclassesId.size(); i++)
+                                        {
+                                            for (int j = 0; j < subclassesObserver.size(); j++)
+                                            {
+                                                if (subclassesObserver.get(j).getSubclassId() == subclassesId.get(i))
+                                                {
+                                                    subclasses.add(subclassesObserver.get(j));
+                                                }
+                                            }
+                                        }
+                                    });
                                     ArrayList<Feature> extraFeatures = sheetDAndD.getFeatures();
                                     ArrayList<Feature> features = new ArrayList<>();
                                     sortFeatures(classes, subclasses, extraFeatures, features, level);
@@ -486,12 +513,6 @@ public class MainStats extends Fragment
         binding = null;
     }
 
-    private void updateSheet()
-    {
-        SheetDAndD sheetDAndD = getNewSheetData();
-        SheetViewModel.updateDnd(sheetDAndD);
-    }
-
     private void openAddImage(Intent intent)
     {
         launchAddProfilePicture.launch(intent);
@@ -507,8 +528,8 @@ public class MainStats extends Fragment
         SheetDAndD sheetDAndD = new SheetDAndD();
         sheetDAndD.setId(id);
         sheetDAndD.setName(binding.characterNameText.getText().toString());
-        sheetDAndD.setClassFeatures(this.sheetDAndD.getClassFeatures());
-        sheetDAndD.setSubclasses(this.sheetDAndD.getSubclasses());
+        sheetDAndD.setClassesId(this.sheetDAndD.getClassesId());
+        sheetDAndD.setSubclassesId(this.sheetDAndD.getSubclassesId());
         sheetDAndD.setHasSubClass(this.sheetDAndD.isHasSubClass());
         sheetDAndD.setSpeed(Integer.parseInt(binding.speedText.getText().toString()));
         sheetDAndD.setArmorClass(Integer.parseInt(binding.armorClassText.getText().toString()));

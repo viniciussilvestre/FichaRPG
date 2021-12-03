@@ -23,9 +23,9 @@ import java.util.concurrent.Executors;
 
 @Database(
         entities = {SheetDAndD.class, Classes.class, Subclass.class},
-        version = 29,
+        version = 30,
         autoMigrations = {
-                @AutoMigration(from = 28, to = 29),
+                @AutoMigration(from = 29, to = 30, spec = SheetRoomDatabase.myAutoMigration.class),
         },
         exportSchema = true
 )
@@ -35,9 +35,9 @@ public abstract class SheetRoomDatabase extends RoomDatabase
     public abstract SheetDao sheetDao();
     public static final int NUMBER_OF_THREADS = 4;
 
-//    @DeleteColumn.Entries({
-//            @DeleteColumn(tableName = "character_sheet_table", columnName = "sixthClassFeature"),
-//            @DeleteColumn(tableName = "character_sheet_table", columnName = "fifthClassFeature"),
+    @DeleteColumn.Entries({
+            @DeleteColumn(tableName = "character_sheet_table", columnName = "classFeatures"),
+            @DeleteColumn(tableName = "character_sheet_table", columnName = "subclasses"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "forthClassFeature"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "className"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "hitPointsAtHigherLevel"),
@@ -53,11 +53,11 @@ public abstract class SheetRoomDatabase extends RoomDatabase
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "hitPointsAtFirstLevel"),
 //            @DeleteColumn(tableName = "character_sheet_table", columnName = "characterClass"),
 //            @DeleteColumn(tableName = "classes_table", columnName = "subclassFeatures")
-//    })
-//    static class myAutoMigration implements AutoMigrationSpec
-//    {
-//
-//    }
+    })
+    static class myAutoMigration implements AutoMigrationSpec
+    {
+
+    }
 
     private static volatile SheetRoomDatabase INSTANCE;
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);

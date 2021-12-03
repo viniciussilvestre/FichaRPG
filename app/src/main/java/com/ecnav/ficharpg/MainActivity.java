@@ -76,10 +76,20 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                     ArrayList<Subclass> subclasses = data.getParcelableArrayListExtra(Util.SUBCLASS_REPLY);
                     sheetDAndD.setName(data.getStringExtra(Util.NAME_REPLY));
                     //sheetDAndD.setCharacterClass(data.getStringExtra(Util.CLASS_REPLY));
-                    sheetDAndD.setClassFeatures(classes);
+                    ArrayList<Integer> classesId = new ArrayList<>();
+                    for (int i = 0; i < classes.size(); i++)
+                    {
+                        classesId.add(classes.get(i).getClassId());
+                    }
+                    sheetDAndD.setClassesId(classesId);
                     if (!subclasses.isEmpty())
                     {
-                        sheetDAndD.setSubclasses(subclasses);
+                        ArrayList<Integer> subclassesId = new ArrayList<>();
+                        for (int i = 0; i < subclasses.size(); i++)
+                        {
+                            subclassesId.add(subclasses.get(i).getSubclassId());
+                        }
+                        sheetDAndD.setSubclassesId(subclassesId);
                         sheetDAndD.setHasSubClass(true);
                     }
                     sheetDAndD.setLevel(data.getIntExtra(Util.LEVEL_REPLY, 1));

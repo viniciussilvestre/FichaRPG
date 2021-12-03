@@ -59,4 +59,10 @@ public class Util
     public static final int AVG_LIFE_VALUE = 2;
     public static final String FEAT_REPLY = "feat_reply";
     public static final int FEAT_VALUE = 3;
+    public static final String ROGUE = "Rogue";
+    public static final String SORCERER = "Sorcerer";
+    public static final String FIGHTER = "Fighter";
+    public static final String ARTIFICER = "Artificer";
+    public static final String DRUID = "Druid";
+    public static final String BARD = "Bard";
 }

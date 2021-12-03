@@ -1,9 +1,9 @@
 package com.ecnav.ficharpg.model;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.ecnav.ficharpg.util.Dice;
 import com.ecnav.ficharpg.util.Util;
 
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ public class SheetDAndD
     private int id;
     private int gameOfTheSheet = Util.DUNGEONS_AND_DRAGONS;
     private String name;
-    private ArrayList<Classes> classFeatures = new ArrayList<>();
-    private ArrayList<Subclass> subclasses = new ArrayList<>();
+    private ArrayList<Integer> classesId = new ArrayList<>();
+    private ArrayList<Integer> subclassesId = new ArrayList<>();
     private String subClass;
     private int level = 1;
     private String background;
@@ -238,24 +238,24 @@ public class SheetDAndD
         this.name = name;
     }
 
-    public ArrayList<Classes> getClassFeatures()
+    public ArrayList<Integer> getClassesId()
     {
-        return classFeatures;
+        return classesId;
     }
 
-    public void setClassFeatures(ArrayList<Classes> classFeatures)
+    public void setClassesId(ArrayList<Integer> classesId)
     {
-        this.classFeatures = classFeatures;
+        this.classesId = classesId;
     }
 
-    public ArrayList<Subclass> getSubclasses()
+    public ArrayList<Integer> getSubclassesId()
     {
-        return subclasses;
+        return subclassesId;
     }
 
-    public void setSubclasses(ArrayList<Subclass> subclasses)
+    public void setSubclassesId(ArrayList<Integer> subclassesId)
     {
-        this.subclasses = subclasses;
+        this.subclassesId = subclassesId;
     }
 
     public String getSubClass()
@@ -1386,5 +1386,58 @@ public class SheetDAndD
     public void addEquipment(Equipment equipment)
     {
         equipments.add(equipment);
+    }
+
+    public ArrayList<String> getClassName(ArrayList<Integer> classesId)
+    {
+        ArrayList<String> classesNames = new ArrayList<>();
+        for (int i = 0; i < classesId.size(); i++)
+        {
+            if (classesId.get(i) == 1)
+            {
+                classesNames.add(Util.ROGUE);
+            }
+            else if (classesId.get(i) == 2)
+            {
+                classesNames.add(Util.SORCERER);
+            }
+            else if (classesId.get(i) == 3)
+            {
+                classesNames.add(Util.FIGHTER);
+            }
+            else if (classesId.get(i) == 4)
+            {
+                classesNames.add(Util.ARTIFICER);
+            }
+            else if (classesId.get(i) == 5)
+            {
+                classesNames.add(Util.DRUID);
+            }
+            else if (classesId.get(i) == 6)
+            {
+                classesNames.add(Util.BARD);
+            }
+        }
+        return classesNames;
+    }
+
+    public Dice getDice(ArrayList<Integer> classesId)
+    {
+        for (int i = 0; i < classesId.size(); i++)
+        {
+            if (classesId.get(i) == 1 || classesId.get(i) == 4 || classesId.get(i) == 5 || classesId.get(i) == 6)
+            {
+                return Dice.D8;
+            }
+            else if (classesId.get(i) == 3)
+            {
+                return Dice.D10;
+            }
+            else if (classesId.get(i) == 2)
+            {
+                return Dice.D6;
+            }
+        }
+        return Dice.D8;
     }
 }
