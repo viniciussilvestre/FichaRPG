@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -52,6 +51,7 @@ public class MainStats extends Fragment
                     Intent data = result.getData();
                     assert data != null;
                     Uri selectedImage = data.getData();
+                    Log.d("TAG", ": " + selectedImage);
                     binding.imageView.setImageURI(selectedImage);
                 }
             }
@@ -237,10 +237,10 @@ public class MainStats extends Fragment
                     {
                         if (oldLevel < level && level < 21)
                         {
-                            int levelDiference = level - oldLevel;
-                            if (levelDiference > 0)
+                            int levelDifference = level - oldLevel;
+                            if (levelDifference > 0)
                             {
-                                while (levelDiference != 0)
+                                while (levelDifference != 0)
                                 {
                                     Intent intent = new Intent(getActivity(), LevelUp.class);
                                     intent.putExtra(Util.CHARACTER_ID, id);
@@ -249,28 +249,65 @@ public class MainStats extends Fragment
                                     ArrayList<Feature> extraFeatures = sheetDAndD.getFeatures();
                                     ArrayList<Feature> features = new ArrayList<>();
                                     sortFeatures(classes, subclasses, extraFeatures, features, level);
-                                    if (features.get(features.size() - 1).getNome().contains("(Optional)"))
+                                    if (features.get(features.size() - 1).getLevel() >= level)
                                     {
-                                        if (features.get(features.size() - 2).getNome().equals("Ability Score Improvement"))
+                                        if (features.get(features.size() - 1).getNome().contains("(Optional)"))
                                         {
-                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (features.get(features.size() - 1).getNome().equals("Ability Score Improvement"))
-                                        {
-                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
+                                            if (features.get(features.size() - 2).getLevel() >= level)
+                                            {
+                                                if (features.get(features.size() - 2).getNome().equals("Ability Score Improvement"))
+                                                {
+                                                    intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                intent.putExtra(Util.POINTS_OR_SKILL, Util.SKILL_VALUE);
+                                                intent.putExtra(Util.FEATURE_NAME, features.get(features.size() - 1).getNome());
+                                                intent.putExtra(Util.FEATURE_DESCRIPTION, features.get(features.size() - 1).getDescription());
+                                            }
                                         }
                                         else
                                         {
-                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.SKILL_VALUE);
-                                            intent.putExtra(Util.FEATURE_NAME, features.get(features.size() - 1).getNome());
-                                            intent.putExtra(Util.FEATURE_DESCRIPTION, features.get(features.size() - 1).getDescription());
+                                            if (features.get(features.size() - 1).getNome().equals("Ability Score Improvement"))
+                                            {
+                                                intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
+                                            }
+                                            else
+                                            {
+                                                intent.putExtra(Util.POINTS_OR_SKILL, Util.SKILL_VALUE);
+                                                intent.putExtra(Util.FEATURE_NAME, features.get(features.size() - 1).getNome());
+                                                intent.putExtra(Util.FEATURE_DESCRIPTION, features.get(features.size() - 1).getDescription());
+                                            }
                                         }
                                     }
+
+//                                    if (features.get(features.size() - 1).getNome().contains("(Optional)"))
+//                                    {
+//                                        if (features.get(features.size() - 2).getLevel() >= level)
+//                                        {
+//                                            if (features.get(features.size() - 2).getNome().equals("Ability Score Improvement"))
+//                                            {
+//                                                intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
+//                                            }
+//                                        }
+//                                    }
+//                                    else
+//                                    {
+//                                        if (features.get(features.size() - 1).getNome().equals("Ability Score Improvement"))
+//                                        {
+//                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.POINTS_VALUE);
+//                                        }
+//                                        else
+//                                        {
+//                                            intent.putExtra(Util.POINTS_OR_SKILL, Util.SKILL_VALUE);
+//                                            intent.putExtra(Util.FEATURE_NAME, features.get(features.size() - 1).getNome());
+//                                            intent.putExtra(Util.FEATURE_DESCRIPTION, features.get(features.size() - 1).getDescription());
+//                                        }
+//                                    }
+
                                     openLevelUp(intent);
-                                    levelDiference--;
+                                    levelDifference--;
                                 }
                             }
                         }
@@ -486,12 +523,6 @@ public class MainStats extends Fragment
         binding = null;
     }
 
-    private void updateSheet()
-    {
-        SheetDAndD sheetDAndD = getNewSheetData();
-        SheetViewModel.updateDnd(sheetDAndD);
-    }
-
     private void openAddImage(Intent intent)
     {
         launchAddProfilePicture.launch(intent);
@@ -581,18 +612,6 @@ public class MainStats extends Fragment
         sheetDAndD.setLevel8(this.sheetDAndD.getLevel8());
         sheetDAndD.setLevel9(this.sheetDAndD.getLevel9());
         return sheetDAndD;
-    }
-
-    public void fixRaceAndBackgroundWidth(int raceTextWidth, int backgroundTextWidth)
-    {
-        if (raceTextWidth > backgroundTextWidth)
-        {
-            binding.backgroundText.setWidth(raceTextWidth);
-        }
-        if (backgroundTextWidth > raceTextWidth)
-        {
-            binding.raceText.setWidth(backgroundTextWidth);
-        }
     }
 
     private void sortFeatures(ArrayList<Classes> classes, ArrayList<Subclass> subclasses, ArrayList<Feature> extraFeatures, ArrayList<Feature> features, int level)

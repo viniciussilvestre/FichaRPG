@@ -56,12 +56,44 @@ public class RecyclerViewAdapterSpell extends RecyclerView.Adapter<RecyclerViewA
         holder.verbalRadioButton.setChecked(verbal);
         holder.materialRadioButton.setChecked(material);
         holder.materialComponents.setText(materialComponents);
+        holder.spellDescription.setVisibility(View.GONE);
+        holder.materialComponents.setVisibility(View.GONE);
+        holder.materialRadioButton.setVisibility(View.GONE);
+        holder.somaticComponents.setVisibility(View.GONE);
+        holder.somaticRadioButton.setVisibility(View.GONE);
+        holder.verbalComponents.setVisibility(View.GONE);
+        holder.verbalRadioButton.setVisibility(View.GONE);
+
         holder.deleteButton.setOnClickListener(view ->
         {
             removedSpell = spell;
             spellList.remove(spell);
             notifyItemRemoved(holder.getAdapterPosition());
             SpellsInfo.removeSpell(removedSpell);
+        });
+
+        holder.spellName.setOnClickListener(view ->
+        {
+            if (holder.spellDescription.getVisibility() == View.GONE)
+            {
+                holder.spellDescription.setVisibility(View.VISIBLE);
+                holder.materialComponents.setVisibility(View.VISIBLE);
+                holder.materialRadioButton.setVisibility(View.VISIBLE);
+                holder.somaticComponents.setVisibility(View.VISIBLE);
+                holder.somaticRadioButton.setVisibility(View.VISIBLE);
+                holder.verbalComponents.setVisibility(View.VISIBLE);
+                holder.verbalRadioButton.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                holder.spellDescription.setVisibility(View.GONE);
+                holder.materialComponents.setVisibility(View.GONE);
+                holder.materialRadioButton.setVisibility(View.GONE);
+                holder.somaticComponents.setVisibility(View.GONE);
+                holder.somaticRadioButton.setVisibility(View.GONE);
+                holder.verbalComponents.setVisibility(View.GONE);
+                holder.verbalRadioButton.setVisibility(View.GONE);
+            }
         });
     }
 

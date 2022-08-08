@@ -47,6 +47,7 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
         EquipmentType equipmentType = equipment.getEquipmentType();
         holder.equipName.setText(equipName);
         holder.equipDescription.setText(equipDescription);
+        holder.equipDescription.setVisibility(View.GONE);
         if (equipmentType == EquipmentType.HEAVY_ARMOR || equipmentType == EquipmentType.LIGHT_ARMOR || equipmentType == EquipmentType.MEDIUM_ARMOR)
         {
             holder.armorClass.setVisibility(View.VISIBLE);
@@ -144,6 +145,7 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
                 holder.weight.setText(weightString);
             }
         }
+
         holder.deleteButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -151,6 +153,22 @@ public class RecyclerViewAdapterEquipment extends RecyclerView.Adapter<RecyclerV
             {
                 equipmentList.remove(equipment);
                 notifyItemRemoved(holder.getAdapterPosition());
+            }
+        });
+
+        holder.equipName.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (holder.equipDescription.getVisibility() == View.GONE)
+                {
+                    holder.equipDescription.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    holder.equipDescription.setVisibility(View.GONE);
+                }
             }
         });
     }
