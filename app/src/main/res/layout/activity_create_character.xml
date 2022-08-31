@@ -107,6 +107,7 @@
 
             <Button
                 android:id="@+id/addClassButton"
+                style="@style/addClass_SubClassStyle"
                 android:layout_marginTop="8dp"
                 android:text="@string/buttonClassText"
                 app:cornerRadius="14dp"
@@ -117,8 +118,7 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/characterNameField"
-                tools:ignore="DuplicateSpeakableTextCheck"
-                style="@style/addClass_SubClassStyle" />
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <!--        <androidx.appcompat.widget.AppCompatSpinner-->
             <!--            android:id="@+id/spinnerClass"-->

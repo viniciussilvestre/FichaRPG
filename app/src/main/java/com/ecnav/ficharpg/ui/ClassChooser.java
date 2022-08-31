@@ -21,6 +21,8 @@ import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.ui.addthings.AddClass;
 import com.ecnav.ficharpg.util.DisplayClassSubclassInfo;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 
 import java.util.Objects;
 
@@ -63,6 +65,8 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_class_chooser);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));

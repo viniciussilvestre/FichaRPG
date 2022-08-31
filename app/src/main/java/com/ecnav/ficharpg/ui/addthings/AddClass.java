@@ -13,6 +13,8 @@ import android.os.Bundle;
 
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.ActivityAddClassBinding;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 
 public class AddClass extends AppCompatActivity
 {
@@ -22,6 +24,8 @@ public class AddClass extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_class);
     }
 }

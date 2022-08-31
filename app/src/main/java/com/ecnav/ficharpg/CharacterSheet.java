@@ -20,6 +20,8 @@ import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.util.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 
 public class CharacterSheet extends AppCompatActivity
 {
@@ -35,6 +37,8 @@ public class CharacterSheet extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         Bundle data = getIntent().getExtras();
         if (data != null)
         {

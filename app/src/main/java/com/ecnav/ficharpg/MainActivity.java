@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,7 +17,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.View;
 import android.widget.SearchView;
 
 import com.ecnav.ficharpg.adapter.RecyclerViewAdapter;
@@ -27,6 +27,8 @@ import com.ecnav.ficharpg.model.SheetDAndD;
 import com.ecnav.ficharpg.model.SheetViewModel;
 import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     {
         super.onCreate(savedInstanceState);
         handleIntent(getIntent());
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -23,6 +23,8 @@ import com.ecnav.ficharpg.model.Subclass;
 import com.ecnav.ficharpg.ui.ClassChooser;
 import com.ecnav.ficharpg.ui.SubclassChooser;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -156,6 +158,8 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_character);
         binding.addSubclassButton.setVisibility(View.GONE);
         binding.subclassText.setVisibility(View.GONE);

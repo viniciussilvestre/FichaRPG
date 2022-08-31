@@ -9,9 +9,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="@dimen/cornerValue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,10 +25,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
+                android:minHeight="48dp"
                 android:padding="@dimen/padding"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:minHeight = "48dp"
                 app:layout_constraintEnd_toStartOf="@+id/deleteButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

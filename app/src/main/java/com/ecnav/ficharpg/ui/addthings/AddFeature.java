@@ -9,6 +9,8 @@ import android.os.Bundle;
 import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.ActivityAddFeatureBinding;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 import com.google.android.material.snackbar.Snackbar;
 
 public class AddFeature extends AppCompatActivity
@@ -19,6 +21,8 @@ public class AddFeature extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_feature);
 
         binding.saveButton.setOnClickListener(view ->

@@ -13,6 +13,8 @@ import com.ecnav.ficharpg.R;
 import com.ecnav.ficharpg.databinding.ActivityAddEquipmentBinding;
 import com.ecnav.ficharpg.util.EquipmentType;
 import com.ecnav.ficharpg.util.Util;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 
 import java.util.Objects;
 
@@ -25,6 +27,8 @@ public class AddEquipment extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_equipment);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.equipTypes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
