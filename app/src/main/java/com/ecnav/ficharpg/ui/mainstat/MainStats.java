@@ -148,7 +148,6 @@ public class MainStats extends Fragment
     {
         super.onCreate(savedInstanceState);
         requireActivity().getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(requireContext()));
-        DynamicColors.applyToActivitiesIfAvailable(requireActivity().getApplication());
         IdViewModel idViewModel = new ViewModelProvider(requireActivity()).get(IdViewModel.class);
         id = idViewModel.getSelectedItem();
         sheetViewModel = new ViewModelProvider.AndroidViewModelFactory(MainStats.this.requireActivity().getApplication()).create(SheetViewModel.class);

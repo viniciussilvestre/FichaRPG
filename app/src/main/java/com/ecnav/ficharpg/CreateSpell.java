@@ -18,7 +18,6 @@ public class CreateSpell extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
-        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_spell);
     }
 }
