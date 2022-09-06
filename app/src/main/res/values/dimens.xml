@@ -4,7 +4,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="sheetElementsElevation">0.5dp</dimen>
+    <dimen name="sheetElementsElevation">0dp</dimen>
     <dimen name="cornerValue">0dp</dimen>
     <dimen name="sheetPadding">8dp</dimen>
     <dimen name="padding">5dp</dimen>
@@ -12,4 +12,5 @@
     <dimen name="minWidthText">50dp</dimen>
     <dimen name="buttonCornerValue">14dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="class_info_card_elevation">0dp</dimen>
 </resources>
