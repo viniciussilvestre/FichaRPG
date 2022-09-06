@@ -2,7 +2,6 @@ package com.ecnav.ficharpg.ui.mainstat;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -32,11 +31,9 @@ import com.ecnav.ficharpg.ui.levelup.LevelUp;
 import com.ecnav.ficharpg.util.Dice;
 import com.ecnav.ficharpg.util.EquipmentType;
 import com.ecnav.ficharpg.util.Util;
-import com.google.android.material.color.DynamicColors;
 import com.google.android.material.elevation.SurfaceColors;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 
 public class MainStats extends Fragment

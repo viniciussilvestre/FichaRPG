@@ -96,6 +96,7 @@
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="@string/saveButtonText"
+                app:backgroundTint="@color/material_dynamic_primary50"
                 app:cornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

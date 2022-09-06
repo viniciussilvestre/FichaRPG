@@ -184,6 +184,7 @@
             android:insetBottom="0dp"
             android:text="@string/saveButtonText"
             app:cornerRadius="16dp"
+            app:iconTint="@color/material_dynamic_primary50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
