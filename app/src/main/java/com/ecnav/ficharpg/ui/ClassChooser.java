@@ -66,6 +66,7 @@ public class ClassChooser extends AppCompatActivity implements RecyclerViewAdapt
     {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        getWindow().setNavigationBarColor(SurfaceColors.SURFACE_2.getColor(this));
         binding = DataBindingUtil.setContentView(this, R.layout.activity_class_chooser);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));

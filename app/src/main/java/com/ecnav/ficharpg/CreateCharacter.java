@@ -159,6 +159,7 @@ public class CreateCharacter extends AppCompatActivity //implements AdapterView.
     {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        getWindow().setNavigationBarColor(SurfaceColors.SURFACE_2.getColor(this));
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_character);
         binding.addSubclassButton.setVisibility(View.GONE);
         binding.subclassText.setVisibility(View.GONE);

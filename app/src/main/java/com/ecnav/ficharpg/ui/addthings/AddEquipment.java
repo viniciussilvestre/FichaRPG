@@ -28,6 +28,7 @@ public class AddEquipment extends AppCompatActivity implements AdapterView.OnIte
     {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        getWindow().setNavigationBarColor(SurfaceColors.SURFACE_2.getColor(this));
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_equipment);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.equipTypes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -38,6 +38,7 @@ public class CharacterSheet extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
+        getWindow().setNavigationBarColor(SurfaceColors.SURFACE_2.getColor(this));
         Bundle data = getIntent().getExtras();
         if (data != null)
         {
